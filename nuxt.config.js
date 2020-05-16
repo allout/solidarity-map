@@ -44,7 +44,20 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
-    '@nuxtjs/vuetify'
+    /*
+     ** vuetify module configuration
+     ** https://github.com/nuxt-community/vuetify-module
+     */
+
+    [
+      '@nuxtjs/vuetify',
+      {
+        customVariables: ['~/assets/variables.scss'],
+        optionsPath: './vuetify.options.js',
+        defaultAssets: false,
+        treeShake: true
+      }
+    ]
   ],
   /*
    ** Nuxt.js modules
@@ -69,22 +82,16 @@ export default {
    */
   axios: {},
   /*
-   ** vuetify module configuration
-   ** https://github.com/nuxt-community/vuetify-module
-   */
-  vuetify: {
-    customVariables: ['~/assets/variables.scss'],
-    optionsPath: './vuetify.options.js',
-    defaultAssets: false,
-    treeShake: true
-  },
-  /*
    ** Build configuration
    */
   build: {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {
+      if (ctx && ctx.isClient) {
+        config.optimization.splitChunks.maxSize = 100000
+      }
+    }
   }
 }
