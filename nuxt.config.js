@@ -74,20 +74,8 @@ export default {
    */
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
-    theme: {
-      dark: false,
-      themes: {
-        light: {
-          primary: {
-            base: '#ed2250'
-          }
-        }
-      }
-    },
-    // Stops the automatic loading of roboto and the material icons
+    optionsPath: './vuetify.options.js',
     defaultAssets: false,
-    // This value needs to be true in order to support theme customisation
-    // It's also good for optimising bundle sizes in production
     treeShake: true
   },
   /*
