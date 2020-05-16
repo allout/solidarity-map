@@ -1,14 +1,16 @@
 <template>
   <v-app>
-    <v-app-bar color="primary" app flat extension-height="90">
+    <v-app-bar ref="appBar" color="primary" app flat extension-height="110">
       <div
         slot="extension"
         class="appbar-ext d-flex justify-space-between py-5"
       >
         <div class="">
-          <p class="title white--text">
-            Pride #UnDistanced<br />
-            Solidarity with {{ prideLocation }} Pride 2020
+          <p class="white--text">
+            <span class="title">Pride #UnDistanced</span><br />
+            <span class="title font-weight-black">
+              Solidarity with {{ prideLocation }} Pride 2020
+            </span>
           </p>
         </div>
         <v-btn color="white" outlined>English</v-btn>
@@ -28,6 +30,12 @@ export default {
     prideLocation() {
       return this.$nuxt.context.env.prideLocation
     }
+  },
+  mounted() {
+    this.$store.commit(
+      'app/SET_APP_BAR_HEIGHT',
+      this.$refs.appBar.computedHeight
+    )
   }
 }
 </script>
