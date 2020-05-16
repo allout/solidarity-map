@@ -2,3 +2,23 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+
+// Font rules
+$body-font-family: 'Helvetica', sans-serif;
+$heading-font-family: 'Helvetica', sans-serif;
+$font-size-root: 18px;
+
+// Button vars
+// Selected from:
+// https://github.com/vuetifyjs/vuetify/blob/master/packages/vuetify/src/components/VBtn/_variables.scss
+$btn-active-opacity: 0.18;
+$btn-focus-opacity: 0.24;
+$btn-font-weight: 500;
+$btn-hover-opacity: 0.08;
+$btn-icon-font-size: 18px;
+$btn-icon-padding: 12px;
+$btn-letter-spacing: 0em;
+$btn-outline-border-width: thin;
+$btn-rounded-border-radius: 28px;
+$btn-text-transform: none;
+$btn-transition-duration: 0.28s;

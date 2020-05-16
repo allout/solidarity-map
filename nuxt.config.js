@@ -2,6 +2,9 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   mode: 'universal',
+  env: {
+    prideLocation: process.env.PRIDE_LOCATION || 'St Petersburg'
+  },
   /*
    ** Headers of the page
    */
@@ -10,7 +13,11 @@ export default {
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        name: 'viewport',
+        content:
+          'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
+      },
       {
         hid: 'description',
         name: 'description',
@@ -46,7 +53,15 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    // https://github.com/schlunsen/nuxt-leaflet
+    // https://github.com/vue-leaflet/Vue2Leaflet
+    [
+      'nuxt-leaflet',
+      {
+        /* module options */
+      }
+    ]
   ],
   /*
    ** Axios module configuration
@@ -60,19 +75,20 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+        light: {
+          primary: {
+            base: '#ed2250'
+          }
         }
       }
-    }
+    },
+    // Stops the automatic loading of roboto and the material icons
+    defaultAssets: false,
+    // This value needs to be true in order to support theme customisation
+    // It's also good for optimising bundle sizes in production
+    treeShake: true
   },
   /*
    ** Build configuration
