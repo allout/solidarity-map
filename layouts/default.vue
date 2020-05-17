@@ -47,5 +47,6 @@ export default {
 .container {
   align-items: stretch !important;
   padding-top: 0;
+  padding-bottom: 0;
 }
 </style>
