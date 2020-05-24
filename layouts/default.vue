@@ -12,7 +12,7 @@
             <span class="title font-weight-black">{{ title }}</span>
           </p>
         </div>
-        <v-btn color="white" outlined>English</v-btn>
+        <language-select />
       </div>
     </v-app-bar>
     <v-content>
@@ -24,7 +24,9 @@
 </template>
 
 <script>
+import LanguageSelect from '~/components/LanguageSelect'
 export default {
+  components: { LanguageSelect },
   computed: {
     prideLocation() {
       return this.$t(`cities.${this.$nuxt.context.env.prideLocation}`)
