@@ -90,6 +90,10 @@ export default {
             'en-US': enUS,
             'ru-RU': ruRU
           }
+        },
+        detectBrowserLanguage: {
+          useCookie: true,
+          cookieKey: 'i18n_redirected'
         }
       }
     ]
