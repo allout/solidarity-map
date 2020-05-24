@@ -1,6 +1,6 @@
-# undistanced-pride
+# Pride #Undistanced
 
-> An #UnDistanced Virtual Pride geotagging action of solidarity
+> An #Undistanced Virtual Pride geotagging action of solidarity
 
 ## Build Setup
 
