@@ -27,7 +27,14 @@ export default {
           content: process.env.npm_package_description || ''
         }
       ],
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        {
+          rel: 'stylesheet',
+          href:
+            'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap'
+        }
+      ]
     }
   },
   /*
@@ -59,7 +66,8 @@ export default {
         customVariables: ['~/assets/variables.scss'],
         optionsPath: './vuetify.options.js',
         defaultAssets: false,
-        treeShake: true
+        treeShake: true,
+        indentedSyntax: true
       }
     ]
   ],
