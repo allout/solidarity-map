@@ -7,10 +7,9 @@
       >
         <div class="">
           <p class="white--text">
-            <span class="title">Pride #UnDistanced</span><br />
-            <span class="title font-weight-black">
-              Solidarity with {{ prideLocation }} Pride 2020
-            </span>
+            <span class="title">{{ $t('site.title') }}</span
+            ><br />
+            <span class="title font-weight-black">{{ title }}</span>
           </p>
         </div>
         <v-btn color="white" outlined>English</v-btn>
@@ -28,7 +27,11 @@
 export default {
   computed: {
     prideLocation() {
-      return this.$nuxt.context.env.prideLocation
+      return this.$t(`cities.${this.$nuxt.context.env.prideLocation}`)
+    },
+    title() {
+      const { prideLocation } = this
+      return this.$t('index.title', { prideLocation })
     }
   },
   mounted() {

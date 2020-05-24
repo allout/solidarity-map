@@ -58,6 +58,13 @@ export default {
     ]
   }),
   computed: {
+    prideLocation() {
+      return this.$t(`cities.${this.$nuxt.context.env.prideLocation}`)
+    },
+    title() {
+      const { prideLocation } = this
+      return this.$t('index.title', { prideLocation })
+    },
     mapHeight() {
       return `calc(100vh - ${this.appBarHeight}px)`
     },
@@ -65,6 +72,11 @@ export default {
       return `height: ${this.mapHeight}`
     },
     ...mapState('app', ['appBarHeight'])
+  },
+  head() {
+    return {
+      title: this.title
+    }
   }
 }
 </script>

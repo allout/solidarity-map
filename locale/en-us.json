@@ -1,1 +1,11 @@
-{}
+{
+  "site": {
+    "title": "Pride #UnDistanced"
+  },
+  "index": {
+    "title": "Solidarity with {prideLocation} Pride 2020"
+  },
+  "cities": {
+    "stPetersburg": "St Petersburg"
+  }
+}

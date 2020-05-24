@@ -5,28 +5,30 @@ import ruRU from './locale/ru-ru.json'
 export default {
   mode: 'universal',
   env: {
-    prideLocation: process.env.PRIDE_LOCATION || 'St Petersburg'
+    prideLocation: process.env.PRIDE_LOCATION || 'stPetersburg'
   },
   /*
    ** Headers of the page
    */
-  head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
-    meta: [
-      { charset: 'utf-8' },
-      {
-        name: 'viewport',
-        content:
-          'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
-      },
-      {
-        hid: 'description',
-        name: 'description',
-        content: process.env.npm_package_description || ''
-      }
-    ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+  head() {
+    return {
+      titleTemplate: this.$t('site.title') + ' - %s',
+      title: this.$t('site.title'),
+      meta: [
+        { charset: 'utf-8' },
+        {
+          name: 'viewport',
+          content:
+            'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content: process.env.npm_package_description || ''
+        }
+      ],
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    }
   },
   /*
    ** Customize the progress-bar color
