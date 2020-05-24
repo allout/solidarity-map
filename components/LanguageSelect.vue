@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn class="locale-button" color="white" outlined>
+    <v-btn class="locale-button" color="white" outlined small>
       <select v-model="selectedLocale" @change="onLocaleChange">
         <option
           v-for="localeOption in localeOptions"
@@ -42,6 +42,6 @@ export default {
 }
 select {
   outline: none;
-  padding: 0 16px;
+  padding: 0 10px;
 }
 </style>
