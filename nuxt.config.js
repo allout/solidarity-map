@@ -1,6 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
-import enUS from './locale/en-us.json'
-import ruRU from './locale/ru-ru.json'
+import enUS from './locale/en-US'
+import ruRU from './locale/ru-RU'
 
 export default {
   mode: 'universal',
@@ -82,13 +82,13 @@ export default {
     [
       'nuxt-i18n',
       {
-        locales: ['en-us', 'ru-ru'],
-        defaultLocale: 'en-us',
+        locales: ['en-US', 'ru-RU'],
+        defaultLocale: 'en-US',
         vueI18n: {
-          fallbackLocale: 'en-us',
+          fallbackLocale: 'en-US',
           messages: {
-            'en-us': enUS,
-            'ru-ru': ruRU
+            'en-US': enUS,
+            'ru-RU': ruRU
           }
         }
       }

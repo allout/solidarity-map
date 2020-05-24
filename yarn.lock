@@ -3031,6 +3031,11 @@ cosmiconfig@^5.0.0:
     js-yaml "^3.13.1"
     parse-json "^4.0.0"
 
+countries-list@^2.5.4:
+  version "2.5.4"
+  resolved "https://registry.yarnpkg.com/countries-list/-/countries-list-2.5.4.tgz#c1a0ab8f63c0972b266254d63e595ea86a6cfe1e"
+  integrity sha512-6+AIKth3MCOEWTLOVTgR7zTe6oH3JlL0MworsJwIyG0jQi+cKeChOEPvcKszNtGAuCp7p+OrqdxPWxjhu8LqoA==
+
 create-ecdh@^4.0.0:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/create-ecdh/-/create-ecdh-4.0.3.tgz#c9111b6f33045c4697f144787f9254cdc77c45ff"
@@ -3504,6 +3509,11 @@ detect-newline@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/detect-newline/-/detect-newline-2.1.0.tgz#f41f1c10be4b00e87b5f13da680759f2c5bfd3e2"
   integrity sha1-9B8cEL5LAOh7XxPaaAdZ8sW/0+I=
+
+diacritics@1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/diacritics/-/diacritics-1.3.0.tgz#3efa87323ebb863e6696cebb0082d48ff3d6f7a1"
+  integrity sha1-PvqHMj67hj5mls67AILUj/PW96E=
 
 diff-sequences@^24.9.0:
   version "24.9.0"
@@ -5044,6 +5054,13 @@ human-signals@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
   integrity sha512-SEQu7vl8KjNL2eoGBLF3+wAjpsNfA9XMlXAYj/3EdaNfAlxKthD1xjEQfGOUhllCGGJVNY34bRr6lPINhNjyZw==
+
+i18n-iso-countries@^5.4.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/i18n-iso-countries/-/i18n-iso-countries-5.4.0.tgz#d0fcb5f9e7d3bb86feeeaf18842325dea431b29e"
+  integrity sha512-L+YBQ/h6/dPd0ctvgTJSHd8znCcW35uiMOEf+Vmv9cltRqDUfJWbCDwxn68fNosF/oyQc0nfG5KMp4gE+qt0Ng==
+  dependencies:
+    diacritics "1.3.0"
 
 iconv-lite@0.4.24, iconv-lite@^0.4.24:
   version "0.4.24"

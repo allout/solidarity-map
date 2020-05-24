@@ -1,7 +1,7 @@
 <template>
   <v-row class="">
     <v-col class="pa-0">
-      <client-only>
+      <!-- <client-only>
         <l-map id="map" :zoom="zoom" :center="center" :style="mapStyle">
           <l-tile-layer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
           <l-marker
@@ -17,7 +17,7 @@
             </l-popup>
           </l-marker>
         </l-map>
-      </client-only>
+      </client-only> -->
     </v-col>
   </v-row>
 </template>
