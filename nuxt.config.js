@@ -1,4 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
+import enUS from './locale/en-us.json'
+import ruRU from './locale/ru-ru.json'
 
 export default {
   mode: 'universal',
@@ -73,6 +75,20 @@ export default {
       'nuxt-leaflet',
       {
         /* module options */
+      }
+    ],
+    [
+      'nuxt-i18n',
+      {
+        locales: ['en-us', 'ru-ru'],
+        defaultLocale: 'en-us',
+        vueI18n: {
+          fallbackLocale: 'en-us',
+          messages: {
+            'en-us': enUS,
+            'ru-ru': ruRU
+          }
+        }
       }
     ]
   ],

@@ -20,6 +20,7 @@
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/vuetify": "^1.11.2",
     "nuxt": "^2.0.0",
+    "nuxt-i18n": "^6.11.1",
     "nuxt-leaflet": "^0.0.21"
   },
   "devDependencies": {
