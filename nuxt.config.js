@@ -1,7 +1,3 @@
-import colors from 'vuetify/es5/util/colors'
-import enUS from './locale/en-US'
-import ruRU from './locale/ru-RU'
-
 export default {
   mode: 'universal',
   env: {
@@ -87,22 +83,35 @@ export default {
         /* module options */
       }
     ],
+    // https://nuxt-community.github.io/nuxt-i18n/options-reference.html
     [
       'nuxt-i18n',
       {
-        locales: ['en-US', 'ru-RU'],
-        defaultLocale: 'en-US',
-        vueI18n: {
-          fallbackLocale: 'en-US',
-          messages: {
-            'en-US': enUS,
-            'ru-RU': ruRU
+        lazy: true,
+        loadLanguagesAsync: true,
+        locales: [
+          {
+            name: 'English',
+            code: 'en',
+            iso: 'en-US',
+            file: 'en-US.js'
+          },
+          {
+            name: 'Russian',
+            code: 'ru',
+            iso: 'ru-RU',
+            file: 'ru-RU.js'
           }
-        },
+        ],
+        langDir: 'locales/',
+        defaultLocale: 'en',
+        fallbackLocale: 'en',
+        strategy: 'prefix',
         detectBrowserLanguage: {
           useCookie: true,
           cookieKey: 'i18n_redirected'
-        }
+        },
+        rootRedirect: 'en'
       }
     ]
   ],

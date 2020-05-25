@@ -4,8 +4,8 @@
       <select v-model="selectedLocale" @change="onLocaleChange">
         <option
           v-for="localeOption in localeOptions"
-          :key="localeOption.locale"
-          :value="localeOption.locale"
+          :key="localeOption.code"
+          :value="localeOption.code"
         >
           {{ localeOption.native }}
         </option>
@@ -22,9 +22,9 @@ export default {
   data() {
     return {
       selectedLocale: this.$i18n.locale,
-      localeOptions: this.$i18n.availableLocales.map((locale) => ({
-        locale,
-        ...languages[locale.slice(0, 2)]
+      localeOptions: this.$i18n.locales.map(({ code }) => ({
+        code,
+        ...languages[code]
       }))
     }
   },
