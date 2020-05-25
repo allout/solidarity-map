@@ -8,15 +8,39 @@ export default {
     title: 'Solidarity with {prideLocation} Pride 2020'
   },
   cities: {
-    stPetersburg: 'St. Petersburg'
+    st_petersburg: 'St. Petersburg'
   },
-  forms: {
-    fields: {
-      name: 'Name',
-      email: 'Email',
-      country: 'Country',
-      message: 'Message'
-    },
-    validation: en.messages
-  }
+  dialogs: {
+    form: {
+      header: {
+        title: 'People from all over the world are already here',
+        subtitle: 'Simply fill out the form to join them',
+        text:
+          'Showing love for the LGBT+ community in {prideLocation} is easy. Simply submit the form below!'
+      },
+      fields: {
+        name: {
+          label: 'Name',
+          placeholder: 'Type your name'
+        },
+        email: {
+          label: 'Email',
+          placeholder: 'Enter your email address'
+        },
+        country: {
+          label: 'Country',
+          placeholder: 'Choose your location'
+        },
+        message: {
+          label: 'Message of solidarity',
+          placeholder:
+            'Your voice matters – leave a message of support for the {prideLocation} LGBT+ community'
+        },
+        button: {
+          label: 'Show your support!'
+        }
+      }
+    }
+  },
+  validation: en.messages
 }

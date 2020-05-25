@@ -8,7 +8,7 @@ export default {
     title: 'Solidarity with {prideLocation} Pride 2020'
   },
   cities: {
-    stPetersburg: 'St. Petersburg'
+    st_petersburg: 'St. Petersburg'
   },
   forms: {
     fields: {
