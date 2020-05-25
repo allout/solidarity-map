@@ -5,9 +5,7 @@
         <language-select />
       </div>
       <div slot="extension" class="appbar-ext">
-        <div class="d-flex justify-space-between">
-          <h1 class="headline white--text">{{ $t('site.title') }}</h1>
-        </div>
+        <h1 class="headline white--text">{{ $t('site.title') }}</h1>
         <h2 class="headline white--text font-weight-bold">{{ title }}</h2>
       </div>
     </v-app-bar>
@@ -16,13 +14,16 @@
         <nuxt />
       </v-container>
     </v-content>
+    <form-dialog />
   </v-app>
 </template>
 
 <script>
 import LanguageSelect from '~/components/LanguageSelect'
+import FormDialog from '~/components/FormDialog'
+
 export default {
-  components: { LanguageSelect },
+  components: { LanguageSelect, FormDialog },
   computed: {
     prideLocation() {
       return this.$t(`cities.${this.$nuxt.context.env.prideLocation}`)
