@@ -51,15 +51,17 @@
           <label for="email">
             {{ $t('dialogs.form.fields.country.label') }}
           </label>
-          <select id="country-select" v-model="form.country" name="country">
-            <option
-              v-for="country in countries"
-              :key="country.code"
-              :value="country.code"
-            >
-              {{ country.emoji }} {{ country.name }}
-            </option>
-          </select>
+          <div class="select-wrap">
+            <select id="country-select" v-model="form.country" name="country">
+              <option
+                v-for="country in countries"
+                :key="country.code"
+                :value="country.code"
+              >
+                {{ country.emoji }} {{ country.name }}
+              </option>
+            </select>
+          </div>
           <span v-show="errors.length > 0" class="is-invalid">
             {{ errors[0] }}
           </span>
@@ -151,39 +153,63 @@ export default {
       return this.$t(`cities.${this.$nuxt.context.env.prideLocation}`)
     },
     ...mapState('app', ['showFormDialog'])
-  },
-  mounted() {
-    console.log(this.$i18n.messages)
   }
 }
 </script>
 
 <style lang="scss" scoped>
-label {
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-input,
-select {
-  height: 33px;
-}
-input,
-textarea,
-select {
-  padding: 0 11px;
-  box-sizing: border-box;
-  border: 1.5px solid var(--v-primary-base);
-  border-radius: 2px;
-}
-select {
-  &::after {
-    content: '\25bc'; /* down arrow */
-  }
-}
 .field {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
+
+  label {
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  input,
+  select {
+    height: 33px;
+  }
+  input,
+  select,
+  textarea {
+    padding: 0 11px;
+  }
+  input,
+  textarea,
+  .select-wrap {
+    box-sizing: border-box;
+    border: 1.5px solid var(--v-primary-base);
+    border-radius: 2px;
+  }
+  textarea {
+    padding-top: 6px;
+  }
+  .select-wrap {
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+      top: 50%;
+      left: 93%;
+      border: solid transparent;
+      content: ' ';
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba(0, 0, 0, 0);
+      border-top-color: #000;
+      border-width: 5px;
+      margin-top: -2px;
+      z-index: 1;
+    }
+
+    select {
+      cursor: pointer;
+    }
+  }
 }
 button {
   font-weight: 700;
