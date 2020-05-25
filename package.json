@@ -23,7 +23,8 @@
     "i18n-iso-countries": "^5.4.0",
     "nuxt": "^2.0.0",
     "nuxt-i18n": "^6.11.1",
-    "nuxt-leaflet": "^0.0.21"
+    "nuxt-leaflet": "^0.0.21",
+    "vee-validate": "^3.3.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",
