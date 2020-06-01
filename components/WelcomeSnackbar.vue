@@ -10,7 +10,7 @@
     <span class="black--text subtitle-1">
       {{ $t('snackbars.welcome.message') }}
     </span>
-    <v-btn color="primary" small @click.prevent="onButtonClick">
+    <v-btn color="primary" @click.prevent="onButtonClick">
       {{ $t('snackbars.welcome.buttonLabel') }}
     </v-btn>
   </v-snackbar>

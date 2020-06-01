@@ -36,7 +36,17 @@ export default {
   },
   computed: {
     ...mapState('app', ['appBarHeight', 'flagIsPlanted']),
-    ...mapState('map', ['markers', 'enableMarkerPopups'])
+    ...mapState('map', ['markers', 'enableMarkerPopups', 'showZoomControl'])
+  },
+  watch: {
+    showZoomControl(showZoom) {
+      const { mapObject } = this.$refs.leaflet
+      if (showZoom) {
+        mapObject.addControl(mapObject.zoomControl, { position: 'topleft' })
+      } else {
+        mapObject.removeControl(mapObject.zoomControl)
+      }
+    }
   },
   created() {
     this.$store.dispatch('map/fetchMarkers')
@@ -45,17 +55,24 @@ export default {
     const vm = this
     this.$nextTick(function() {
       const { mapObject } = this.$refs.leaflet
+      // Fix sizing
       mapObject.invalidateSize()
+      // Remove default zoom control that comes with the map (we dynamically add our own below)
+      mapObject.removeControl(mapObject.zoomControl)
+
       mapObject.on('click', function(evt) {
         vm.$store.commit('app/SET_SHOW_WELCOME_SNACKBAR', false)
         if (this.flagIsPlanted) {
           // If the flag is alredy planted, show the read more snackbar
           vm.$store.commit('app/SET_SHOW_READ_MORE_SNACKBAR', true)
         } else {
+          vm.$store.commit('map/SET_SHOW_ZOOM_CONTROL', false)
           // Otherwise, if the flag is not already planted we enable the form
           vm.$store.commit('app/SET_SHOW_FORM_DIALOG', true)
         }
       })
+      // Dynamically set the initial state for the visibility of the zoom control
+      vm.$store.commit('map/SET_SHOW_ZOOM_CONTROL', true)
     })
   },
   methods: {
