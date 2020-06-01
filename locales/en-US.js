@@ -16,7 +16,7 @@ export default {
         title: 'What would you like to add to your flag?',
         subtitle: '?????????',
         text:
-          'Showing love for the LGBT+ community in {prideLocation} is easy. Simply submit the form below!'
+          'Showing love for the LGBT+ community in {prideLocation} is easy. Choose the information you would like to add to your flag below!!'
       },
       fields: {
         name: {
