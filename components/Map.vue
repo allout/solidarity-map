@@ -39,12 +39,15 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #map {
   height: 100%;
 
   & >>> .leaflet-pane {
     z-index: 200;
   }
+
+  // cursor: url('~assets/icons/flag-icon.png'), auto;
+  cursor: crosshair;
 }
 </style>

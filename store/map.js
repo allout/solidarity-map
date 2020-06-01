@@ -2,8 +2,7 @@ import RestService from '@/services/RestService'
 
 export const state = () => ({
   markersReady: false,
-  markers: [],
-  showFormDialog: true
+  markers: []
 })
 
 export const mutations = {
