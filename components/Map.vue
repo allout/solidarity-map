@@ -59,6 +59,8 @@ export default {
       mapObject.invalidateSize()
       // Remove default zoom control that comes with the map (we dynamically add our own below)
       mapObject.removeControl(mapObject.zoomControl)
+      // Dynamically set the initial state for the visibility of the zoom control
+      vm.$store.commit('map/SET_SHOW_ZOOM_CONTROL', true)
 
       mapObject.on('click', function(evt) {
         vm.$store.commit('app/SET_SHOW_WELCOME_SNACKBAR', false)
@@ -71,8 +73,6 @@ export default {
           vm.$store.commit('app/SET_SHOW_FORM_DIALOG', true)
         }
       })
-      // Dynamically set the initial state for the visibility of the zoom control
-      vm.$store.commit('map/SET_SHOW_ZOOM_CONTROL', true)
     })
   },
   methods: {
