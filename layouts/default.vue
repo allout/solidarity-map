@@ -1,7 +1,7 @@
 <template>
   <v-app class="app">
     <v-app-bar ref="appBar" color="primary" app flat extension-height="110">
-      <div class="logo-wrap d-flex justify-end">
+      <div class="logo-wrap d-flex justify-end" style="width: 100%">
         <language-select />
       </div>
       <div slot="extension" class="appbar-ext">
@@ -26,7 +26,7 @@ export default {
   components: { LanguageSelect, FormDialog },
   computed: {
     prideLocation() {
-      return this.$t(`cities.${this.$nuxt.context.env.prideLocation}`)
+      return this.$t(`cities.${this.$nuxt.context.env.PRIDE_LOCATION}`)
     },
     title() {
       const { prideLocation } = this
@@ -42,16 +42,13 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.logo-wrap {
-  width: 100%;
-}
-.appbar-ext {
-  width: 100%;
-}
-.container {
+<style lang="scss">
+.container:first-of-type {
   align-items: stretch !important;
   padding-top: 0;
   padding-bottom: 0;
+}
+.leaflet-pane {
+  z-index: 200;
 }
 </style>

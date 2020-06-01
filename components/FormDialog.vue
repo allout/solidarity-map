@@ -150,7 +150,7 @@ export default {
   }),
   computed: {
     prideLocation() {
-      return this.$t(`cities.${this.$nuxt.context.env.prideLocation}`)
+      return this.$t(`cities.${this.$nuxt.context.env.PRIDE_LOCATION}`)
     },
     ...mapState('app', ['showFormDialog'])
   }
