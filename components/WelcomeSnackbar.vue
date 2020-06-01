@@ -7,7 +7,7 @@
       width="25"
       height="25"
     />
-    <span class="black--text subtitle-1">
+    <span class="black--text title font-weight-bold">
       {{ $t('snackbars.welcome.message') }}
     </span>
     <v-btn color="primary" @click.prevent="onButtonClick">
