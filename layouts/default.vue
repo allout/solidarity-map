@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="app">
     <v-app-bar ref="appBar" color="primary" app flat extension-height="110">
       <div class="logo-wrap d-flex justify-end">
         <language-select />

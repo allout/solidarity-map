@@ -1,7 +1,7 @@
 <template>
   <v-row class="">
     <v-col class="pa-0">
-      <!-- <client-only>
+      <client-only>
         <l-map id="map" :zoom="zoom" :center="center" :style="mapStyle">
           <l-tile-layer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
           <l-marker
@@ -17,7 +17,7 @@
             </l-popup>
           </l-marker>
         </l-map>
-      </client-only> -->
+      </client-only>
     </v-col>
   </v-row>
 </template>
@@ -26,36 +26,15 @@
 import { mapState } from 'vuex'
 
 export default {
-  asyncData({ env }) {
+  asyncData({ env, store }) {
+    store.dispatch('map/fetchMarkers')
     return {
-      ...require(`~/geojson/${env.prideLocation}/map-initial.json`)
+      ...require(`~/geojson/${env.PRIDE_LOCATION}/map-initial.json`)
     }
   },
   data: () => ({
     zoom: 1,
-    center: [0, 0],
-    markers: [
-      {
-        center: [59.93912, 30.31562],
-        name: 'Tim',
-        message: 'We are with you! 🥰'
-      },
-      {
-        center: [59.93892, 30.31762],
-        name: 'Stana',
-        message: 'So much love! ❤️'
-      },
-      {
-        center: [59.93952, 30.31762],
-        name: 'Janina',
-        message: 'So glad I could be here today 😊'
-      },
-      {
-        center: [59.93952, 30.31522],
-        name: 'Christoffer',
-        message: 'Sending solidarity from Deutschland! 💪🏻'
-      }
-    ]
+    center: [0, 0]
   }),
   computed: {
     prideLocation() {
@@ -71,7 +50,8 @@ export default {
     mapStyle() {
       return `height: ${this.mapHeight}`
     },
-    ...mapState('app', ['appBarHeight'])
+    ...mapState('app', ['appBarHeight']),
+    ...mapState('map', ['markers'])
   },
   head() {
     return {
@@ -81,8 +61,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.leaflet-container {
-  font-size: 16px;
-}
-</style>
+<style lang="scss"></style>
