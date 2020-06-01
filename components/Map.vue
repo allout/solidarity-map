@@ -35,17 +35,23 @@ export default {
     }
   },
   computed: {
+    isPortableWidth() {
+      return this.$vuetify.breakpoint.mdAndDown
+    },
     ...mapState('app', ['appBarHeight', 'flagIsPlanted']),
     ...mapState('map', ['markers', 'enableMarkerPopups', 'showZoomControl'])
   },
   watch: {
-    showZoomControl(showZoom) {
+    showZoomControl(newValue) {
       const { mapObject } = this.$refs.leaflet
-      if (showZoom) {
+      if (newValue) {
         mapObject.addControl(mapObject.zoomControl, { position: 'topleft' })
       } else {
         mapObject.removeControl(mapObject.zoomControl)
       }
+    },
+    isPortableWidth(newValue) {
+      this.$store.commit('map/SET_SHOW_ZOOM_CONTROL', !newValue)
     }
   },
   created() {
@@ -60,7 +66,7 @@ export default {
       // Remove default zoom control that comes with the map (we dynamically add our own below)
       mapObject.removeControl(mapObject.zoomControl)
       // Dynamically set the initial state for the visibility of the zoom control
-      vm.$store.commit('map/SET_SHOW_ZOOM_CONTROL', true)
+      vm.$store.commit('map/SET_SHOW_ZOOM_CONTROL', !this.isPortableWidth)
 
       mapObject.on('click', function(evt) {
         vm.$store.commit('app/SET_SHOW_WELCOME_SNACKBAR', false)
