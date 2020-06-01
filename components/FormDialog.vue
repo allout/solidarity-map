@@ -67,12 +67,12 @@
           </span>
         </div>
       </ValidationProvider>
-      <ValidationProvider v-slot="{ errors }" name="message" rules="">
+      <ValidationProvider v-slot="{}" name="message" rules="">
         <div class="field">
           <label for="message">
-            {{ $t('dialogs.form.fields.message.label') }}
+            {{ $t('dialogs.form.fields.message.label') }}?
           </label>
-          <textarea
+          <!-- <textarea
             v-model="form.message"
             name="message"
             rows="4"
@@ -83,7 +83,7 @@
           </textarea>
           <span v-show="errors.length > 0" class="is-invalid">
             {{ errors[0] }}
-          </span>
+          </span> -->
         </div>
       </ValidationProvider>
       <div class="d-flex flex-column">
