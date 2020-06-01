@@ -1,7 +1,6 @@
 import RestService from '@/services/RestService'
 
 export const state = () => ({
-  markersReady: false,
   markers: []
 })
 

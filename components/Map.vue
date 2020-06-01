@@ -1,6 +1,6 @@
 <template>
   <client-only>
-    <l-map id="map" :zoom="zoom" :center="center">
+    <l-map id="map" ref="leaflet" :zoom="zoom" :center="center">
       <l-tile-layer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
       <l-marker
         v-for="(marker, index) in markers"
@@ -35,6 +35,13 @@ export default {
   computed: {
     ...mapState('app', ['appBarHeight']),
     ...mapState('map', ['markers'])
+  },
+  mounted() {
+    this.$nextTick(function() {
+      this.$refs.leaflet.mapObject.on('click', function(evt) {
+        console.log(evt.latlng)
+      })
+    })
   }
 }
 </script>
