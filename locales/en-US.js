@@ -42,5 +42,16 @@ export default {
       }
     }
   },
+  accessibility: {
+    imgAlts: {
+      flag: 'Flag'
+    }
+  },
+  snackbars: {
+    welcome: {
+      message: 'Choose a place on the map to plant your flag and join!',
+      buttonLabel: 'or explore the map'
+    }
+  },
   validation: en.messages
 }

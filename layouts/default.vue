@@ -15,15 +15,17 @@
       </v-container>
     </v-content>
     <form-dialog />
+    <welcome-snackbar />
   </v-app>
 </template>
 
 <script>
 import LanguageSelect from '~/components/LanguageSelect'
 import FormDialog from '~/components/FormDialog'
+import WelcomeSnackbar from '~/components/WelcomeSnackbar'
 
 export default {
-  components: { LanguageSelect, FormDialog },
+  components: { LanguageSelect, FormDialog, WelcomeSnackbar },
   computed: {
     prideLocation() {
       return this.$t(`cities.${this.$nuxt.context.env.PRIDE_LOCATION}`)

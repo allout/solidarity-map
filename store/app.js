@@ -1,6 +1,7 @@
 export const state = () => ({
   appBarHeight: 0,
-  showFormDialog: false
+  showFormDialog: false,
+  showWelcomeSnackbar: true
 })
 
 export const mutations = {
@@ -9,5 +10,8 @@ export const mutations = {
   },
   SET_SHOW_FORM_DIALOG(state, showFormDialog) {
     state.showFormDialog = showFormDialog
+  },
+  SET_SHOW_WELCOME_SNACKBAR(state, showWelcomeSnackbar) {
+    state.showWelcomeSnackbar = showWelcomeSnackbar
   }
 }
