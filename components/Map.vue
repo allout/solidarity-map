@@ -70,7 +70,7 @@ export default {
 
       mapObject.on('click', function(evt) {
         vm.$store.commit('app/SET_SHOW_WELCOME_SNACKBAR', false)
-        if (this.flagIsPlanted) {
+        if (this.flagisPlaced) {
           // If the flag is alredy planted, show the read more snackbar
           vm.$store.commit('app/SET_SHOW_READ_MORE_SNACKBAR', true)
         } else {

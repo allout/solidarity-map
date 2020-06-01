@@ -49,7 +49,7 @@ export default {
   },
   snackbars: {
     welcome: {
-      message: 'Choose a place on the map to plant your flag and join!',
+      message: 'Choose a location on the map to place your flag and join!',
       buttonLabel: 'or explore the map'
     },
     readMore: {

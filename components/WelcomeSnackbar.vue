@@ -22,7 +22,7 @@ export default {
   name: 'WelcomeSnackbar',
   computed: {
     ...mapState('app', ['showWelcomeSnackbar']),
-    ...mapState('app', ['flagIsPlanted'])
+    ...mapState('app', ['flagisPlaced'])
   },
   methods: {
     onButtonClick(evt) {

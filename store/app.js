@@ -1,7 +1,7 @@
 export const state = () => ({
   appBarHeight: 0,
   showFormDialog: false,
-  flagIsPlanted: false,
+  flagIsPlaced: false,
   showWelcomeSnackbar: true,
   showReadMoreSnackbar: true
 })
