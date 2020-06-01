@@ -13,8 +13,8 @@ export default {
   dialogs: {
     form: {
       header: {
-        title: 'People from all over the world are already here',
-        subtitle: 'Simply fill out the form to join them',
+        title: 'What would you like to add to your flag?',
+        subtitle: '?????????',
         text:
           'Showing love for the LGBT+ community in {prideLocation} is easy. Simply submit the form below!'
       },
@@ -51,6 +51,10 @@ export default {
     welcome: {
       message: 'Choose a place on the map to plant your flag and join!',
       buttonLabel: 'or explore the map'
+    },
+    readMore: {
+      message: 'Want more information?',
+      buttonLabel: 'Find out more!'
     }
   },
   validation: en.messages

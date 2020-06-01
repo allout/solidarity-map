@@ -35,18 +35,26 @@ export default {
     }
   },
   computed: {
-    ...mapState('app', ['appBarHeight']),
+    ...mapState('app', ['appBarHeight', 'flagIsPlanted']),
     ...mapState('map', ['markers', 'enableMarkerPopups'])
   },
   created() {
     this.$store.dispatch('map/fetchMarkers')
   },
   mounted() {
+    const vm = this
     this.$nextTick(function() {
       const { mapObject } = this.$refs.leaflet
       mapObject.invalidateSize()
       mapObject.on('click', function(evt) {
-        console.log(evt.latlng)
+        vm.$store.commit('app/SET_SHOW_WELCOME_SNACKBAR', false)
+        if (this.flagIsPlanted) {
+          // If the flag is alredy planted, show the read more snackbar
+          vm.$store.commit('app/SET_SHOW_READ_MORE_SNACKBAR', true)
+        } else {
+          // Otherwise, if the flag is not already planted we enable the form
+          vm.$store.commit('app/SET_SHOW_FORM_DIALOG', true)
+        }
       })
     })
   },

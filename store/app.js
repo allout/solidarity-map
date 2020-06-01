@@ -1,7 +1,9 @@
 export const state = () => ({
   appBarHeight: 0,
   showFormDialog: false,
-  showWelcomeSnackbar: true
+  flagIsPlanted: false,
+  showWelcomeSnackbar: true,
+  showReadMoreSnackbar: true
 })
 
 export const mutations = {
@@ -13,5 +15,8 @@ export const mutations = {
   },
   SET_SHOW_WELCOME_SNACKBAR(state, showWelcomeSnackbar) {
     state.showWelcomeSnackbar = showWelcomeSnackbar
+  },
+  SET_SHOW_READ_MORE_SNACKBAR(state, showReadMoreSnackbar) {
+    state.showReadMoreSnackbar = showReadMoreSnackbar
   }
 }

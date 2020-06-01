@@ -8,6 +8,9 @@ export const state = () => ({
 export const mutations = {
   SET_MARKERS(state, markers) {
     state.markers = markers
+  },
+  SET_ENABLE_MARKER_POPUPS(state, enableMarkerPopups) {
+    state.enableMarkerPopups = enableMarkerPopups
   }
 }
 
