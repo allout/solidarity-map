@@ -6,8 +6,10 @@
         v-for="(marker, index) in markers"
         :key="`marker-${index}`"
         :lat-lng="marker.center"
+        @mouseover="onMarkerMouseover"
+        @mouseout="onMarkerMouseout"
       >
-        <l-popup>
+        <l-popup v-if="enableMarkerPopups">
           <p v-if="marker.name" class="font-weight-bold">
             {{ marker.name }}
           </p>
@@ -34,14 +36,27 @@ export default {
   },
   computed: {
     ...mapState('app', ['appBarHeight']),
-    ...mapState('map', ['markers'])
+    ...mapState('map', ['markers', 'enableMarkerPopups'])
+  },
+  created() {
+    this.$store.dispatch('map/fetchMarkers')
   },
   mounted() {
     this.$nextTick(function() {
-      this.$refs.leaflet.mapObject.on('click', function(evt) {
+      const { mapObject } = this.$refs.leaflet
+      mapObject.invalidateSize()
+      mapObject.on('click', function(evt) {
         console.log(evt.latlng)
       })
     })
+  },
+  methods: {
+    onMarkerMouseover(evt) {
+      evt.target.openPopup()
+    },
+    onMarkerMouseout(evt) {
+      evt.target.closePopup()
+    }
   }
 }
 </script>

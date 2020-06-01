@@ -1,7 +1,8 @@
 import RestService from '@/services/RestService'
 
 export const state = () => ({
-  markers: []
+  markers: [],
+  enableMarkerPopups: false
 })
 
 export const mutations = {

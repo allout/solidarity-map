@@ -14,7 +14,6 @@ export default {
     Map
   },
   asyncData({ store, env }) {
-    store.dispatch('map/fetchMarkers')
     return {
       ...require(`~/geojson/${env.PRIDE_LOCATION}/map-initial.json`)
     }
