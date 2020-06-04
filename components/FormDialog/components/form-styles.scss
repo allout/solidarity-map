@@ -1,0 +1,49 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+
+  input,
+  select {
+    height: 33px;
+  }
+  input,
+  select,
+  textarea {
+    padding: 0 11px;
+  }
+  input,
+  textarea,
+  .select-wrap {
+    box-sizing: border-box;
+    border: 1.5px solid var(--v-primary-base);
+    border-radius: 2px;
+  }
+  textarea {
+    padding-top: 6px;
+  }
+  .select-wrap {
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+      top: 50%;
+      left: 93%;
+      border: solid transparent;
+      content: ' ';
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba(0, 0, 0, 0);
+      border-top-color: #000;
+      border-width: 5px;
+      margin-top: -2px;
+      z-index: 1;
+    }
+
+    select {
+      cursor: pointer;
+    }
+  }
+}

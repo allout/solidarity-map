@@ -27,16 +27,27 @@ export default {
           label: 'Email',
           placeholder: 'Enter your email address'
         },
-        country: {
-          label: 'Country',
-          placeholder: 'Choose your location'
+        countrySelection: {
+          label: "I'm sending solidarity from...",
+          placeholder: 'Choose your location (optional)'
+        },
+        emojiSelection: {
+          placeholder: 'Choose...'
+        },
+        emojiGrid: {
+          placeholder: 'Select some emoji below...'
         },
         message: {
           label: 'Message of solidarity',
           placeholder:
             'Your voice matters – leave a message of support for the {prideLocation} LGBT+ community'
-        },
-        button: {
+        }
+      },
+      copy: {
+        addFlair: 'Personalise your flag with some flair!'
+      },
+      buttons: {
+        showSupport: {
           label: 'Show your support!'
         }
       }
@@ -57,5 +68,7 @@ export default {
       buttonLabel: 'Find out more!'
     }
   },
-  validation: en.messages
+  validation: {
+    ...en.messages
+  }
 }
