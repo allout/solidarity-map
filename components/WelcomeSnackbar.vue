@@ -1,18 +1,24 @@
 <template>
   <v-snackbar color="white" :value="showWelcomeSnackbar" :timeout="0">
-    <img
-      class="mr-4"
-      src="~assets/icons/flag.png"
-      alt="$t('accessibility.imgAlts.flag')"
-      width="25"
-      height="25"
-    />
-    <span class="black--text title font-weight-bold">
-      {{ $t('snackbars.welcome.message') }}
-    </span>
-    <v-btn color="primary" @click.prevent="onButtonClick">
-      {{ $t('snackbars.welcome.buttonLabel') }}
-    </v-btn>
+    <div class="d-flex flex-column">
+      <div class="d-flex align-center mb-2">
+        <img
+          class="mr-4"
+          src="~assets/icons/flag.png"
+          alt="$t('accessibility.imgAlts.flag')"
+          width="25"
+          height="25"
+        />
+        <span class="black--text title font-weight-bold">
+          {{ $t('snackbars.welcome.message') }}
+        </span>
+      </div>
+      <div class="d-flex justify-center">
+        <v-btn color="primary" class="ma-0" @click.prevent="onButtonClick">
+          {{ $t('snackbars.welcome.buttonLabel') }}
+        </v-btn>
+      </div>
+    </div>
   </v-snackbar>
 </template>
 
