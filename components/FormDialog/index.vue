@@ -36,7 +36,7 @@
 import { mapState } from 'vuex'
 import FlagStep from './components/FlagStep'
 import { getKeyMirror } from '~/utils/data'
-import CrossSVG from '~/assets/icons/cross.svg'
+import CrossSVG from '~/assets/icons/cross.svg?inline'
 
 const steps = getKeyMirror('FLAG', 'SUBSCRIPTION', 'SHARE')
 

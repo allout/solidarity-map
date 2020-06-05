@@ -135,12 +135,26 @@ export default {
       if (ctx && ctx.isClient) {
         config.optimization.splitChunks.maxSize = 100000
       }
-      // vue-svg-loader config
+
+      // The below solution is taken from
+      // https://github.com/visualfanatic/vue-svg-loader/issues/75#issuecomment-468342586
+      // This sollution allows optional inlining of the SVG markup with vue-svg-loader with an
+      // ?inline query. Otherwise, normal url-loader behaviour occurs
       const svgRule = config.module.rules.find((rule) => rule.test.test('.svg'))
-      svgRule.test = /\.(png|jpe?g|gif|webp)$/
+
+      // Overwrite the test regex (remove .svg file extension)
+      svgRule.test = /\.(png|jpe?g|gif|webp)$/i
+
       config.module.rules.push({
-        test: /\.svg$/,
-        use: ['babel-loader', 'vue-svg-loader']
+        test: /\.(svg|svgz)(\?.+)?$/,
+        oneOf: [
+          {
+            loader: 'vue-svg-loader',
+            resourceQuery: /inline/
+          },
+          // Add original url-loader config to resolve every other svg without inline query
+          svgRule.use[0]
+        ]
       })
     }
   }
