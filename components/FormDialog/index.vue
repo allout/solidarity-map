@@ -1,5 +1,10 @@
 <template>
-  <v-dialog v-model="showFormDialog" max-width="380" class="form-dialog">
+  <v-dialog
+    v-model="showFormDialog"
+    max-width="380"
+    class="form-dialog"
+    @click:outside="$store.commit('app/SET_SHOW_FORM_DIALOG', false)"
+  >
     <v-app-bar ref="appBar" color="primary" extension-height="200" flat>
       <div slot="extension" class="appbar-ext">
         <h2 class="title font-weight-bold white--text mb-2">
