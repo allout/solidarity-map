@@ -21,8 +21,7 @@ import { mapState } from 'vuex'
 export default {
   name: 'WelcomeSnackbar',
   computed: {
-    ...mapState('app', ['showWelcomeSnackbar']),
-    ...mapState('app', ['flagisPlaced'])
+    ...mapState('app', ['showWelcomeSnackbar', 'flagisPlaced'])
   },
   methods: {
     onButtonClick(evt) {
