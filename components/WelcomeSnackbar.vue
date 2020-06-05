@@ -4,6 +4,7 @@
       <img
         class="mr-4"
         src="~assets/icons/flag.png"
+        srcset="~assets/icons/flag@2x.png 2x, ~assets/icons/flag@3x.png 3x"
         :alt="$t('accessibility.imgAlts.flag')"
         width="25"
         height="25"

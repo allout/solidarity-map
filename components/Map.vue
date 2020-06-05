@@ -1,6 +1,12 @@
 <template>
   <client-only>
-    <l-map id="map" ref="leaflet" :zoom="zoom" :center="center">
+    <l-map
+      id="map"
+      ref="leaflet"
+      :zoom="zoom"
+      :center="center"
+      :style="mapStyle"
+    >
       <l-tile-layer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
       <l-marker
         v-for="(marker, index) in markers"
@@ -37,6 +43,10 @@ export default {
   computed: {
     isPortableWidth() {
       return this.$vuetify.breakpoint.mdAndDown
+    },
+    flagLogoImport: () => require('@/assets/icons/flag.png'),
+    mapStyle() {
+      return `cursor: url('${this.flagLogoImport}'), auto;`
     },
     ...mapState('app', ['appBarHeight', 'flagIsPlanted']),
     ...mapState('map', ['markers', 'enableMarkerPopups', 'showZoomControl'])
@@ -100,7 +110,7 @@ export default {
     z-index: 200;
   }
 
-  // cursor: url('~assets/icons/flag-icon.png'), auto;
+  // Default cursor, replaced with a flag if possible
   cursor: crosshair;
 }
 </style>
