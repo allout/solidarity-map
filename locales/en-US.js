@@ -60,8 +60,7 @@ export default {
   },
   snackbars: {
     welcome: {
-      message: 'Choose a location on the map to place your flag and join!',
-      buttonLabel: 'or explore the map'
+      message: 'Choose a location on the map to place your flag and join!'
     },
     readMore: {
       message: 'Want more information?',
