@@ -46,7 +46,7 @@ export default {
     },
     flagLogoImport: () => require('@/assets/icons/flag.png'),
     mapStyle() {
-      return `cursor: url('${this.flagLogoImport}'), auto;`
+      return `cursor: url('${this.flagLogoImport}') 0 32, auto;`
     },
     ...mapState('app', ['appBarHeight', 'flagIsPlanted']),
     ...mapState('map', ['markers', 'enableMarkerPopups', 'showZoomControl'])
