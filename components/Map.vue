@@ -12,6 +12,7 @@
         v-for="(marker, index) in markers"
         :key="`marker-${index}`"
         :lat-lng="marker.center"
+        :icon="markerIcon"
         @mouseover="onMarkerMouseover"
         @mouseout="onMarkerMouseout"
       >
@@ -21,6 +22,7 @@
           </p>
           <p v-if="marker.message" class="">"{{ marker.message }}"</p>
         </l-popup>
+        <l-icon :icon-size="[32, 32]" :icon-url="flagImg"> </l-icon>
       </l-marker>
     </l-map>
   </client-only>
@@ -28,6 +30,7 @@
 
 <script>
 import { mapState } from 'vuex'
+
 export default {
   name: 'Map',
   props: {
@@ -44,9 +47,9 @@ export default {
     isPortableWidth() {
       return this.$vuetify.breakpoint.mdAndDown
     },
-    flagLogoImport: () => require('@/assets/icons/flag.png'),
+    flagImg: () => require('@/assets/icons/flag.png'),
     mapStyle() {
-      return `cursor: url('${this.flagLogoImport}') 0 32, auto;`
+      return `cursor: url('${this.flagImg}') 0 32, auto;`
     },
     ...mapState('app', ['appBarHeight', 'flagIsPlanted']),
     ...mapState('map', ['markers', 'enableMarkerPopups', 'showZoomControl'])
