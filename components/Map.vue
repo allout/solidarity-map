@@ -12,7 +12,6 @@
         v-for="(marker, index) in markers"
         :key="`marker-${index}`"
         :lat-lng="marker.center"
-        :icon="markerIcon"
         @mouseover="onMarkerMouseover"
         @mouseout="onMarkerMouseout"
       >
@@ -82,7 +81,12 @@ export default {
       vm.$store.commit('map/SET_SHOW_ZOOM_CONTROL', !this.isPortableWidth)
 
       mapObject.on('click', function(evt) {
+        // Center map on click location
+        mapObject.setView(evt.latlng, 18)
+
+        // Hide welcome snackbar`
         vm.$store.commit('app/SET_SHOW_WELCOME_SNACKBAR', false)
+
         if (this.flagisPlaced) {
           // If the flag is alredy planted, show the read more snackbar
           vm.$store.commit('app/SET_SHOW_READ_MORE_SNACKBAR', true)
