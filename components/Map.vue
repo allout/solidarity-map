@@ -84,7 +84,7 @@ export default {
         // Center map on click location
         mapObject.setView(evt.latlng, 18)
 
-        // Hide welcome snackbar`
+        // Hide welcome snackbar
         vm.$store.commit('app/SET_SHOW_WELCOME_SNACKBAR', false)
 
         if (this.flagisPlaced) {
