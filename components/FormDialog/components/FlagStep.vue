@@ -1,27 +1,26 @@
 <template>
-  <form ref="form" class="d-flex flex-column white pa-4" :style="formStyle">
-    <ValidationProvider v-slot="{ errors }" name="country" rules="">
-      <div class="field">
-        <label class="mb-1 subtitle-1 font-weight-bold" for="email">
-          {{ $t('dialogs.form.fields.countrySelection.label') }}
-        </label>
-        <div class="select-wrap">
-          <select id="country-select" v-model="form.country" name="country">
-            <option
-              v-for="country in countries"
-              :key="country.code"
-              :value="country.code"
-            >
-              {{ country.flag }} {{ country.name }}
-            </option>
-          </select>
-        </div>
-        <span v-show="errors.length > 0" class="is-invalid">
-          {{ errors[0] }}
-        </span>
+  <form
+    ref="form"
+    class="d-flex flex-column white pa-4"
+    :style="formStyle"
+    @submit.prevent="onFormSubmitted"
+  >
+    <div class="field">
+      <label class="mb-1 subtitle-1 font-weight-bold" for="email">
+        {{ $t('dialogs.form.fields.countrySelection.label') }}
+      </label>
+      <div class="select-wrap">
+        <select id="country-select" v-model="form.country" name="country">
+          <option
+            v-for="country in countries"
+            :key="country.code"
+            :value="country.code"
+          >
+            {{ country.flag }} {{ country.name }}
+          </option>
+        </select>
       </div>
-    </ValidationProvider>
-
+    </div>
     <div class="field">
       <div class="mb-2">
         <div class="subtitle-1 font-weight-bold mb-1">
@@ -62,7 +61,7 @@
       </div>
     </div>
     <div class="d-flex flex-column mt-auto">
-      <v-btn color="primary">
+      <v-btn type="submit" color="primary">
         {{ $t('dialogs.form.buttons.showSupport.label') }}
       </v-btn>
     </div>
@@ -89,7 +88,6 @@ export default {
   data: (vm) => ({
     form: {
       country: '',
-      emojiIndex: '',
       emojiIndices: []
     },
     countries: [].concat(
@@ -141,6 +139,9 @@ export default {
   methods: {
     onEmojiClick(index) {
       this.form.emojiIndices.push(index)
+    },
+    onFormSubmitted(index) {
+      this.$store.commit('formDialog/UPDATE_SUBMITTED', { ...this.form })
     }
   }
 }

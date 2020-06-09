@@ -93,7 +93,7 @@ export default {
         } else {
           vm.$store.commit('map/SET_SHOW_ZOOM_CONTROL', false)
           // Otherwise, if the flag is not already planted we enable the form
-          vm.$store.commit('app/SET_SHOW_FORM_DIALOG', true)
+          vm.$store.commit('formDialog/SET_VISIBLE', true)
         }
       })
     })

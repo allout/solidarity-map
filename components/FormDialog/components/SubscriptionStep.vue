@@ -81,14 +81,14 @@
   <!-- <v-btn
         color="green darken-1"
         text
-        @click="$store.commit('app/SET_SHOW_FORM_DIALOG', false)"
+        @click="$store.commit('formDialog/SET_VISIBLE', false)"
       >
         Disagree
       </v-btn>
       <v-btn
         color="green darken-1"
         text
-        @click="$store.commit('app/SET_SHOW_FORM_DIALOG', false)"
+        @click="$store.commit('formDialog/SET_VISIBLE', false)"
       >
         Agree
       </v-btn> -->

@@ -1,9 +1,9 @@
 <template>
   <v-dialog
-    v-model="showFormDialog"
+    v-model="visible"
     max-width="380"
     class="form-dialog"
-    @click:outside="$store.commit('app/SET_SHOW_FORM_DIALOG', false)"
+    @click:outside="$store.commit('formDialog/SET_VISIBLE', false)"
   >
     <v-app-bar
       ref="appBar"
@@ -14,7 +14,7 @@
     >
       <div
         class="cross-icon"
-        @click="$store.commit('app/SET_SHOW_FORM_DIALOG', false)"
+        @click="$store.commit('formDialog/SET_VISIBLE', false)"
       >
         <CrossSVG />
       </div>
@@ -35,25 +35,18 @@
 <script>
 import { mapState } from 'vuex'
 import FlagStep from './components/FlagStep'
-import { getKeyMirror } from '~/utils/data'
 import CrossSVG from '~/assets/icons/cross.svg?inline'
-
-const steps = getKeyMirror('FLAG', 'SUBSCRIPTION', 'SHARE')
 
 export default {
   components: {
     FlagStep,
     CrossSVG
   },
-  data: (vm) => ({
-    steps,
-    step: steps.FLAG
-  }),
   computed: {
     prideLocation() {
       return this.$t(`cities.${this.$nuxt.context.env.PRIDE_LOCATION}`)
     },
-    ...mapState('app', ['showFormDialog'])
+    ...mapState('formDialog', ['visible', 'step', 'steps'])
   }
 }
 </script>
