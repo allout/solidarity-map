@@ -16,6 +16,11 @@ export default {
         title: 'What would you like to add to your flag?',
         text:
           'Showing love for the LGBT+ community in {prideLocation} is easy. Choose the information you would like to add to your flag below!!'
+      },
+      subscription: {
+        title: 'Can we keep you up to date with future issues?',
+        text:
+          'Want to join the fight for LGBT+ rights? Sign up to our mailing list below'
       }
     },
     form: {

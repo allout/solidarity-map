@@ -15,5 +15,15 @@ export const mutations = {
   },
   UPDATE_SUBMITTED(state, obj = {}) {
     state.submitted = { ...obj, ...state.submitted }
+  },
+  NEXT_STEP(state) {
+    switch (state.step) {
+      case steps.FLAG:
+        state.step = steps.SUBSCRIPTION
+        break
+      case steps.SUBSCRIPTION:
+        state.step = steps.SHARE
+        break
+    }
   }
 }

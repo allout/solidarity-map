@@ -142,6 +142,7 @@ export default {
     },
     onFormSubmitted(index) {
       this.$store.commit('formDialog/UPDATE_SUBMITTED', { ...this.form })
+      this.$store.commit('formDialog/NEXT_STEP')
     }
   }
 }
