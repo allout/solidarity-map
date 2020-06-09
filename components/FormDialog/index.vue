@@ -19,13 +19,10 @@
         <CrossSVG />
       </div>
       <h2 class="title font-weight-bold white--text mb-2">
-        {{ $t('dialogs.form.header.title') }}
+        {{ $t('dialogs.steps.flag.title') }}
       </h2>
-      <h2 class="title white--text mb-2">
-        {{ $t('dialogs.form.header.subtitle') }}
-      </h2>
-      <p class="white--text">
-        {{ $t('dialogs.form.header.text', { prideLocation }) }}
+      <p class="white--text font-weight-bold">
+        {{ $t('dialogs.steps.flag.text', { prideLocation }) }}
       </p>
     </v-app-bar>
     <flag-step v-if="step === steps.FLAG" />
@@ -55,6 +52,7 @@ export default {
 .dialog-app-bar {
   &::v-deep .v-toolbar__content {
     flex-direction: column;
+    justify-content: flex-end;
     align-items: start;
     padding-top: 11px;
   }

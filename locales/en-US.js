@@ -11,13 +11,14 @@ export default {
     st_petersburg: 'St. Petersburg'
   },
   dialogs: {
-    form: {
-      header: {
+    steps: {
+      flag: {
         title: 'What would you like to add to your flag?',
-        subtitle: '?????????',
         text:
           'Showing love for the LGBT+ community in {prideLocation} is easy. Choose the information you would like to add to your flag below!!'
-      },
+      }
+    },
+    form: {
       fields: {
         name: {
           label: 'Name',
