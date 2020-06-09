@@ -35,13 +35,16 @@ $btn-font-sizes: map-deep-merge(
   $btn-font-sizes
 );
 
+$btn-large-height-value: 44;
+$btn-large-height: #{$btn-large-height-value}px;
+
 $btn-sizes: () !default;
 $btn-sizes: map-deep-merge(
   (
     'x-small': 20,
     'small': 28,
     'default': 36,
-    'large': 44,
+    'large': $btn-large-height-value,
     'x-large': 52
   ),
   $btn-sizes

@@ -1,5 +1,5 @@
 <template>
-  <form class="white pa-4">
+  <form ref="form" class="d-flex flex-column white pa-4" :style="formStyle">
     <ValidationProvider v-slot="{ errors }" name="country" rules="">
       <div class="field">
         <label class="mb-1 subtitle-1 font-weight-bold" for="email">
@@ -20,28 +20,48 @@
           {{ errors[0] }}
         </span>
       </div>
-      <span class="subtitle-1 font-weight-bold">
-        {{ $t('dialogs.form.copy.addFlair') }}
-      </span>
-      <div class="field emoji-grid">
-        <span class="headline">
-          {{ $t('dialogs.form.fields.emojiGrid.placeholder') }}
-        </span>
-      </div>
     </ValidationProvider>
 
     <div class="field">
-      <select v-model="form.emojiIndex" name="emojiChoice">
-        <option
-          v-for="option in availableEmojiSelections"
-          :key="option.value"
-          :value="option.value"
+      <div class="mb-2">
+        <div class="subtitle-1 font-weight-bold mb-1">
+          {{ $t('dialogs.form.copy.addFlair') }}
+        </div>
+        <div class="d-flex justify-space-between">
+          <div :class="selectedEmojisClass">
+            {{ selectedEmojis }}
+          </div>
+          <v-btn
+            v-if="form.emojiIndices.length"
+            class="pa-0"
+            color="primary"
+            text
+            @click="form.emojiIndices.pop()"
+          >
+            <BackspaceSVG />
+          </v-btn>
+        </div>
+      </div>
+      <div ref="emojiGridWrap" class="emoji-grid-wrap">
+        <div
+          ref="emojiGridWrap"
+          class="d-flex justify-center flex-wrap align-start emoji-grid"
         >
-          {{ option.label }}
-        </option>
-      </select>
+          <v-btn
+            v-for="choice in availableEmojiChoices"
+            :key="`emoji-${choice.index}`"
+            color="primary"
+            class="emoji align-self-start"
+            large
+            text
+            @click="onEmojiClick(choice.index)"
+          >
+            {{ choice.emoji }}
+          </v-btn>
+        </div>
+      </div>
     </div>
-    <div class="d-flex flex-column">
+    <div class="d-flex flex-column mt-auto">
       <v-btn color="primary">
         {{ $t('dialogs.form.buttons.showSupport.label') }}
       </v-btn>
@@ -56,12 +76,16 @@ import i18nCountries from 'i18n-iso-countries'
 import { countries } from 'countries-list'
 import { getIndexLookup } from '~/utils/data'
 import { emojis } from '~/utils/resources'
+import BackspaceSVG from '@/assets/icons/backspace.svg?inline'
 
 extend('required', required)
 
 const countryCodes = Object.keys(countries).sort()
 
 export default {
+  components: {
+    BackspaceSVG
+  },
   data: (vm) => ({
     form: {
       country: '',
@@ -80,27 +104,44 @@ export default {
         flag: countries[code].emoji
       }))
     ),
-    emojiLookup: getIndexLookup(emojis)
+    emojiLookup: getIndexLookup(emojis),
+    formHeight: 0
   }),
   computed: {
     availableEmojiIndices: (vm) =>
       emojis
         .map((_, index) => index)
         .filter((index) => !vm.form.emojiIndices.includes(index)),
-    availableEmojiSelections: (vm) =>
-      [].concat(
-        {
-          label: vm.$t('dialogs.form.fields.emojiSelection.placeholder'),
-          value: ''
-        },
-        vm.availableEmojiIndices.map((emojiIndex) => ({
-          label: emojis[emojiIndex],
-          value: emojiIndex
-        }))
-      )
+    availableEmojiChoices: (vm) =>
+      vm.availableEmojiIndices.map((index) => ({
+        emoji: emojis[index],
+        index
+      })),
+    selectedEmojis() {
+      if (this.form.emojiIndices.length) {
+        return this.form.emojiIndices.map((index) => emojis[index]).join('')
+      }
+      return this.$t('dialogs.form.fields.emojiGrid.placeholder')
+    },
+    selectedEmojisClass() {
+      if (this.form.emojiIndices.length) {
+        return `selected-emojis`
+      }
+      return 'selected-emojis empty'
+    },
+    formStyle: (vm) => (vm.formHeight ? `min-height: ${vm.formHeight}px` : '')
   },
   mounted() {
-    console.log(this.availableEmojiIndices, this.availableEmojiSelections)
+    const vm = this
+    window.setTimeout(function() {
+      // Take form height after the dialog has animated
+      vm.formHeight = vm.$refs.form.clientHeight
+    }, 1000)
+  },
+  methods: {
+    onEmojiClick(index) {
+      this.form.emojiIndices.push(index)
+    }
   }
 }
 </script>
@@ -108,8 +149,22 @@ export default {
 <style lang="scss" scoped>
 @import './form-styles.scss';
 
-.emoji-grid {
-  input {
+.emoji-grid-wrap {
+  .emoji-grid {
+    .emoji {
+      font-size: 28px;
+    }
+  }
+}
+.selected-emojis {
+  line-height: 40px;
+  font-size: 2.5rem;
+  letter-spacing: 4px;
+
+  &.empty {
+    font-size: 1.5rem;
+    color: var(--v-secondary-lighten3);
+    letter-spacing: unset;
   }
 }
 </style>
