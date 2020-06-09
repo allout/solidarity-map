@@ -15,7 +15,9 @@ export default {
       name: 'Name',
       email: 'Email',
       country: 'Country'
-    },
-    validation: ru.messages
+    }
+  },
+  validation: {
+    ...ru.messages
   }
 }

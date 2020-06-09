@@ -35,8 +35,13 @@
         </p>
       </template>
     </v-app-bar>
-    <flag-step v-if="step === steps.FLAG" />
-    <subscription-step v-if="step === steps.SUBSCRIPTION" />
+    <transition-group name="fade" tag="form">
+      <flag-step v-if="step === steps.FLAG" :key="steps.FLAG" />
+      <subscription-step
+        v-if="step === steps.SUBSCRIPTION"
+        :key="steps.SUBSCRIPTION"
+      />
+    </transition-group>
   </v-dialog>
 </template>
 
@@ -62,6 +67,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.fade-enter-active {
+  transition: opacity 1s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
 .dialog-app-bar {
   &::v-deep .v-toolbar__content {
     flex-direction: column;

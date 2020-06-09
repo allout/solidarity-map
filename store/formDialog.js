@@ -5,7 +5,7 @@ const steps = getKeyMirror('FLAG', 'SUBSCRIPTION', 'SHARE')
 export const state = () => ({
   visible: false,
   steps,
-  step: steps.FLAG,
+  step: steps.SUBSCRIPTION,
   submitted: {}
 })
 

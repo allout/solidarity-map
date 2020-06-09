@@ -7,10 +7,14 @@
   >
     <div class="field">
       <label class="mb-1 subtitle-1 font-weight-bold" for="email">
-        {{ $t('dialogs.form.fields.countrySelection.label') }}
+        {{ $t('fields.solidarityCountry.label') }}
       </label>
       <div class="select-wrap">
-        <select id="country-select" v-model="form.country" name="country">
+        <select
+          id="country-select"
+          v-model="form.solidarityCountry"
+          name="country"
+        >
           <option
             v-for="country in countries"
             :key="country.code"
@@ -87,13 +91,13 @@ export default {
   },
   data: (vm) => ({
     form: {
-      country: '',
+      solidarityCountry: '',
       emojiIndices: []
     },
     countries: [].concat(
       {
         code: '',
-        name: vm.$t('dialogs.form.fields.countrySelection.placeholder'),
+        name: vm.$t('fields.solidarityCountry.placeholder'),
         flag: ''
       },
       countryCodes.map((code) => ({
@@ -119,7 +123,7 @@ export default {
       if (this.form.emojiIndices.length) {
         return this.form.emojiIndices.map((index) => emojis[index]).join('')
       }
-      return this.$t('dialogs.form.fields.emojiGrid.placeholder')
+      return this.$t('fields.emojiGrid.placeholder')
     },
     selectedEmojisClass() {
       if (this.form.emojiIndices.length) {

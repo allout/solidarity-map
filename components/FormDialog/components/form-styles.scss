@@ -46,4 +46,11 @@
       cursor: pointer;
     }
   }
+  .is-invalid {
+    color: var(--v-error-base);
+    font-weight: 600;
+  }
+}
+.disclaimer {
+  font-size: 0.85rem;
 }
