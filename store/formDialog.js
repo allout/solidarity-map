@@ -5,7 +5,7 @@ const steps = getKeyMirror('FLAG', 'SUBSCRIPTION', 'SHARE')
 export const state = () => ({
   visible: false,
   steps,
-  step: steps.SUBSCRIPTION,
+  step: steps.SHARE,
   submitted: {}
 })
 
@@ -24,6 +24,8 @@ export const mutations = {
       case steps.SUBSCRIPTION:
         state.step = steps.SHARE
         break
+      default:
+        state.step = steps.SHARE
     }
   }
 }

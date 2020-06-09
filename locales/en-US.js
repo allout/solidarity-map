@@ -22,8 +22,11 @@ export default {
         text:
           'Want to join the fight for LGBT+ rights? Sign up to our mailing list below.',
         disclaimer:
-          'By submitting my email address I am consenting to receive emails from All Out etc etc...',
-        or: '...or you can'
+          'By submitting my email address I am consenting to receive emails from All Out etc etc...'
+      },
+      share: {
+        title: 'One final thing - solidarity is better with friends!',
+        text: 'Share via the links below'
       }
     },
     form: {
@@ -41,6 +44,9 @@ export default {
         },
         skip: {
           label: 'Skip this step'
+        },
+        map: {
+          label: 'Back to map'
         }
       }
     }

@@ -34,6 +34,14 @@
           {{ $t('dialogs.steps.subscription.text', { prideLocation }) }}
         </p>
       </template>
+      <template v-if="step === steps.SHARE">
+        <h2 class="title font-weight-bold white--text mb-2">
+          {{ $t('dialogs.steps.share.title') }}
+        </h2>
+        <p class="white--text font-weight-bold">
+          {{ $t('dialogs.steps.share.text', { prideLocation }) }}
+        </p>
+      </template>
     </v-app-bar>
     <transition-group name="fade" tag="form">
       <flag-step v-if="step === steps.FLAG" :key="steps.FLAG" />
@@ -41,6 +49,7 @@
         v-if="step === steps.SUBSCRIPTION"
         :key="steps.SUBSCRIPTION"
       />
+      <share-step v-if="step === steps.SHARE" :key="steps.SHARE" />
     </transition-group>
   </v-dialog>
 </template>
@@ -49,13 +58,15 @@
 import { mapState } from 'vuex'
 import FlagStep from './components/FlagStep'
 import SubscriptionStep from './components/SubscriptionStep'
+import ShareStep from './components/ShareStep'
 import CrossSVG from '~/assets/icons/cross.svg?inline'
 
 export default {
   components: {
     FlagStep,
     CrossSVG,
-    SubscriptionStep
+    SubscriptionStep,
+    ShareStep
   },
   computed: {
     prideLocation() {
