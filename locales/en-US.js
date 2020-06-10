@@ -26,7 +26,7 @@ export default {
       },
       share: {
         title: 'One final thing - solidarity is better with friends!',
-        text: 'Share via the links below'
+        text: 'Get more support by sharing below.'
       }
     },
     form: {

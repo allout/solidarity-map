@@ -7,38 +7,38 @@
   >
     <v-app-bar
       ref="appBar"
-      color="primary"
-      height="200"
-      class="dialog-app-bar"
+      :color="appBarBgColor"
+      height="150"
+      :class="`dialog-app-bar ${appBarTextClass}`"
       flat
     >
       <div
         class="cross-icon"
         @click="$store.commit('formDialog/SET_VISIBLE', false)"
       >
-        <CrossSVG />
+        <CrossSVG :class="invertAppBarColors ? 'invert' : ''" />
       </div>
       <template v-if="step === steps.FLAG">
-        <h2 class="title font-weight-bold white--text mb-2">
+        <h2 class="title font-weight-bold mb-2">
           {{ $t('dialogs.steps.flag.title') }}
         </h2>
-        <p class="white--text font-weight-bold">
+        <p class="font-weight-bold">
           {{ $t('dialogs.steps.flag.text', { prideLocation }) }}
         </p>
       </template>
       <template v-if="step === steps.SUBSCRIPTION">
-        <h2 class="title font-weight-bold white--text mb-2">
+        <h2 class="title font-weight-bold mb-2">
           {{ $t('dialogs.steps.subscription.title') }}
         </h2>
-        <p class="white--text font-weight-bold">
+        <p class="font-weight-bold">
           {{ $t('dialogs.steps.subscription.text', { prideLocation }) }}
         </p>
       </template>
       <template v-if="step === steps.SHARE">
-        <h2 class="title font-weight-bold white--text mb-2">
+        <h2 class="title font-weight-bold mb-2">
           {{ $t('dialogs.steps.share.title') }}
         </h2>
-        <p class="white--text font-weight-bold">
+        <p class="">
           {{ $t('dialogs.steps.share.text', { prideLocation }) }}
         </p>
       </template>
@@ -72,6 +72,15 @@ export default {
     prideLocation() {
       return this.$t(`cities.${this.$nuxt.context.env.PRIDE_LOCATION}`)
     },
+    invertAppBarColors() {
+      return this.step === this.steps.SHARE
+    },
+    appBarBgColor() {
+      return this.invertAppBarColors ? 'white' : 'primary'
+    },
+    appBarTextClass() {
+      return this.invertAppBarColors ? 'black--text' : 'white--text'
+    },
     ...mapState('formDialog', ['visible', 'step', 'steps'])
   }
 }
@@ -89,7 +98,7 @@ export default {
 .dialog-app-bar {
   &::v-deep .v-toolbar__content {
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: start;
     padding-top: 11px;
   }
@@ -104,5 +113,13 @@ export default {
   right: 14px;
   top: 15px;
   cursor: pointer;
+
+  svg {
+    &.invert {
+      g {
+        stroke: var(--v-primary-base);
+      }
+    }
+  }
 }
 </style>

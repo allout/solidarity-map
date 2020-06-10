@@ -12,7 +12,7 @@
         <span class="share-name">Facebook</span>
       </a>
     </div>
-    <v-btn color="primary" @click.prevent="onClick">
+    <v-btn color="primary" class="mt-8" @click.prevent="onClick">
       {{ $t('dialogs.form.buttons.map.label') }}
     </v-btn>
   </form>
