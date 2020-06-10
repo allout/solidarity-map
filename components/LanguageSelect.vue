@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <v-btn class="locale-button" color="white" outlined small>
+  <div class="d-flex align-center">
+    <TranslateSVG />
+    <v-btn class="locale-button" color="white" text small>
       <select v-model="selectedLocale" @change="onLocaleChange">
         <option
           v-for="localeOption in localeOptions"
@@ -17,8 +18,11 @@
 <script>
 // See https://github.com/annexare/Countries for languages object format
 import { languages } from 'countries-list'
+import TranslateSVG from '~/assets/icons/translate.svg?inline'
+
 export default {
   name: 'LanguageSelect',
+  components: { TranslateSVG },
   data() {
     return {
       selectedLocale: this.$i18n.locale,
