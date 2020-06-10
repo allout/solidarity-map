@@ -9,7 +9,8 @@ export const state = () => ({
   year: now.getFullYear(),
   prideLocation: '',
   numAttendees: 5000,
-  numCountries: 12
+  numCountries: 12,
+  baseUrl: ''
 })
 
 export const mutations = {
@@ -24,5 +25,8 @@ export const mutations = {
   },
   SET_PRIDE_LOCATION(state, prideLocation) {
     state.prideLocation = prideLocation
+  },
+  SET_BASE_URL(state, baseUrl) {
+    state.baseUrl = baseUrl
   }
 }

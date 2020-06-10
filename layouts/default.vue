@@ -6,10 +6,10 @@
       </div>
       <div slot="extension" class="appbar-ext">
         <h1 class="headline white--text">
-          {{ $t('site.title', { prideLocation, year }) }}
+          {{ siteTitle }}
         </h1>
         <h2 class="headline white--text font-weight-bold">
-          {{ $t('site.subtitle', { prideLocation, year }) }}
+          {{ siteSubtitle }}
         </h2>
       </div>
     </v-app-bar>
@@ -32,7 +32,21 @@ import WelcomeSnackbar from '~/components/WelcomeSnackbar'
 export default {
   components: { LanguageSelect, FormDialog, WelcomeSnackbar },
   computed: {
-    ...mapState('app', ['prideLocation', 'year'])
+    siteSubtitle() {
+      const { prideLocation, year } = this
+      return this.$t('site.subtitle', {
+        prideLocation,
+        year
+      })
+    },
+    siteTitle() {
+      const { prideLocation, year } = this
+      return this.$t('site.title', {
+        prideLocation,
+        year
+      })
+    },
+    ...mapState('app', ['prideLocation', 'year', 'baseUrl'])
   },
   created() {
     this.$store.commit(
@@ -66,10 +80,39 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: this.$t('site.subtitle', {
-            prideLocation: this.prideLocation,
-            year: this.year
-          })
+          content: this.siteSubtitle
+        },
+        { name: 'author', content: this.$t('site.author') },
+        {
+          property: 'og:title',
+          content: this.siteTitle
+        },
+        {
+          property: 'og:description',
+          content: this.siteSubtitle
+        },
+        {
+          property: 'og:image',
+          content:
+            'https://s3.amazonaws.com/all-in-live-media/__sized__/campaign_image_store/b0220a60-09df-4369-abfc-a15d914bc2c8/content_image/HPMH6RY7GVEAFBIA35MPTWXTCM-crop-c0-5__0-5-1200x1200.png'
+        },
+        { property: 'og:image:height', content: '1200' },
+        { property: 'og:image:width', content: '1200' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:site', content: '@allout' },
+        { name: 'twitter:creator', content: '@allout' },
+        {
+          name: 'twitter:title',
+          content: this.siteTitle
+        },
+        {
+          name: 'twitter:description',
+          content: this.siteSubtitle
+        },
+        {
+          name: 'twitter:image',
+          content:
+            'https://s3.amazonaws.com/all-in-live-media/__sized__/campaign_image_store/b0220a60-09df-4369-abfc-a15d914bc2c8/content_image/HPMH6RY7GVEAFBIA35MPTWXTCM-crop-c0-5__0-5-1200x1200.png'
         },
         ...i18nSEO.meta
       ],

@@ -14,8 +14,14 @@ export default {
   components: {
     Map
   },
-  asyncData({ store, env }) {
+  asyncData({ store, env, req }) {
+    const host = req ? req.headers.host : window.location.host
+    const baseUrl = `//${host}`
+
+    store.commit('app/SET_BASE_URL', baseUrl)
+
     return {
+      baseUrl,
       ...require(`~/geojson/${env.PRIDE_LOCATION}/map-initial.json`)
     }
   },
@@ -31,6 +37,16 @@ export default {
       return `height: ${this.mapBoxHeight}`
     },
     ...mapState('app', ['prideLocation'])
+  },
+  head() {
+    return {
+      meta: [
+        {
+          property: 'og:url',
+          content: this.baseUrl + this.$nuxt.context.route.path
+        }
+      ]
+    }
   }
 }
 </script>

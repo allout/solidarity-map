@@ -52,14 +52,8 @@ export default {
     WhatsAppSVG
   },
   computed: {
-    host() {
-      const origin = this.$nuxt.context.req
-        ? this.$nuxt.context.req.headers.host
-        : window.location.origin
-      return origin
-    },
     pageUrl() {
-      return this.host + this.$nuxt.context.route.path
+      return window.location.href
     },
     facebookShareUrl() {
       return `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
@@ -67,14 +61,15 @@ export default {
       )}`
     },
     sharingMessage() {
-      const { numAttendees, numCountries, prideLocation, year, pageUrl } = this
-      return this.$t('sharing.message', {
-        numAttendees,
-        numCountries,
-        prideLocation,
-        year,
-        pageUrl
-      })
+      const { numAttendees, numCountries, prideLocation, year } = this
+      return (
+        this.$t('sharing.message', {
+          numAttendees,
+          numCountries,
+          prideLocation,
+          year
+        }) + this.pageUrl
+      )
     },
     twitterShareUrl() {
       return `https://twitter.com/intent/tweet?text=${encodeURIComponent(

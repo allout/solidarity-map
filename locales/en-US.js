@@ -5,7 +5,9 @@ export default {
     // Website title and subtitle. Also used for share title and description in twitter and facebook
     // shares
     title: '{prideLocation} Solidarity {year}',
-    subtitle: 'Pride #UnDistanced'
+    subtitle: 'Pride #UnDistanced',
+    author:
+      'https://allout.org, in conjunction with https://www.unicornsintech.com/'
   },
   cities: {
     // Here we provide the translated city names for every city this app currently supports
