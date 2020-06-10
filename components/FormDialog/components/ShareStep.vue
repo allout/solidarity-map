@@ -32,7 +32,7 @@
         <span class="share-name">WhatsApp</span>
       </a>
     </div>
-    <v-btn color="primary" class="mt-8" @click.prevent="onClick">
+    <v-btn color="primary" class="mt-8" @click.prevent="onBackToMapClick">
       {{ $t('dialogs.form.buttons.map.label') }}
     </v-btn>
   </div>
@@ -87,6 +87,11 @@ export default {
       'numAttendees',
       'numCountries'
     ])
+  },
+  methods: {
+    onBackToMapClick(evt) {
+      this.$store.commit('formDialog/SET_VISIBLE', false)
+    }
   }
 }
 </script>
