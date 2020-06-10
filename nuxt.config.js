@@ -1,8 +1,17 @@
+require('dotenv').config()
+
 export default {
   mode: 'universal',
   env: {
+    // The values that are referenced from process.env can be overridden in the system environment
+    // or a .env file at the root of this repository.
     PRIDE_LOCATION: process.env.PRIDE_LOCATION || 'stPetersburg',
-    REST_DB_ENDPOINT: process.env.production ? '' : 'http://localhost:3001'
+    REST_DB_ENDPOINT: process.env.production ? '' : 'http://localhost:3001',
+    // Setting SUBSCRIPTION_ENABLED=0 will disable the subscription step
+    SKIP_SUBSCRIPTION:
+      process.env.SUBSCRIPTION_ENABLED === undefined
+        ? false
+        : !Number(process.env.SUBSCRIPTION_ENABLED)
   },
   /*
    ** Headers of the page
@@ -63,6 +72,12 @@ export default {
         defaultAssets: false,
         treeShake: true,
         indentedSyntax: true
+      }
+    ],
+    [
+      '@nuxtjs/dotenv',
+      {
+        /* module options */
       }
     ]
   ],

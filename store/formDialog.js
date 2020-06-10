@@ -19,7 +19,11 @@ export const mutations = {
   NEXT_STEP(state) {
     switch (state.step) {
       case steps.FLAG:
-        state.step = steps.SUBSCRIPTION
+        if (process.env.SKIP_SUBSCRIPTION) {
+          state.step = steps.SHARE
+        } else {
+          state.step = steps.SUBSCRIPTION
+        }
         break
       case steps.SUBSCRIPTION:
         state.step = steps.SHARE
