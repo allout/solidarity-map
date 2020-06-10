@@ -28,28 +28,46 @@
             {{ $t('dialogs.form.copy.extraInfoAsk') }}
           </div>
           <ValidationProvider
-            v-if="form.email"
             v-slot="{ errors, touched }"
-            name="name"
+            name="firstName"
             rules="required"
             class="field"
             tag="div"
           >
-            <label class="subtitle-1 font-weight-bold mb-1" for="name">
-              {{ $t('fields.name.label') }}
+            <label class="subtitle-1 font-weight-bold mb-1" for="firstName">
+              {{ $t('fields.firstName.label') }}
             </label>
             <input
-              v-model="form.name"
+              v-model="form.firstName"
               type="text"
-              name="name"
-              :placeholder="$t('fields.name.placeholder')"
+              name="firstName"
+              :placeholder="$t('fields.firstName.placeholder')"
             />
             <span v-show="touched && errors.length > 0" class="is-invalid">
               {{ errors[0] }}
             </span>
           </ValidationProvider>
           <ValidationProvider
-            v-if="form.email"
+            v-slot="{ errors, touched }"
+            name="lastName"
+            rules="required"
+            class="field"
+            tag="div"
+          >
+            <label class="subtitle-1 font-weight-bold mb-1" for="lastName">
+              {{ $t('fields.lastName.label') }}
+            </label>
+            <input
+              v-model="form.lastName"
+              type="text"
+              name="lastName"
+              :placeholder="$t('fields.lastName.placeholder')"
+            />
+            <span v-show="touched && errors.length > 0" class="is-invalid">
+              {{ errors[0] }}
+            </span>
+          </ValidationProvider>
+          <ValidationProvider
             v-slot="{ errors, touched }"
             name="subscriptionCountry"
             rules="required"
@@ -113,7 +131,8 @@ const countryCodes = Object.keys(countries).sort()
 export default {
   data: (vm) => ({
     form: {
-      name: '',
+      firstName: '',
+      lastName: '',
       email: '',
       subscriptionCountry: ''
     },

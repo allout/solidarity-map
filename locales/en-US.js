@@ -73,9 +73,13 @@ export default {
     }
   },
   fields: {
-    name: {
-      label: 'Name',
-      placeholder: 'Type your name'
+    firstName: {
+      label: 'First name',
+      placeholder: 'Enter your first name'
+    },
+    lastName: {
+      label: 'Last name',
+      placeholder: 'Enter your last name'
     },
     email: {
       label: 'Email',
@@ -89,11 +93,8 @@ export default {
       label: 'Country',
       placeholder: 'Choose...'
     },
-    emojiSelection: {
-      placeholder: 'Choose...'
-    },
     emojiGrid: {
-      placeholder: 'Select some emoji below...'
+      placeholder: 'Select emoji below...'
     }
   },
   disclaimers: {
