@@ -2,15 +2,18 @@ import en from 'vee-validate/dist/locale/en.json'
 
 export default {
   site: {
-    title: 'Pride #UnDistanced'
-  },
-  index: {
-    title: 'Solidarity with {prideLocation} Pride 2020'
+    // Website title and subtitle. Also used for share title and description in twitter and facebook
+    // shares
+    title: 'Pride #UnDistanced',
+    subtitle: 'Solidarity with {prideLocation} Pride 2020'
   },
   cities: {
-    st_petersburg: 'St. Petersburg'
+    // Here we provide the translated city names for every city this app currently supports
+    stPetersburg: 'St. Petersburg'
   },
   sharing: {
+    // Facebook does not support share messages, but twitter and whatsapp do. Here you can make them
+    // the same or different per platform
     twitter:
       'Join me in an act of solidarity for {prideLocation} Pride {year} {pageUrl}',
     whatsapp:

@@ -1,7 +1,7 @@
 export default {
   mode: 'universal',
   env: {
-    PRIDE_LOCATION: process.env.PRIDE_LOCATION || 'st_petersburg',
+    PRIDE_LOCATION: process.env.PRIDE_LOCATION || 'stPetersburg',
     REST_DB_ENDPOINT: process.env.production ? '' : 'http://localhost:3001'
   },
   /*

@@ -30,7 +30,7 @@ export default {
   computed: {
     title() {
       const { prideLocation } = this
-      return this.$t('index.title', { prideLocation })
+      return this.$t('site.title', { prideLocation })
     },
     ...mapState('app', ['prideLocation'])
   },
@@ -43,6 +43,11 @@ export default {
       'app/SET_PRIDE_LOCATION',
       this.$t(`cities.${this.$nuxt.context.env.PRIDE_LOCATION}`)
     )
+  },
+  head() {
+    return {
+      title: this.title
+    }
   }
 }
 </script>

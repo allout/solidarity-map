@@ -24,10 +24,6 @@ export default {
     center: [0, 0]
   }),
   computed: {
-    title() {
-      const { prideLocation } = this
-      return this.$t('index.title', { prideLocation })
-    },
     mapBoxHeight() {
       return `calc(100vh - ${this.appBarHeight}px)`
     },
@@ -35,11 +31,6 @@ export default {
       return `height: ${this.mapBoxHeight}`
     },
     ...mapState('app', ['prideLocation'])
-  },
-  head() {
-    return {
-      title: this.title
-    }
   }
 }
 </script>
