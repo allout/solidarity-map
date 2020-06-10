@@ -28,21 +28,11 @@
 </template>
 
 <script>
-// import { latLngBounds, latLng } from 'leaflet'
+// import { LatLngBounds } from 'leaflet'
 import { mapState } from 'vuex'
 
 export default {
   name: 'Map',
-  props: {
-    zoom: {
-      type: Number,
-      required: true
-    },
-    center: {
-      type: Array,
-      required: true
-    }
-  },
   computed: {
     isPortableWidth() {
       return this.$vuetify.breakpoint.mdAndDown
@@ -52,7 +42,13 @@ export default {
       return `cursor: url('${this.flagImg}') 0 32, auto;`
     },
     ...mapState('app', ['appBarHeight', 'flagIsPlanted']),
-    ...mapState('map', ['enableMarkerPopups', 'showZoomControl']),
+    ...mapState('map', [
+      'enableMarkerPopups',
+      'showZoomControl',
+      'bounds',
+      'center',
+      'zoom'
+    ]),
     ...mapState('attendees', ['attendees'])
   },
   watch: {

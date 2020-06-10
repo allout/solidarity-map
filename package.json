@@ -14,7 +14,7 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "test": "jest",
-    "json-server": "./node_modules/json-server/lib/cli/bin.js -p 3001 --id '_id' test-json/db.json"
+    "json-server": "./node_modules/json-server/lib/cli/bin.js -p 3001 --id '_id' test-json/db.js"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
@@ -37,6 +37,7 @@
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-nuxt": ">=0.4.2",
     "eslint-plugin-prettier": "^3.1.2",
+    "faker": "^4.1.0",
     "jest": "^24.1.0",
     "json-server": "^0.16.1",
     "node-sass": "^4.14.1",
