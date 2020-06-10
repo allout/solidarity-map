@@ -10,6 +10,12 @@ export default {
   cities: {
     st_petersburg: 'St. Petersburg'
   },
+  sharing: {
+    twitter:
+      'Join me in an act of solidarity for {prideLocation} Pride {year} {pageUrl}',
+    whatsapp:
+      'Join me in an act of solidarity for {prideLocation} Pride {year} {pageUrl}'
+  },
   dialogs: {
     steps: {
       flag: {

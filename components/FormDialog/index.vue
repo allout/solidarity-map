@@ -19,7 +19,7 @@
         <CrossSVG :class="invertAppBarColors ? 'invert' : ''" />
       </div>
       <template v-if="step === steps.FLAG">
-        <h2 class="title font-weight-bold mb-2">
+        <h2 class="title font-weight-bold mb-2 pr-5">
           {{ $t('dialogs.steps.flag.title') }}
         </h2>
         <p class="font-weight-bold">
@@ -27,7 +27,7 @@
         </p>
       </template>
       <template v-if="step === steps.SUBSCRIPTION">
-        <h2 class="title font-weight-bold mb-2">
+        <h2 class="title font-weight-bold mb-2 pr-5">
           {{ $t('dialogs.steps.subscription.title') }}
         </h2>
         <p class="font-weight-bold">
@@ -35,7 +35,7 @@
         </p>
       </template>
       <template v-if="step === steps.SHARE">
-        <h2 class="title font-weight-bold mb-2">
+        <h2 class="title font-weight-bold mb-2 pr-5">
           {{ $t('dialogs.steps.share.title') }}
         </h2>
         <p class="">
@@ -43,7 +43,7 @@
         </p>
       </template>
     </v-app-bar>
-    <transition-group name="fade" tag="form">
+    <transition-group name="fade" tag="div">
       <flag-step v-if="step === steps.FLAG" :key="steps.FLAG" />
       <subscription-step
         v-if="step === steps.SUBSCRIPTION"

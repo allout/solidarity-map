@@ -1,8 +1,13 @@
+const now = new Date()
+
 export const state = () => ({
   appBarHeight: 0,
   flagIsPlaced: false,
   showWelcomeSnackbar: true,
-  showReadMoreSnackbar: true
+  showReadMoreSnackbar: true,
+  now,
+  year: now.getFullYear(),
+  prideLocation: ''
 })
 
 export const mutations = {
