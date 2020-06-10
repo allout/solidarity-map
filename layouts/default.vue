@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import LanguageSelect from '~/components/LanguageSelect'
 import FormDialog from '~/components/FormDialog'
 import WelcomeSnackbar from '~/components/WelcomeSnackbar'
@@ -27,18 +28,20 @@ import WelcomeSnackbar from '~/components/WelcomeSnackbar'
 export default {
   components: { LanguageSelect, FormDialog, WelcomeSnackbar },
   computed: {
-    prideLocation() {
-      return this.$t(`cities.${this.$nuxt.context.env.PRIDE_LOCATION}`)
-    },
     title() {
       const { prideLocation } = this
       return this.$t('index.title', { prideLocation })
-    }
+    },
+    ...mapState('app', ['prideLocation'])
   },
   mounted() {
     this.$store.commit(
       'app/SET_APP_BAR_HEIGHT',
       this.$refs.appBar.computedHeight
+    )
+    this.$store.commit(
+      'app/SET_PRIDE_LOCATION',
+      this.$t(`cities.${this.$nuxt.context.env.PRIDE_LOCATION}`)
     )
   }
 }

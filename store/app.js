@@ -19,5 +19,8 @@ export const mutations = {
   },
   SET_SHOW_READ_MORE_SNACKBAR(state, showReadMoreSnackbar) {
     state.showReadMoreSnackbar = showReadMoreSnackbar
+  },
+  SET_PRIDE_LOCATION(state, prideLocation) {
+    state.prideLocation = prideLocation
   }
 }

@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Map from '@/components/Map'
 
 export default {
@@ -23,9 +24,6 @@ export default {
     center: [0, 0]
   }),
   computed: {
-    prideLocation() {
-      return this.$t(`cities.${this.$nuxt.context.env.PRIDE_LOCATION}`)
-    },
     title() {
       const { prideLocation } = this
       return this.$t('index.title', { prideLocation })
@@ -35,7 +33,8 @@ export default {
     },
     mapBoxStyle() {
       return `height: ${this.mapBoxHeight}`
-    }
+    },
+    ...mapState('app', ['prideLocation'])
   },
   head() {
     return {
