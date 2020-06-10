@@ -66,19 +66,32 @@ export default {
         this.pageUrl
       )}`
     },
+    sharingMessage() {
+      const { numAttendees, numCountries, prideLocation, year, pageUrl } = this
+      return this.$t('sharing.message', {
+        numAttendees,
+        numCountries,
+        prideLocation,
+        year,
+        pageUrl
+      })
+    },
     twitterShareUrl() {
-      const { prideLocation, year, pageUrl } = this
       return `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-        this.$t('sharing.twitter', { prideLocation, year, pageUrl })
+        this.sharingMessage
       )}`
     },
     whatsappShareUrl() {
-      const { prideLocation, year, pageUrl } = this
       return `https://api.whatsapp.com/send?text=${encodeURIComponent(
-        this.$t('sharing.whatsapp', { prideLocation, year, pageUrl })
+        this.sharingMessage
       )}`
     },
-    ...mapState('app', ['year', 'prideLocation'])
+    ...mapState('app', [
+      'year',
+      'prideLocation',
+      'numAttendees',
+      'numCountries'
+    ])
   }
 }
 </script>

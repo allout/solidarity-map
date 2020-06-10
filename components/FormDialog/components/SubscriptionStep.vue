@@ -17,7 +17,6 @@
           type="email"
           name="email"
           :placeholder="$t('fields.email.placeholder')"
-          autofocus
         />
         <span v-show="touched && errors.length > 0" class="is-invalid">
           {{ errors[0] }}

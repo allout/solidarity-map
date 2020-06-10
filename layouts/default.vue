@@ -5,8 +5,12 @@
         <language-select />
       </div>
       <div slot="extension" class="appbar-ext">
-        <h1 class="headline white--text">{{ $t('site.title') }}</h1>
-        <h2 class="headline white--text font-weight-bold">{{ title }}</h2>
+        <h1 class="headline white--text">
+          {{ $t('site.title', { prideLocation, year }) }}
+        </h1>
+        <h2 class="headline white--text font-weight-bold">
+          {{ $t('site.subtitle', { prideLocation, year }) }}
+        </h2>
       </div>
     </v-app-bar>
     <v-content>
@@ -28,25 +32,26 @@ import WelcomeSnackbar from '~/components/WelcomeSnackbar'
 export default {
   components: { LanguageSelect, FormDialog, WelcomeSnackbar },
   computed: {
-    title() {
-      const { prideLocation } = this
-      return this.$t('site.title', { prideLocation })
-    },
-    ...mapState('app', ['prideLocation'])
+    ...mapState('app', ['prideLocation', 'year'])
+  },
+  created() {
+    this.$store.commit(
+      'app/SET_PRIDE_LOCATION',
+      this.$t(`cities.${this.$nuxt.context.env.PRIDE_LOCATION}`)
+    )
   },
   mounted() {
     this.$store.commit(
       'app/SET_APP_BAR_HEIGHT',
       this.$refs.appBar.computedHeight
     )
-    this.$store.commit(
-      'app/SET_PRIDE_LOCATION',
-      this.$t(`cities.${this.$nuxt.context.env.PRIDE_LOCATION}`)
-    )
   },
   head() {
     return {
-      title: this.title
+      title: this.$t('site.title', {
+        prideLocation: this.prideLocation,
+        year: this.year
+      })
     }
   }
 }

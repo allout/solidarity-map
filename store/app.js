@@ -7,7 +7,9 @@ export const state = () => ({
   showReadMoreSnackbar: true,
   now,
   year: now.getFullYear(),
-  prideLocation: ''
+  prideLocation: '',
+  numAttendees: 5000,
+  numCountries: 12
 })
 
 export const mutations = {

@@ -9,8 +9,6 @@ export default {
    */
   head() {
     return {
-      titleTemplate: this.$t('site.title') + ' - %s',
-      title: this.$t('site.title'),
       meta: [
         { charset: 'utf-8' },
         {
