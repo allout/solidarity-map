@@ -13,3 +13,11 @@ export const getIndexLookup = (items) =>
     acc[item] = index
     return acc
   }, {})
+
+// Takes an array of objects and returns an object keyed on the id value inside each object in the
+// array. Every value in the returned object is the array index to find the object of a particular id
+export const getIdLookup = (items, idProp = '_id') =>
+  items.reduce((acc, item, index) => {
+    acc[item[idProp]] = index
+    return acc
+  }, {})

@@ -10,7 +10,13 @@ const apiClient = axios.create({
 })
 
 export default {
-  getParticipants() {
-    return apiClient.get('/participants')
+  getAttendees() {
+    return apiClient.get('/attendees')
+  },
+  createAttendee(markerLatLng) {
+    return apiClient.post('/attendees', { center: markerLatLng })
+  },
+  updateAttendee(id, data) {
+    return apiClient.patch(`/attendees/${id}`, data)
   }
 }

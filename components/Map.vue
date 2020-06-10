@@ -9,7 +9,7 @@
     >
       <l-tile-layer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
       <l-marker
-        v-for="(marker, index) in markers"
+        v-for="(marker, index) in attendees"
         :key="`marker-${index}`"
         :lat-lng="marker.center"
         @mouseover="onMarkerMouseover"
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+// import { latLngBounds, latLng } from 'leaflet'
 import { mapState } from 'vuex'
 
 export default {
@@ -51,7 +52,8 @@ export default {
       return `cursor: url('${this.flagImg}') 0 32, auto;`
     },
     ...mapState('app', ['appBarHeight', 'flagIsPlanted']),
-    ...mapState('map', ['markers', 'enableMarkerPopups', 'showZoomControl'])
+    ...mapState('map', ['enableMarkerPopups', 'showZoomControl']),
+    ...mapState('attendees', ['attendees'])
   },
   watch: {
     showZoomControl(newValue) {
@@ -67,7 +69,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('map/fetchMarkers')
+    this.$store.dispatch('attendees/fetchAttendees')
   },
   mounted() {
     const vm = this
@@ -94,6 +96,9 @@ export default {
           vm.$store.commit('map/SET_SHOW_ZOOM_CONTROL', false)
           // Otherwise, if the flag is not already planted we enable the form
           vm.$store.commit('formDialog/SET_VISIBLE', true)
+          vm.$store.commit('formDialog/UPDATE_SUBMITTED', {
+            ...evt.latlng
+          })
         }
       })
     })
