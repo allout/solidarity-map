@@ -23,6 +23,18 @@
         </l-popup>
         <l-icon :icon-size="[32, 32]" :icon-url="flagImg"> </l-icon>
       </l-marker>
+      <l-geo-json
+        v-if="areaGeojson"
+        :geojson="areaGeojson"
+        :options="{
+          // L.geoJSON options
+          // See: https://leafletjs.com/reference-1.6.0.html#geojson-option
+          pointToLayer(geojsonPoint, latlng) {
+            // Ensure that no markers are rendered on points in the area polygon
+            return null
+          }
+        }"
+      />
     </l-map>
   </client-only>
 </template>
@@ -47,7 +59,8 @@ export default {
       'showZoomControl',
       'bounds',
       'center',
-      'zoom'
+      'zoom',
+      'areaGeojson'
     ]),
     ...mapState('attendees', ['attendees'])
   },
@@ -81,10 +94,8 @@ export default {
       // Handle map click event
       mapObject.on('click', function(evt) {
         // When flag is placed, zoom the map in a little unless it's already zoomed enough
-        let zoomTo = vm.zoom + 1
-        if (zoomTo > 18) {
-          zoomTo = 18
-        }
+        const mapZoom = mapObject.getZoom()
+        const zoomTo = mapZoom < 18 ? mapZoom + 1 : mapZoom
         // Center map on click location
         mapObject.setView(evt.latlng, zoomTo)
 

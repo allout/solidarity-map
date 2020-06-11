@@ -40,13 +40,13 @@ export default {
       ...mapState
     })
 
-    if (process.server) {
-      const { req } = this.$nuxt.context
-      const host = req ? req.headers.host : ''
-      if (host) {
-        this.$store.commit('app/SET_BASE_URL', host)
-      }
+    const { req } = this.$nuxt.context
+    const host = req ? req.headers.host : ''
+    if (host) {
+      this.$store.commit('app/SET_BASE_URL', host)
     }
+
+    this.$store.dispatch('map/fetchAreaGeojson')
   },
   head() {
     return {

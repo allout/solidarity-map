@@ -4,7 +4,8 @@ export const state = () => ({
   bounds: [],
   center: [],
   zoom: 18,
-  ready: false
+  ready: false,
+  areaGeojson: null
 })
 
 export const mutations = {
@@ -18,11 +19,24 @@ export const mutations = {
     Object.keys(newState).forEach((key) => {
       state[key] = newState[key]
     })
+  },
+  SET_AREA_GEOJSON(state, geojson) {
+    state.areaGeojson = geojson
   }
 }
 
 export const actions = {
-  updateMapState({ commit }, newState) {
-    commit('UPDATE_MAP_STATE', newState)
+  async fetchAreaGeojson({ commit }) {
+    try {
+      const response = await this.$axios.get(
+        `/geojson/${process.env.PRIDE_LOCATION}/area.geojson`
+      )
+      commit('SET_AREA_GEOJSON', response.data)
+      return response.data
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error(e)
+      return null
+    }
   }
 }

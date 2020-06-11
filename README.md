@@ -55,4 +55,4 @@ This is the process I used for St Petersburg
 
 1. Click the "Export" button, go to the "Data" section and download as GeoJSON
 
-1. Copy this file to your maps/cityName folder in this project and name the file border.geojson
+1. Copy this file to your maps/cityName folder in this project and name the file area.geojson
