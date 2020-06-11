@@ -28,5 +28,8 @@ export const mutations = {
   },
   SET_BASE_URL(state, baseUrl) {
     state.baseUrl = baseUrl
+  },
+  SET_FLAG_IS_PLACED(state, isPlaced) {
+    state.flagIsPlaced = isPlaced
   }
 }
