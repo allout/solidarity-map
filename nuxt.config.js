@@ -51,6 +51,10 @@ export default {
       {
         /* module options */
       }
+    ],
+    [
+      '@nuxtjs/axios',
+      { baseUrl: process.env.BASE_URL || 'http://localhost:3000' }
     ]
   ],
   /*
