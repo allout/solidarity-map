@@ -1,12 +1,6 @@
 <template>
   <client-only>
-    <l-map
-      id="map"
-      ref="leaflet"
-      :zoom="zoom"
-      :center="center"
-      :style="mapStyle"
-    >
+    <l-map id="map" ref="leaflet" :zoom="zoom" :center="center">
       <l-tile-layer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
       <l-marker
         v-for="(marker, index) in attendees"
@@ -35,6 +29,7 @@
             color: 'var(--v-primary-lighten1)'
           })
         }"
+        @click="onAreaClick"
       />
     </l-map>
   </client-only>
@@ -51,9 +46,6 @@ export default {
       return this.$vuetify.breakpoint.mdAndDown
     },
     flagImg: () => require('@/assets/icons/flag.png'),
-    mapStyle() {
-      return `cursor: url('${this.flagImg}') 0 32, auto;`
-    },
     ...mapState('app', ['appBarHeight', 'flagIsPlaced']),
     ...mapState('map', [
       'enableMarkerPopups',
@@ -92,30 +84,6 @@ export default {
       // Dynamically set the initial state for the visibility of the zoom control
       vm.$store.commit('map/SET_SHOW_ZOOM_CONTROL', !this.isPortableWidth)
 
-      // Handle map click event
-      mapObject.on('click', function(evt) {
-        // When flag is placed, zoom the map in a little unless it's already zoomed enough
-        const mapZoom = mapObject.getZoom()
-        const zoomTo = mapZoom < 18 ? mapZoom + 1 : mapZoom
-        // Center map on click location
-        mapObject.setView(evt.latlng, zoomTo)
-
-        // Hide welcome snackbar
-        vm.$store.commit('app/SET_SHOW_WELCOME_SNACKBAR', false)
-
-        if (this.flagisPlaced) {
-          // If the flag is alredy placed, show the read more snackbar
-          vm.$store.commit('app/SET_SHOW_READ_MORE_SNACKBAR', true)
-        } else {
-          vm.$store.commit('map/SET_SHOW_ZOOM_CONTROL', false)
-          // Otherwise, if the flag is not already placed we enable the form
-          vm.$store.commit('formDialog/SET_VISIBLE', true)
-          vm.$store.commit('formDialog/UPDATE_SUBMITTED', {
-            ...evt.latlng
-          })
-        }
-      })
-
       // Handle map zoom event
       mapObject.on('zoom', function(evt) {
         const { _zoom: zoom } = evt.target
@@ -129,6 +97,30 @@ export default {
     },
     onMarkerMouseout(evt) {
       evt.target.closePopup()
+    },
+    onAreaClick(evt) {
+      const { mapObject } = this.$refs.leaflet
+      console.log(evt)
+      // When flag is placed, zoom the map in a little unless it's already zoomed enough
+      const mapZoom = mapObject.getZoom()
+      const zoomTo = mapZoom < 18 ? mapZoom + 1 : mapZoom
+      // Center map on click location
+      mapObject.setView(evt.latlng, zoomTo)
+
+      // Hide welcome snackbar
+      this.$store.commit('app/SET_SHOW_WELCOME_SNACKBAR', false)
+
+      if (this.flagisPlaced) {
+        // If the flag is alredy placed, show the read more snackbar
+        this.$store.commit('app/SET_SHOW_READ_MORE_SNACKBAR', true)
+      } else {
+        this.$store.commit('map/SET_SHOW_ZOOM_CONTROL', false)
+        // Otherwise, if the flag is not already placed we enable the form
+        this.$store.commit('formDialog/SET_VISIBLE', true)
+        this.$store.commit('formDialog/UPDATE_SUBMITTED', {
+          ...evt.latlng
+        })
+      }
     }
   }
 }
@@ -141,8 +133,8 @@ export default {
   & >>> .leaflet-pane {
     z-index: 200;
   }
-
-  // Default cursor, replaced with a flag if possible
-  cursor: crosshair;
+}
+.leaflet-interactive {
+  cursor: url('/icons/flag.png') 0 32, auto;
 }
 </style>
