@@ -41,7 +41,7 @@ export default {
     mapStyle() {
       return `cursor: url('${this.flagImg}') 0 32, auto;`
     },
-    ...mapState('app', ['appBarHeight', 'flagIsPlanted']),
+    ...mapState('app', ['appBarHeight', 'flagIsPlaced']),
     ...mapState('map', [
       'enableMarkerPopups',
       'showZoomControl',
@@ -80,7 +80,7 @@ export default {
 
       // Handle map click event
       mapObject.on('click', function(evt) {
-        // When flag is planted, zoom the map in a little unless it's already zoomed enough
+        // When flag is placed, zoom the map in a little unless it's already zoomed enough
         let zoomTo = vm.zoom + 1
         if (zoomTo > 18) {
           zoomTo = 18
@@ -92,11 +92,11 @@ export default {
         vm.$store.commit('app/SET_SHOW_WELCOME_SNACKBAR', false)
 
         if (this.flagisPlaced) {
-          // If the flag is alredy planted, show the read more snackbar
+          // If the flag is alredy placed, show the read more snackbar
           vm.$store.commit('app/SET_SHOW_READ_MORE_SNACKBAR', true)
         } else {
           vm.$store.commit('map/SET_SHOW_ZOOM_CONTROL', false)
-          // Otherwise, if the flag is not already planted we enable the form
+          // Otherwise, if the flag is not already placed we enable the form
           vm.$store.commit('formDialog/SET_VISIBLE', true)
           vm.$store.commit('formDialog/UPDATE_SUBMITTED', {
             ...evt.latlng

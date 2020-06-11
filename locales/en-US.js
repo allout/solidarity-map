@@ -67,7 +67,8 @@ export default {
   },
   snackbars: {
     welcome: {
-      message: 'Choose a location on the map to place your flag and join!'
+      message:
+        'Place your flag in {prideLocation} and show solidarity with {numAttendees} others from {numCountries} countries'
     },
     readMore: {
       message: 'Want more information?',

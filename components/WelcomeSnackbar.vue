@@ -9,8 +9,14 @@
         width="25"
         height="25"
       />
-      <span class="black--text title font-weight-bold">
-        {{ $t('snackbars.welcome.message') }}
+      <span class="black--text subtitle-1 font-weight-bold">
+        {{
+          $t('snackbars.welcome.message', {
+            prideLocation,
+            numAttendees,
+            numCountries
+          })
+        }}
       </span>
     </div>
   </v-snackbar>
@@ -21,7 +27,13 @@ import { mapState } from 'vuex'
 export default {
   name: 'WelcomeSnackbar',
   computed: {
-    ...mapState('app', ['showWelcomeSnackbar', 'flagisPlaced'])
+    ...mapState('app', [
+      'showWelcomeSnackbar',
+      'flagisPlaced',
+      'prideLocation',
+      'numAttendees',
+      'numCountries'
+    ])
   },
   methods: {
     onButtonClick(evt) {
