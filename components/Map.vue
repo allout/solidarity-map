@@ -29,10 +29,11 @@
         :options="{
           // L.geoJSON options
           // See: https://leafletjs.com/reference-1.6.0.html#geojson-option
-          pointToLayer(geojsonPoint, latlng) {
-            // Ensure that no markers are rendered on points in the area polygon
-            return null
-          }
+          // Ensure that no markers are rendered on points in the area polygon
+          pointToLayer: (geojsonPoint, latlng) => null,
+          style: () => ({
+            color: 'var(--v-primary-lighten1)'
+          })
         }"
       />
     </l-map>
