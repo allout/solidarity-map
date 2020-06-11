@@ -39,11 +39,13 @@ export default {
       ...mapState
     })
 
-    const { req } = this.$nuxt.context
-    const host = req.headers.host
-    const baseUrl = `//${host}`
-
-    this.$store.commit('app/SET_BASE_URL', baseUrl)
+    if (process.server) {
+      const { req } = this.$nuxt.context
+      const host = req ? req.headers.host : ''
+      if (host) {
+        this.$store.commit('app/SET_BASE_URL', host)
+      }
+    }
   },
   head() {
     return {

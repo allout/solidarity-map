@@ -78,9 +78,15 @@ export default {
       // Dynamically set the initial state for the visibility of the zoom control
       vm.$store.commit('map/SET_SHOW_ZOOM_CONTROL', !this.isPortableWidth)
 
+      // Handle map click event
       mapObject.on('click', function(evt) {
+        // When flag is planted, zoom the map in a little unless it's already zoomed enough
+        let zoomTo = vm.zoom + 1
+        if (zoomTo > 18) {
+          zoomTo = 18
+        }
         // Center map on click location
-        mapObject.setView(evt.latlng, 18)
+        mapObject.setView(evt.latlng, zoomTo)
 
         // Hide welcome snackbar
         vm.$store.commit('app/SET_SHOW_WELCOME_SNACKBAR', false)
@@ -96,6 +102,12 @@ export default {
             ...evt.latlng
           })
         }
+      })
+
+      // Handle map zoom event
+      mapObject.on('zoom', function(evt) {
+        const { _zoom: zoom } = evt.target
+        vm.$store.commit('map/UPDATE_MAP_STATE', { zoom })
       })
     })
   },
