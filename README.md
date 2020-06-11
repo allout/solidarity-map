@@ -35,4 +35,24 @@ This is the process I used for St Petersburg
 
 1. Click the "show map bounds" button on the map box. Take note of the "map center", "map zoom" and "viewbox" values
 
-1. In the "maps" folder of this project, duplicate the StPetersburg.js example, naming the file after your city in a similar format.
+1. In the "maps" folder of this project, duplicate the StPetersburg folder example, naming the folder after your city in a similar camelCase format.
+
+1. Set the "map center", "map zoom" and "viewbox" values in the initial.js file accordingly
+
+1. Back on https://nominatim.openstreetmap.org/ page, click the "details" button on the chosen relation. Scrolling the list you should find an Address section, or an OSM entry. This contains the OSM relation id for the city data you are after. Take note of this id.
+
+1. Navigate to http://overpass-turbo.eu/
+
+1. Run the following query, where <relation_id> is the id you noted in the previous step
+
+   ```
+   relation(<relation_id>);
+   (._;>;);
+   out;
+   ```
+
+   You should see a similar map to before.
+
+1. Click the "Export" button, go to the "Data" section and download as GeoJSON
+
+1. Copy this file to your maps/cityName folder in this project and name the file border.geojson
