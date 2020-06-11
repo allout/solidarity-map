@@ -1,6 +1,12 @@
 <template>
   <client-only>
-    <l-map id="map" ref="leaflet" :zoom="zoom" :center="center">
+    <l-map
+      id="map"
+      ref="leaflet"
+      class="flag-planted"
+      :zoom="zoom"
+      :center="center"
+    >
       <l-tile-layer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
       <l-marker
         v-for="(marker, index) in attendees"
@@ -19,16 +25,10 @@
       </l-marker>
       <l-geo-json
         v-if="areaGeojson"
+        ref="area"
         :geojson="areaGeojson"
-        :options="{
-          // L.geoJSON options
-          // See: https://leafletjs.com/reference-1.6.0.html#geojson-option
-          // Ensure that no markers are rendered on points in the area polygon
-          pointToLayer: (geojsonPoint, latlng) => null,
-          style: () => ({
-            color: 'var(--v-primary-lighten1)'
-          })
-        }"
+        :options="areaOptions"
+        :options-style="areaOptionsStyle"
         @click="onAreaClick"
       />
     </l-map>
@@ -55,6 +55,24 @@ export default {
       'zoom',
       'areaGeojson'
     ]),
+    areaOptions() {
+      return {
+        // L.geoJSON options
+        // See: https://leafletjs.com/reference-1.6.0.html#geojson-option
+        filter: (geoJsonFeature) => {
+          // Ensure none of the points from the geojson get rendered.
+          // They end up showing up as markers
+          return geoJsonFeature.geometry.type !== 'Point'
+        }
+      }
+    },
+    areaOptionsStyle() {
+      // Apply styles to the area overlay
+      return {
+        color: 'var(--v-primary-lighten1)',
+        className: this.flagIsPlaced ? '' : 'flag-pointer'
+      }
+    },
     ...mapState('attendees', ['attendees'])
   },
   watch: {
@@ -68,6 +86,19 @@ export default {
     },
     isPortableWidth(newValue) {
       this.$store.commit('map/SET_SHOW_ZOOM_CONTROL', !newValue)
+    },
+    flagIsPlaced(isPlaced) {
+      this.$nextTick(() => {
+        // We need to force a refresh of the area style when flagIsPlaced changes
+        const { mapObject } = this.$refs.area
+        mapObject.eachLayer((layer) => {
+          if (isPlaced) {
+            layer._path.classList.remove('flag-pointer')
+          } else {
+            layer._path.classList.add('flag-pointer')
+          }
+        })
+      })
     }
   },
   created() {
@@ -135,6 +166,8 @@ export default {
   }
 }
 .leaflet-interactive {
-  cursor: url('/icons/flag.png') 0 32, auto;
+  &.flag-pointer {
+    cursor: url('/icons/flag.png') 0 32, auto;
+  }
 }
 </style>
