@@ -6,9 +6,11 @@
       class="flag-planted"
       :zoom="zoom"
       :center="center"
+      @ready="onMapReady"
+      @update:zoom="onMapZoom"
     >
       <l-tile-layer url="https://{s}.tile.osm.org/{z}/{x}/{y}.png" />
-      <l-marker
+      <!-- <l-marker
         v-for="(marker, index) in attendees"
         :key="`marker-${index}`"
         :lat-lng="marker.center"
@@ -22,7 +24,7 @@
           <p v-if="marker.message" class="">"{{ marker.message }}"</p>
         </l-popup>
         <l-icon :icon-size="[32, 32]" :icon-url="flagImg"> </l-icon>
-      </l-marker>
+      </l-marker> -->
       <l-geo-json
         v-if="areaGeojson"
         ref="area"
@@ -104,25 +106,18 @@ export default {
   created() {
     this.$store.dispatch('attendees/fetchAttendees')
   },
-  mounted() {
-    const vm = this
-    this.$nextTick(function() {
-      const { mapObject } = this.$refs.leaflet
+  methods: {
+    onMapReady(mapObject) {
       // Fix sizing
       mapObject.invalidateSize()
       // Remove default zoom control that comes with the map (we dynamically add our own below)
       mapObject.removeControl(mapObject.zoomControl)
       // Dynamically set the initial state for the visibility of the zoom control
-      vm.$store.commit('map/SET_SHOW_ZOOM_CONTROL', !this.isPortableWidth)
-
-      // Handle map zoom event
-      mapObject.on('zoom', function(evt) {
-        const { _zoom: zoom } = evt.target
-        vm.$store.commit('map/UPDATE_MAP_STATE', { zoom })
-      })
-    })
-  },
-  methods: {
+      this.$store.commit('map/SET_SHOW_ZOOM_CONTROL', !this.isPortableWidth)
+    },
+    onMapZoom(zoom) {
+      this.$store.commit('map/UPDATE_MAP_STATE', { zoom })
+    },
     onMarkerMouseover(evt) {
       evt.target.openPopup()
     },
@@ -164,6 +159,9 @@ export default {
   & >>> .leaflet-pane {
     z-index: 200;
   }
+}
+.leaflet-pane {
+  z-index: 200;
 }
 .leaflet-interactive {
   &.flag-pointer {
