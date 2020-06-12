@@ -130,13 +130,19 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .container:first-of-type {
   align-items: stretch !important;
   padding-top: 0;
   padding-bottom: 0;
 }
-.leaflet-pane {
-  z-index: 200;
+.logo-header {
+  width: 70px;
+  height: auto;
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
 }
 </style>
