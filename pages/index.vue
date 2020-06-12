@@ -6,7 +6,7 @@
       </v-col>
     </v-row>
     <v-row ref="infoPanel">
-      <v-col class="pa-0">
+      <v-col>
         <InfoPanel />
       </v-col>
     </v-row>
