@@ -39,12 +39,21 @@
             class="pa-0"
             color="primary"
             text
-            @click="form.emojiIndices.pop()"
+            @click="onBackspaceClick"
           >
             <BackspaceSVG />
           </v-btn>
         </div>
       </div>
+      <v-alert
+        v-model="showEmojiLimitAlert"
+        color="warning"
+        border="top"
+        transition="scale-transition"
+        dismissable
+      >
+        {{ $t('dialogs.steps.flag.emojiLimitReachedAlert') }}
+      </v-alert>
       <div ref="emojiGridWrap" class="emoji-grid-wrap">
         <div
           ref="emojiGridWrap"
@@ -90,6 +99,12 @@ export default {
     BackspaceSVG
   },
   data: (vm) => ({
+    availableEmojiChoices: emojis.map((emoji, index) => ({
+      emoji,
+      index
+    })),
+    maxEmoji: 32,
+    showEmojiLimitAlert: false,
     form: {
       solidarityCountry: '',
       emojiIndices: []
@@ -110,15 +125,6 @@ export default {
     formHeight: 0
   }),
   computed: {
-    availableEmojiIndices: (vm) =>
-      emojis
-        .map((_, index) => index)
-        .filter((index) => !vm.form.emojiIndices.includes(index)),
-    availableEmojiChoices: (vm) =>
-      vm.availableEmojiIndices.map((index) => ({
-        emoji: emojis[index],
-        index
-      })),
     selectedEmojis() {
       if (this.form.emojiIndices.length) {
         return this.form.emojiIndices.map((index) => emojis[index]).join('')
@@ -142,7 +148,15 @@ export default {
   },
   methods: {
     onEmojiClick(index) {
-      this.form.emojiIndices.push(index)
+      if (this.form.emojiIndices.length < this.maxEmoji) {
+        this.form.emojiIndices.push(index)
+      } else {
+        this.showEmojiLimitAlert = true
+      }
+    },
+    onBackspaceClick(evt) {
+      this.form.emojiIndices.pop()
+      this.showEmojiLimitAlert = false
     },
     onFormSubmitted(index) {
       this.$store.commit('formDialog/UPDATE_SUBMITTED', { ...this.form })

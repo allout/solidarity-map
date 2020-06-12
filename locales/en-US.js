@@ -25,7 +25,8 @@ export default {
       flag: {
         title: 'What would you like to add to your flag?',
         text:
-          'Showing love for the LGBT+ community in {prideLocation} is easy. Choose the information you would like to add to your flag below!'
+          'Showing love for the LGBT+ community in {prideLocation} is easy. Choose the information you would like to add to your flag below!',
+        emojiLimitReachedAlert: 'Emoji limit reached!'
       },
       subscription: {
         title: 'Can we keep you up to date with future issues?',
