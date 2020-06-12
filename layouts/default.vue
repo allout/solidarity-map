@@ -1,10 +1,20 @@
 <template>
   <v-app class="app">
-    <v-app-bar ref="appBar" color="primary" app flat extension-height="110">
-      <div class="logo-wrap d-flex justify-end" style="width: 100%">
-        <language-select />
-      </div>
-      <div slot="extension" class="appbar-ext">
+    <v-app-bar
+      ref="appBar"
+      class=""
+      color="primary"
+      :height="appBarHeight"
+      app
+      flat
+    >
+      <div ref="appBarContent" class="d-flex flex-column" style="width: 100%">
+        <div class="d-flex justify-space-between align-start mb-3">
+          <div class="d-flex justify-center align-center logo-header">
+            <MainLogoSVG />
+          </div>
+          <language-select />
+        </div>
         <h1 class="headline white--text">
           {{ siteTitle }}
         </h1>
@@ -28,9 +38,14 @@ import { mapState } from 'vuex'
 import LanguageSelect from '~/components/LanguageSelect'
 import FormDialog from '~/components/FormDialog'
 import WelcomeSnackbar from '~/components/WelcomeSnackbar'
+import MainLogoSVG from '~/assets/images/logos/main.svg?inline'
 
 export default {
-  components: { LanguageSelect, FormDialog, WelcomeSnackbar },
+  components: { LanguageSelect, FormDialog, WelcomeSnackbar, MainLogoSVG },
+  data: () => ({
+    appBarContentHeight: 130,
+    appBarReady: false
+  }),
   computed: {
     siteSubtitle() {
       const { prideLocation, year } = this
@@ -46,7 +61,21 @@ export default {
         year
       })
     },
-    ...mapState('app', ['prideLocation', 'year', 'baseUrl'])
+    appBarHeight() {
+      return this.appBarContentHeight ? this.appBarContentHeight + 20 : 170
+    },
+    ...mapState('app', ['prideLocation', 'year', 'baseUrl', 'docReady'])
+  },
+  watch: {
+    docReady(newVal) {
+      this.appBarContentHeight = this.$refs.appBarContent.getBoundingClientRect().height
+    },
+    appBarContentHeight(newVal) {
+      this.$store.commit(
+        'app/SET_APP_BAR_HEIGHT',
+        this.$refs.appBar.computedHeight
+      )
+    }
   },
   created() {
     this.$store.commit(
@@ -55,10 +84,9 @@ export default {
     )
   },
   mounted() {
-    this.$store.commit(
-      'app/SET_APP_BAR_HEIGHT',
-      this.$refs.appBar.computedHeight
-    )
+    document.onreadystatechange = () => {
+      this.$store.commit('app/SET_DOC_READY', true)
+    }
   },
   head() {
     const i18nSEO = this.$nuxtI18nSeo()
@@ -131,13 +159,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.appbar-ext {
+  width: 100%;
+}
 .container:first-of-type {
   align-items: stretch !important;
   padding-top: 0;
   padding-bottom: 0;
 }
 .logo-header {
-  width: 70px;
+  width: 60px;
   height: auto;
 
   svg {

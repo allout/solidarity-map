@@ -1,6 +1,7 @@
 const now = new Date()
 
 export const state = () => ({
+  docReady: false,
   appBarHeight: 0,
   flagIsPlaced: false,
   showWelcomeSnackbar: true,
@@ -14,6 +15,9 @@ export const state = () => ({
 })
 
 export const mutations = {
+  SET_DOC_READY(state, docReady) {
+    state.docReady = docReady
+  },
   SET_APP_BAR_HEIGHT(state, appBarHeight) {
     state.appBarHeight = appBarHeight
   },
