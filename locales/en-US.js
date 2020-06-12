@@ -7,7 +7,8 @@ export default {
     title: 'Tag your Pride in {prideLocation}',
     subtitle: '#UnDistanced Online Pride {year}',
     author:
-      'https://allout.org, in conjunction with https://www.unicornsintech.com/'
+      'https://allout.org, in conjunction with https://www.unicornsintech.com/',
+    purpose: '{prideLocation} Pride {year}'
   },
   cities: {
     // Here we provide the translated city names for every city this app currently supports
@@ -117,6 +118,13 @@ export default {
       <a target='_blank' href='@:disclaimers.links.unsubscribe'>unsubscribe</a>
       at any time.
       `
+  },
+  map: {
+    flags: {
+      popups: {
+        solidarityMessage: "I'm here in solidarity with"
+      }
+    }
   },
   validation: {
     ...en.messages

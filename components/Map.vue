@@ -18,21 +18,34 @@
         :options-style="areaOptionsStyle"
         @click="onAreaClick"
       />
-      <!-- <l-marker
-        v-for="(flag, index) in flags"
-        :key="`flag-${index}`"
+      <l-marker
+        v-for="flag in flags"
+        :key="`flag-${flag._id}`"
         :lat-lng="flag.center"
         @mouseover="onMarkerMouseover"
         @mouseout="onMarkerMouseout"
       >
-        <l-popup v-if="enableMarkerPopups">
-          <p v-if="flag.solidarityCountry" class="font-weight-bold">
-            {{ flag.solidarityCountry }}
-          </p>
-          <p v-if="flag.enojiMessage" class="">"{{ flag.emojiMesage }}"</p>
+        <l-popup :options="flagPopupOptions">
+          <div class="d-flex flex-column align-center">
+            <div class="emoji-flags">{{ flag.countryEmoji }} 🏳️‍🌈</div>
+            <div class="subtitle-1 font-weight-bold">
+              {{ $t('map.flags.popups.solidarityMessage') }}
+            </div>
+            <div class="subtitle-1 font-weight-bold mb-3">
+              {{
+                $t('site.purpose', {
+                  prideLocation,
+                  year
+                })
+              }}
+            </div>
+            <div class="emoji-message text-center">
+              {{ flag.emojiMessage }}
+            </div>
+          </div>
         </l-popup>
-        <l-icon :icon-size="[32, 32]" :icon-url="flagImg"> </l-icon>
-      </l-marker> -->
+        <l-icon :options="flagIconOptions" />
+      </l-marker>
     </l-map>
   </client-only>
 </template>
@@ -43,21 +56,21 @@ import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'Map',
+  data: () => ({
+    flagPopupOptions: {
+      closeButton: false,
+      className: 'flag-popup',
+      maxWidth: 200
+    },
+    flagIconOptions: {
+      iconSize: [22, 22],
+      iconUrl: require('@/assets/images/icons/flag.png')
+    }
+  }),
   computed: {
     isPortableWidth() {
       return this.$vuetify.breakpoint.mdAndDown
     },
-    flagImg: () => require('@/assets/images/icons/flag.png'),
-    ...mapState('app', ['appBarHeight', 'flagIsPlaced']),
-    ...mapState('map', [
-      'enableMarkerPopups',
-      'showZoomControl',
-      'bounds',
-      'center',
-      'zoom',
-      'areaGeojson'
-    ]),
-    ...mapGetters('map', ['flags']),
     areaOptions() {
       return {
         // L.geoJSON options
@@ -76,7 +89,21 @@ export default {
         className: this.flagIsPlaced ? '' : 'flag-pointer'
       }
     },
-    ...mapState('attendees', ['attendees'])
+    ...mapState('app', [
+      'appBarHeight',
+      'flagIsPlaced',
+      'prideLocation',
+      'year'
+    ]),
+    ...mapState('map', [
+      'enableMarkerPopupOnHover',
+      'showZoomControl',
+      'bounds',
+      'center',
+      'zoom',
+      'areaGeojson'
+    ]),
+    ...mapGetters('map', ['flags'])
   },
   watch: {
     showZoomControl(newValue) {
@@ -104,26 +131,7 @@ export default {
       })
     },
     flags(newFlags, oldFlags) {
-      this.$nextTick(() => {
-        const { mapObject } = this.$refs.leaflet
-        // eslint-disable-next-line no-undef
-        const icon = L.icon({
-          iconUrl: this.flagImg,
-          iconSize: [22, 22],
-          iconAnchor: [0, 32]
-          // popupAnchor: [-3, -76],
-          // shadowUrl: 'my-icon-shadow.png',
-          // shadowSize: [68, 95],
-          // shadowAnchor: [22, 94]
-        })
-        for (const flag of newFlags) {
-          // eslint-disable-next-line no-undef
-          L.marker(flag.center, { icon, riseOnHover: true })
-            .addTo(mapObject)
-            .bindPopup('I am a <a href="">green</a> leaf.')
-        }
-        console.log(newFlags, mapObject)
-      })
+      console.log(newFlags)
     }
   },
   created() {
@@ -142,10 +150,14 @@ export default {
       this.$store.commit('map/UPDATE_MAP_STATE', { zoom })
     },
     onMarkerMouseover(evt) {
-      evt.target.openPopup()
+      if (this.enableMarkerPopupOnHover) {
+        evt.target.openPopup()
+      }
     },
     onMarkerMouseout(evt) {
-      evt.target.closePopup()
+      if (this.enableMarkerPopupOnHover) {
+        evt.target.closePopup()
+      }
     },
     onAreaClick(evt) {
       const { mapObject } = this.$refs.leaflet
@@ -189,6 +201,14 @@ export default {
 .leaflet-interactive {
   &.flag-pointer {
     cursor: url('/images/icons/flag.png') 0 32, auto;
+  }
+}
+.flag-popup {
+  .emoji-flags {
+    font-size: 2.5rem;
+  }
+  .emoji-message {
+    font-size: 1.5rem;
   }
 }
 </style>

@@ -1,7 +1,8 @@
+import { countries } from 'countries-list'
 import { emojis } from '~/utils/resources'
 
 export const state = () => ({
-  enableMarkerPopups: false,
+  enableMarkupPopupOnHover: false,
   showZoomControl: false,
   bounds: [],
   center: [],
@@ -16,21 +17,27 @@ export const getters = {
       ({ _id, center, solidarityCountry, emojiIndices }) => ({
         _id,
         center,
-        solidarityCountry,
-        emojiMessage: emojiIndices.map((index) => {
-          try {
-            return emojis[index]
-          } catch (e) {
-            return ''
-          }
-        })
+        countryEmoji: solidarityCountry
+          ? countries[solidarityCountry]
+            ? countries[solidarityCountry].emoji
+            : ''
+          : '',
+        emojiMessage: emojiIndices
+          .map((index) => {
+            try {
+              return emojis[index]
+            } catch (e) {
+              return ''
+            }
+          })
+          .join('')
       })
     )
 }
 
 export const mutations = {
-  SET_ENABLE_MARKER_POPUPS(state, enableMarkerPopups) {
-    state.enableMarkerPopups = enableMarkerPopups
+  SET_ENABLE_MARKER_POPUP_ON_HOVER(state, enableMarkupPopupOnHover) {
+    state.enableMarkupPopupOnHover = enableMarkupPopupOnHover
   },
   SET_SHOW_ZOOM_CONTROL(state, showZoomControl) {
     state.showZoomControl = showZoomControl
