@@ -99,11 +99,17 @@
         </div>
       </transition-group>
       <div class="d-flex flex-column">
-        <v-btn type="submit" color="primary" class="mb-1" :disabled="invalid">
+        <v-btn
+          type="submit"
+          color="primary"
+          class="mb-1"
+          large
+          :disabled="invalid"
+        >
           {{ $t('dialogs.form.buttons.subscribe.label') }}
         </v-btn>
         <span class="disclaimer mb-2" v-html="$t('disclaimers.subscription')" />
-        <v-btn color="primary" text @click.prevent="onSkipClicked">
+        <v-btn color="primary" text large @click.prevent="onSkipClicked">
           {{ $t('dialogs.form.buttons.skip.label') }} &rarr;
         </v-btn>
       </div>

@@ -5,7 +5,7 @@
         <Map v-if="ready" />
       </v-col>
     </v-row>
-    <v-row>
+    <v-row ref="infoPanel">
       <v-col class="pa-0">
         <InfoPanel />
       </v-col>
@@ -55,6 +55,9 @@ export default {
     }
 
     this.$store.dispatch('map/fetchAreaGeojson')
+  },
+  mounted() {
+    this.$store.commit('app/SET_INFO_PANEL_REF', this.$refs.infoPanel)
   },
   head() {
     return {

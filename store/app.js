@@ -11,7 +11,8 @@ export const state = () => ({
   prideLocation: '',
   numAttendees: 5000,
   numCountries: 12,
-  baseUrl: ''
+  baseUrl: '',
+  infoPanelRef: null
 })
 
 export const mutations = {
@@ -35,5 +36,8 @@ export const mutations = {
   },
   SET_FLAG_IS_PLACED(state, isPlaced) {
     state.flagIsPlaced = isPlaced
+  },
+  SET_INFO_PANEL_REF(state, infoPanelRef) {
+    state.infoPanelRef = infoPanelRef
   }
 }

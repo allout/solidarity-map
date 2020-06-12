@@ -13,8 +13,13 @@ export default {
   getAttendees() {
     return apiClient.get('/attendees')
   },
-  createAttendee(lat, lng) {
-    return apiClient.post('/attendees', { lat, lng })
+  createAttendee(lat, lng, solidarityCountry, emojiIndices) {
+    return apiClient.post('/attendees', {
+      lat,
+      lng,
+      solidarityCountry,
+      emojiIndices
+    })
   },
   updateAttendee(id, data) {
     return apiClient.patch(`/attendees/${id}`, data)

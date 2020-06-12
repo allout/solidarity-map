@@ -86,6 +86,7 @@ import { extend } from 'vee-validate'
 import { required } from 'vee-validate/dist/rules'
 import i18nCountries from 'i18n-iso-countries'
 import { countries } from 'countries-list'
+import { mapState } from 'vuex'
 import { getIndexLookup } from '~/utils/data'
 import { emojis } from '~/utils/resources'
 import BackspaceSVG from '@/assets/images/icons/backspace.svg?inline'
@@ -137,7 +138,8 @@ export default {
       }
       return 'selected-emojis empty'
     },
-    formStyle: (vm) => (vm.formHeight ? `min-height: ${vm.formHeight}px` : '')
+    formStyle: (vm) => (vm.formHeight ? `min-height: ${vm.formHeight}px` : ''),
+    ...mapState('formDialog', ['submitted'])
   },
   mounted() {
     const vm = this
@@ -159,10 +161,9 @@ export default {
       this.showEmojiLimitAlert = false
     },
     onFormSubmitted(index) {
-      // this.$store.commit('formDialog/UPDATE_SUBMITTED', { ...this.form })
-      // TODO: Here
-      // Dispatch an action to create a new record in the database
+      this.$store.commit('formDialog/UPDATE_SUBMITTED', { ...this.form })
       this.$store.commit('formDialog/NEXT_STEP')
+      // this.$store.dispatch('attendees/createAttendee')
     }
   }
 }

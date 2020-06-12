@@ -29,6 +29,7 @@
     </v-content>
     <form-dialog />
     <welcome-snackbar />
+    <read-more-snackbar />
   </v-app>
 </template>
 
@@ -37,10 +38,17 @@ import { mapState } from 'vuex'
 import LanguageSelect from '~/components/LanguageSelect'
 import FormDialog from '~/components/FormDialog'
 import WelcomeSnackbar from '~/components/WelcomeSnackbar'
+import ReadMoreSnackbar from '~/components/ReadMoreSnackbar'
 import MainLogoSVG from '~/assets/images/logos/main.svg?inline'
 
 export default {
-  components: { LanguageSelect, FormDialog, WelcomeSnackbar, MainLogoSVG },
+  components: {
+    LanguageSelect,
+    FormDialog,
+    WelcomeSnackbar,
+    ReadMoreSnackbar,
+    MainLogoSVG
+  },
   data: () => ({
     appBarContentHeight: 130
   }),

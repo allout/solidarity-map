@@ -25,9 +25,16 @@ export const actions = {
     commit('SET_ATTENDEES', response.data)
     return state.attendees
   },
-  async createAttendee({ commit }, lat, lng) {
+  async createAttendee({ commit, rootState }) {
+    const { lat, lng, solidarityCountry, emojiIndices } = rootState.formDialog
+    console.log('createAttendee', lat, lng, solidarityCountry, emojiIndices)
     try {
-      const response = await RestService.createAttendee(lat, lng)
+      const response = await RestService.createAttendee(
+        lat,
+        lng,
+        solidarityCountry,
+        emojiIndices
+      )
       const attendee = { isNewAttendee: true, ...response.data }
       commit('ADD_ATTENDEE', attendee)
       return attendee
