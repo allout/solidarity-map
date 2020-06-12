@@ -14,9 +14,9 @@ export const state = () => ({
 export const getters = {
   flags: (state, getters, rootState) =>
     rootState.attendees.attendees.map(
-      ({ _id, center, solidarityCountry, emojiIndices }) => ({
+      ({ _id, lat, lng, solidarityCountry, emojiIndices }) => ({
         _id,
-        center,
+        center: [lat, lng],
         countryEmoji: solidarityCountry
           ? countries[solidarityCountry]
             ? countries[solidarityCountry].emoji

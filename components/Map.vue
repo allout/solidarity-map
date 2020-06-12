@@ -21,6 +21,7 @@
       <l-marker
         v-for="flag in flags"
         :key="`flag-${flag._id}`"
+        :ref="flag.isNewAttendee && 'newAttendee'"
         :lat-lng="flag.center"
         @mouseover="onMarkerMouseover"
         @mouseout="onMarkerMouseout"

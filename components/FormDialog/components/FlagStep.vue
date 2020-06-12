@@ -48,9 +48,9 @@
       <v-alert
         v-model="showEmojiLimitAlert"
         color="warning"
-        border="top"
         transition="scale-transition"
         dismissable
+        dense
       >
         {{ $t('dialogs.steps.flag.emojiLimitReachedAlert') }}
       </v-alert>
@@ -74,7 +74,7 @@
       </div>
     </div>
     <div class="d-flex flex-column mt-auto">
-      <v-btn type="submit" color="primary">
+      <v-btn type="submit" color="primary" large>
         {{ $t('dialogs.form.buttons.showSupport.label') }}
       </v-btn>
     </div>
@@ -159,7 +159,9 @@ export default {
       this.showEmojiLimitAlert = false
     },
     onFormSubmitted(index) {
-      this.$store.commit('formDialog/UPDATE_SUBMITTED', { ...this.form })
+      // this.$store.commit('formDialog/UPDATE_SUBMITTED', { ...this.form })
+      // TODO: Here
+      // Dispatch an action to create a new record in the database
       this.$store.commit('formDialog/NEXT_STEP')
     }
   }

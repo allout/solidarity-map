@@ -44,18 +44,16 @@ module.exports = () => {
     const numEmojis = faker.random.number(emojis.length)
     data.attendees.push({
       _id: i,
-      center: [
-        faker.finance.amount(
-          mapInitial.bounds[1][0],
-          mapInitial.bounds[0][0],
-          5
-        ),
-        faker.finance.amount(
-          mapInitial.bounds[1][1],
-          mapInitial.bounds[0][1],
-          5
-        )
-      ],
+      lat: faker.finance.amount(
+        mapInitial.bounds[1][0],
+        mapInitial.bounds[0][0],
+        5
+      ),
+      lng: faker.finance.amount(
+        mapInitial.bounds[1][1],
+        mapInitial.bounds[0][1],
+        5
+      ),
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
       subscriptionCountry: faker.address.countryCode(),

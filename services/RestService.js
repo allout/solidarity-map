@@ -13,8 +13,8 @@ export default {
   getAttendees() {
     return apiClient.get('/attendees')
   },
-  createAttendee(markerLatLng) {
-    return apiClient.post('/attendees', { center: markerLatLng })
+  createAttendee(lat, lng) {
+    return apiClient.post('/attendees', { lat, lng })
   },
   updateAttendee(id, data) {
     return apiClient.patch(`/attendees/${id}`, data)
