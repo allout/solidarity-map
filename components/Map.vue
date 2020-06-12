@@ -162,21 +162,25 @@ export default {
     },
     onAreaClick(evt) {
       const { mapObject } = this.$refs.leaflet
-      console.log(evt)
-      // When flag is placed, zoom the map in a little unless it's already zoomed enough
-      const mapZoom = mapObject.getZoom()
-      const zoomTo = mapZoom < 18 ? mapZoom + 1 : mapZoom
-      // Center map on click location
-      mapObject.setView(evt.latlng, zoomTo)
 
       // Hide welcome snackbar
       this.$store.commit('app/SET_SHOW_WELCOME_SNACKBAR', false)
 
-      if (this.flagisPlaced) {
+      // For some reason I need to assign the value of the reactive this.flagIsPlaced variable in
+      // order for the correct value to be used by this function
+      const flagIsPlaced = this.flagIsPlaced
+
+      if (flagIsPlaced) {
         // If the flag is alredy placed, show the read more snackbar
         this.$store.commit('app/SET_SHOW_READ_MORE_SNACKBAR', true)
       } else {
-        // Otherwise, if the flag is not already placed we enable the form
+        // When flag location is clicked, zoom the map in a little unless it's already zoomed enough
+        const mapZoom = mapObject.getZoom()
+        const zoomTo = mapZoom < 18 ? mapZoom + 1 : mapZoom
+        // Center map on click location
+        mapObject.setView(evt.latlng, zoomTo)
+
+        // Since the flag is not already placed we enable the form
         this.$store.commit('formDialog/SET_VISIBLE', true)
         this.$store.commit('formDialog/UPDATE_SUBMITTED', {
           ...evt.latlng
