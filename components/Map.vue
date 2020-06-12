@@ -107,9 +107,20 @@ export default {
       this.$nextTick(() => {
         const { mapObject } = this.$refs.leaflet
         // eslint-disable-next-line no-undef
+        const icon = L.icon({
+          iconUrl: this.flagImg,
+          iconSize: [22, 22],
+          iconAnchor: [0, 32]
+          // popupAnchor: [-3, -76],
+          // shadowUrl: 'my-icon-shadow.png',
+          // shadowSize: [68, 95],
+          // shadowAnchor: [22, 94]
+        })
         for (const flag of newFlags) {
           // eslint-disable-next-line no-undef
-          L.marker(flag.center).addTo(mapObject)
+          L.marker(flag.center, { icon, riseOnHover: true })
+            .addTo(mapObject)
+            .bindPopup('I am a <a href="">green</a> leaf.')
         }
         console.log(newFlags, mapObject)
       })
