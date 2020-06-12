@@ -163,6 +163,8 @@ export default {
     onFormSubmitted(index) {
       this.$store.commit('formDialog/UPDATE_SUBMITTED', { ...this.form })
       this.$store.commit('formDialog/NEXT_STEP')
+      // Consider calling app/SET_FLAG_IS_PLACED from inside attendees/createAttendee action
+      this.$store.commit('app/SET_FLAG_IS_PLACED', true)
       // this.$store.dispatch('attendees/createAttendee')
     }
   }

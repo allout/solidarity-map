@@ -79,7 +79,18 @@ export default {
     appBarTextClass() {
       return this.invertAppBarColors ? 'black--text' : 'white--text'
     },
-    ...mapState('formDialog', ['visible', 'step', 'steps'])
+    ...mapState('formDialog', ['visible', 'step', 'steps']),
+    ...mapState('app', ['flagIsPlaced'])
+  },
+  watch: {
+    visible(newVal, oldVal) {
+      // if the flag is already placed and the dialog is going invisible, we can now enable
+      // marker popups on hover
+      this.$store.commit(
+        'map/SET_ENABLE_MARKER_POPUP_ON_HOVER',
+        !newVal && this.flagIsPlaced
+      )
+    }
   }
 }
 </script>

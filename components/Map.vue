@@ -176,7 +176,6 @@ export default {
         // If the flag is alredy placed, show the read more snackbar
         this.$store.commit('app/SET_SHOW_READ_MORE_SNACKBAR', true)
       } else {
-        this.$store.commit('map/SET_SHOW_ZOOM_CONTROL', false)
         // Otherwise, if the flag is not already placed we enable the form
         this.$store.commit('formDialog/SET_VISIBLE', true)
         this.$store.commit('formDialog/UPDATE_SUBMITTED', {
