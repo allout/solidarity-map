@@ -1,4 +1,5 @@
 const faker = require('faker')
+const mapInitial = require('../maps/stPetersburg/initial.js')
 
 const emojis = [
   '❤️',
@@ -39,18 +40,30 @@ module.exports = () => {
     attendees: []
   }
   // Create attendees
-  // for (let i = 0; i < 1000; i++) {
-  //   const numEmojis = faker.random.number(emojis.length)
-  //   data.attendees.push({
-  //     _id: i,
-  //     center: [59.93952, 30.31522],
-  //     firstName: faker.name.firstName(),
-  //     lastName: faker.name.lastName(),
-  //     country: faker.address.countryCode(),
-  //     emojiIndices: faker.helpers
-  //       .shuffle(range(0, numEmojis, 1))
-  //       .map((index) => index)
-  //   })
-  // }
+  for (let i = 0; i < 1000; i++) {
+    const numEmojis = faker.random.number(emojis.length)
+    data.attendees.push({
+      _id: i,
+      center: [
+        faker.finance.amount(
+          mapInitial.bounds[1][0],
+          mapInitial.bounds[0][0],
+          5
+        ),
+        faker.finance.amount(
+          mapInitial.bounds[1][1],
+          mapInitial.bounds[0][1],
+          5
+        )
+      ],
+      firstName: faker.name.firstName(),
+      lastName: faker.name.lastName(),
+      subscriptionCountry: faker.address.countryCode(),
+      solidarityCountry: faker.address.countryCode(),
+      emojiIndices: faker.helpers
+        .shuffle(range(0, numEmojis, 1))
+        .map((index) => index)
+    })
+  }
   return data
 }
