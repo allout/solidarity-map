@@ -1,19 +1,28 @@
 <template>
-  <v-row class="">
-    <v-col class="pa-0 map-box" :style="mapBoxStyle">
-      <Map v-if="ready" />
-    </v-col>
-  </v-row>
+  <div style="width: 100%">
+    <v-row class="">
+      <v-col class="pa-0 map-box" :style="mapBoxStyle">
+        <Map v-if="ready" />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col class="pa-0">
+        <InfoPanel />
+      </v-col>
+    </v-row>
+  </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 // import { latLngBounds } from 'leaflet'
-import Map from '@/components/Map'
+import Map from '~/components/Map'
+import InfoPanel from '~/components/InfoPanel'
 
 export default {
   components: {
-    Map
+    Map,
+    InfoPanel
   },
   data: () => ({
     zoom: 1,
@@ -29,7 +38,7 @@ export default {
     canonicalUrl() {
       return `${this.baseUrl}${this.$route.path}`
     },
-    ...mapState('app', ['prideLocation', 'baseUrl']),
+    ...mapState('app', ['prideLocation', 'baseUrl', 'appBarHeight']),
     ...mapState('map', ['ready'])
   },
   created() {
