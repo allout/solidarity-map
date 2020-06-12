@@ -157,7 +157,7 @@ export default {
   }),
   methods: {
     onSubmit(evt) {
-      this.$store.commit('formDialog/UPDATE_SUBMITTED', { ...this.form })
+      this.$store.commit('attendees/UPDATE_ATTENDEE', { ...this.form })
       this.$store.commit('formDialog/NEXT_STEP')
     },
     onSkipClicked(evt) {

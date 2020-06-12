@@ -182,7 +182,7 @@ export default {
 
         // Since the flag is not already placed we enable the form
         this.$store.commit('formDialog/SET_VISIBLE', true)
-        this.$store.commit('formDialog/UPDATE_SUBMITTED', {
+        this.$store.commit('attendees/UPDATE_ATTENDEE', {
           ...evt.latlng
         })
       }

@@ -4,7 +4,7 @@ import { getIdLookup } from '@/utils/data'
 export const state = () => ({
   attendees: [],
   attendeesIdLookup: {},
-  newAttendeeId: null
+  attendee: {}
 })
 
 export const mutations = {
@@ -12,10 +12,13 @@ export const mutations = {
     state.attendees = attendees
     state.attendeesIdLookup = getIdLookup(state.attendees)
   },
-  ADD_ATTENDEE(state, attendee) {
+  UPDATE_ATTENDEE(state, data) {
+    state.attendee = { ...data, ...state.attendee }
+  },
+  APPEND_ATTENDEE(state) {
     const prevLength = state.attendees.length
-    state.attendeed.push(attendee)
-    state.attendeesIdLookup[attendee._id] = prevLength
+    state.attendees.push(state.attendee)
+    state.attendeesIdLookup[state.attendee._id] = prevLength
   }
 }
 
@@ -25,8 +28,10 @@ export const actions = {
     commit('SET_ATTENDEES', response.data)
     return state.attendees
   },
-  async createAttendee({ commit, rootState }) {
-    const { lat, lng, solidarityCountry, emojiIndices } = rootState.formDialog
+  async createAttendee(
+    { commit },
+    { lat, lng, solidarityCountry, emojiIndices }
+  ) {
     console.log('createAttendee', lat, lng, solidarityCountry, emojiIndices)
     try {
       const response = await RestService.createAttendee(
@@ -35,13 +40,23 @@ export const actions = {
         solidarityCountry,
         emojiIndices
       )
-      const attendee = { isNewAttendee: true, ...response.data }
-      commit('ADD_ATTENDEE', attendee)
-      return attendee
+      console.log(response.data)
+      commit('UPDATE_ATTENDEE', { isNewAttendee: true, ...response.data })
+      commit('APPEND_ATTENDEE')
     } catch (e) {
       // eslint-disable-next-line no-console
       console.log(e)
-      return null
+    }
+  },
+  async syncAttendee({ commit, state }) {
+    // Requires createAttendee to be called first, or else the attendee will not be
+    // available in this store
+    try {
+      const response = await RestService.updateAttendee(state.attendee)
+      console.log(response.data)
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.log(e)
     }
   }
 }

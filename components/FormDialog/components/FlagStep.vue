@@ -139,7 +139,7 @@ export default {
       return 'selected-emojis empty'
     },
     formStyle: (vm) => (vm.formHeight ? `min-height: ${vm.formHeight}px` : ''),
-    ...mapState('formDialog', ['submitted'])
+    ...mapState('attendees', ['attendee'])
   },
   mounted() {
     const vm = this
@@ -161,11 +161,13 @@ export default {
       this.showEmojiLimitAlert = false
     },
     onFormSubmitted(index) {
-      this.$store.commit('formDialog/UPDATE_SUBMITTED', { ...this.form })
       this.$store.commit('formDialog/NEXT_STEP')
       // Consider calling app/SET_FLAG_IS_PLACED from inside attendees/createAttendee action
       this.$store.commit('app/SET_FLAG_IS_PLACED', true)
-      // this.$store.dispatch('attendees/createAttendee')
+      this.$store.dispatch('attendees/createAttendee', {
+        ...this.form,
+        ...this.attendee
+      })
     }
   }
 }
