@@ -40,9 +40,9 @@
 
 <script>
 import { mapState } from 'vuex'
-import FacebookSVG from '~/assets/icons/facebook.svg?inline'
-import TwitterSVG from '~/assets/icons/twitter.svg?inline'
-import WhatsAppSVG from '~/assets/icons/whatsapp.svg?inline'
+import FacebookSVG from '~/assets/images/icons/facebook.svg?inline'
+import TwitterSVG from '~/assets/images/icons/twitter.svg?inline'
+import WhatsAppSVG from '~/assets/images/icons/whatsapp.svg?inline'
 
 export default {
   name: 'ShareStep',

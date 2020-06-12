@@ -59,7 +59,7 @@ import { mapState } from 'vuex'
 import FlagStep from './components/FlagStep'
 import SubscriptionStep from './components/SubscriptionStep'
 import ShareStep from './components/ShareStep'
-import CrossSVG from '~/assets/icons/cross.svg?inline'
+import CrossSVG from '~/assets/images/icons/cross.svg?inline'
 
 export default {
   components: {

@@ -2,7 +2,7 @@
   <v-snackbar color="white" :value="showReadMoreSnackbar" :timeout="0">
     <img
       class="mr-4"
-      src="~assets/icons/flag.png"
+      src="~assets/images/icons/flag.png"
       alt="$t('accessibility.imgAlts.flag')"
       width="25"
       height="25"

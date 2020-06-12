@@ -79,7 +79,7 @@ import i18nCountries from 'i18n-iso-countries'
 import { countries } from 'countries-list'
 import { getIndexLookup } from '~/utils/data'
 import { emojis } from '~/utils/resources'
-import BackspaceSVG from '@/assets/icons/backspace.svg?inline'
+import BackspaceSVG from '@/assets/images/icons/backspace.svg?inline'
 
 extend('required', required)
 

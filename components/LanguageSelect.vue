@@ -18,7 +18,7 @@
 <script>
 // See https://github.com/annexare/Countries for languages object format
 import { languages } from 'countries-list'
-import TranslateSVG from '~/assets/icons/translate.svg?inline'
+import TranslateSVG from '~/assets/images/icons/translate.svg?inline'
 
 export default {
   name: 'LanguageSelect',

@@ -3,8 +3,11 @@
     <div class="d-flex align-center mb-2">
       <img
         class="mr-4"
-        src="~assets/icons/flag.png"
-        srcset="~assets/icons/flag@2x.png 2x, ~assets/icons/flag@3x.png 3x"
+        src="~assets/images/icons/flag.png"
+        srcset="
+          ~assets/images/icons/flag@2x.png 2x,
+          ~assets/images/icons/flag@3x.png 3x
+        "
         :alt="$t('accessibility.imgAlts.flag')"
         width="25"
         height="25"

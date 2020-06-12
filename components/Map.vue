@@ -45,7 +45,7 @@ export default {
     isPortableWidth() {
       return this.$vuetify.breakpoint.mdAndDown
     },
-    flagImg: () => require('@/assets/icons/flag.png'),
+    flagImg: () => require('@/assets/images/icons/flag.png'),
     ...mapState('app', ['appBarHeight', 'flagIsPlaced']),
     ...mapState('map', [
       'enableMarkerPopups',
@@ -167,7 +167,7 @@ export default {
 }
 .leaflet-interactive {
   &.flag-pointer {
-    cursor: url('/icons/flag.png') 0 32, auto;
+    cursor: url('/images/icons/flag.png') 0 32, auto;
   }
 }
 </style>
