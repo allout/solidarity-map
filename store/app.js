@@ -2,10 +2,10 @@ const now = new Date()
 
 export const state = () => ({
   docReady: false,
-  appBarHeight: 0,
+  appBarHeight: 170,
   flagIsPlaced: false,
   showWelcomeSnackbar: true,
-  showReadMoreSnackbar: true,
+  showReadMoreSnackbar: false,
   now,
   year: now.getFullYear(),
   prideLocation: '',

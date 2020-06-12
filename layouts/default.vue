@@ -2,11 +2,10 @@
   <v-app class="app">
     <v-app-bar
       ref="appBar"
-      class=""
+      class="app-bar"
       color="primary"
       :height="appBarHeight"
       app
-      flat
     >
       <div ref="appBarContent" class="d-flex flex-column" style="width: 100%">
         <div class="d-flex justify-space-between align-start mb-3">
@@ -24,7 +23,7 @@
       </div>
     </v-app-bar>
     <v-content>
-      <v-container class="container" fluid fill-height>
+      <v-container fluid fill-height>
         <nuxt />
       </v-container>
     </v-content>
@@ -43,8 +42,7 @@ import MainLogoSVG from '~/assets/images/logos/main.svg?inline'
 export default {
   components: { LanguageSelect, FormDialog, WelcomeSnackbar, MainLogoSVG },
   data: () => ({
-    appBarContentHeight: 130,
-    appBarReady: false
+    appBarContentHeight: 130
   }),
   computed: {
     siteSubtitle() {
@@ -61,19 +59,20 @@ export default {
         year
       })
     },
-    appBarHeight() {
-      return this.appBarContentHeight ? this.appBarContentHeight + 20 : 170
-    },
-    ...mapState('app', ['prideLocation', 'year', 'baseUrl', 'docReady'])
+    ...mapState('app', [
+      'prideLocation',
+      'year',
+      'baseUrl',
+      'docReady',
+      'appBarHeight'
+    ])
   },
   watch: {
     docReady(newVal) {
       this.appBarContentHeight = this.$refs.appBarContent.getBoundingClientRect().height
-    },
-    appBarContentHeight(newVal) {
       this.$store.commit(
         'app/SET_APP_BAR_HEIGHT',
-        this.$refs.appBar.computedHeight
+        this.appBarContentHeight + 20
       )
     }
   },
@@ -159,21 +158,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.appbar-ext {
-  width: 100%;
+.app-bar {
+  z-index: 1001;
+
+  .logo-header {
+    width: 60px;
+    height: auto;
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
 }
 .container:first-of-type {
   align-items: stretch !important;
   padding-top: 0;
   padding-bottom: 0;
-}
-.logo-header {
-  width: 60px;
-  height: auto;
-
-  svg {
-    width: 100%;
-    height: auto;
-  }
 }
 </style>
