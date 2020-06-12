@@ -43,14 +43,12 @@
         </p>
       </template>
     </v-app-bar>
-    <transition-group name="fade" tag="div">
-      <flag-step v-if="step === steps.FLAG" :key="steps.FLAG" />
-      <subscription-step
-        v-if="step === steps.SUBSCRIPTION"
-        :key="steps.SUBSCRIPTION"
-      />
-      <share-step v-if="step === steps.SHARE" :key="steps.SHARE" />
-    </transition-group>
+    <flag-step v-if="step === steps.FLAG" :key="steps.FLAG" />
+    <subscription-step
+      v-if="step === steps.SUBSCRIPTION"
+      :key="steps.SUBSCRIPTION"
+    />
+    <share-step v-if="step === steps.SHARE" :key="steps.SHARE" />
   </v-dialog>
 </template>
 
