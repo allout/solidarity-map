@@ -85,14 +85,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.fade-enter-active {
-  transition: opacity 1s;
+.form-dialog {
+  z-index: 1002;
 }
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-
 .dialog-app-bar {
   &::v-deep .v-toolbar__content {
     flex-direction: column;
