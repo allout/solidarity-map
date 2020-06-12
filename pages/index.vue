@@ -34,7 +34,6 @@ export default {
   },
   created() {
     const mapState = require(`~/maps/${process.env.PRIDE_LOCATION}/initial.js`)
-      .default
     this.$store.commit('map/UPDATE_MAP_STATE', {
       ready: true,
       ...mapState

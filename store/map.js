@@ -1,3 +1,5 @@
+import { emojis } from '~/utils/resources'
+
 export const state = () => ({
   enableMarkerPopups: false,
   showZoomControl: false,
@@ -7,6 +9,24 @@ export const state = () => ({
   ready: false,
   areaGeojson: null
 })
+
+export const getters = {
+  flags: (state, getters, rootState) =>
+    rootState.attendees.attendees.map(
+      ({ _id, center, solidarityCountry, emojiIndices }) => ({
+        _id,
+        center,
+        solidarityCountry,
+        emojiMessage: emojiIndices.map((index) => {
+          try {
+            return emojis[index]
+          } catch (e) {
+            return ''
+          }
+        })
+      })
+    )
+}
 
 export const mutations = {
   SET_ENABLE_MARKER_POPUPS(state, enableMarkerPopups) {

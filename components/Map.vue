@@ -10,21 +10,6 @@
       @update:zoom="onMapZoom"
     >
       <l-tile-layer url="https://{s}.tile.osm.org/{z}/{x}/{y}.png" />
-      <!-- <l-marker
-        v-for="(marker, index) in attendees"
-        :key="`marker-${index}`"
-        :lat-lng="marker.center"
-        @mouseover="onMarkerMouseover"
-        @mouseout="onMarkerMouseout"
-      >
-        <l-popup v-if="enableMarkerPopups">
-          <p v-if="marker.name" class="font-weight-bold">
-            {{ marker.name }}
-          </p>
-          <p v-if="marker.message" class="">"{{ marker.message }}"</p>
-        </l-popup>
-        <l-icon :icon-size="[32, 32]" :icon-url="flagImg"> </l-icon>
-      </l-marker> -->
       <l-geo-json
         v-if="areaGeojson"
         ref="area"
@@ -33,13 +18,28 @@
         :options-style="areaOptionsStyle"
         @click="onAreaClick"
       />
+      <!-- <l-marker
+        v-for="(flag, index) in flags"
+        :key="`flag-${index}`"
+        :lat-lng="flag.center"
+        @mouseover="onMarkerMouseover"
+        @mouseout="onMarkerMouseout"
+      >
+        <l-popup v-if="enableMarkerPopups">
+          <p v-if="flag.solidarityCountry" class="font-weight-bold">
+            {{ flag.solidarityCountry }}
+          </p>
+          <p v-if="flag.enojiMessage" class="">"{{ flag.emojiMesage }}"</p>
+        </l-popup>
+        <l-icon :icon-size="[32, 32]" :icon-url="flagImg"> </l-icon>
+      </l-marker> -->
     </l-map>
   </client-only>
 </template>
 
 <script>
 // import { LatLngBounds } from 'leaflet'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'Map',
@@ -57,6 +57,7 @@ export default {
       'zoom',
       'areaGeojson'
     ]),
+    ...mapGetters('map', ['flags']),
     areaOptions() {
       return {
         // L.geoJSON options
@@ -100,6 +101,17 @@ export default {
             layer._path.classList.add('flag-pointer')
           }
         })
+      })
+    },
+    flags(newFlags, oldFlags) {
+      this.$nextTick(() => {
+        const { mapObject } = this.$refs.leaflet
+        // eslint-disable-next-line no-undef
+        for (const flag of newFlags) {
+          // eslint-disable-next-line no-undef
+          L.marker(flag.center).addTo(mapObject)
+        }
+        console.log(newFlags, mapObject)
       })
     }
   },
