@@ -23,6 +23,7 @@
         :key="`flag-${flag._id}`"
         :ref="flag.isNewAttendee && 'newAttendee'"
         :lat-lng="flag.center"
+        :options="flagOptions"
         @mouseover="onMarkerMouseover"
         @mouseout="onMarkerMouseout"
       >
@@ -58,14 +59,19 @@ import { mapState, mapGetters } from 'vuex'
 export default {
   name: 'Map',
   data: () => ({
+    flagOptions: {
+      riseOnHover: true
+    },
     flagPopupOptions: {
       closeButton: false,
       className: 'flag-popup',
-      maxWidth: 200
+      maxWidth: 200,
+      offset: [6, -15]
     },
     flagIconOptions: {
       iconSize: [22, 22],
-      iconUrl: require('@/assets/images/icons/flag.png')
+      iconUrl: require('@/assets/images/icons/flag.png'),
+      iconAnchor: [-4, 20]
     }
   }),
   computed: {
@@ -151,14 +157,15 @@ export default {
       this.$store.commit('map/UPDATE_MAP_STATE', { zoom })
     },
     onMarkerMouseover(evt) {
+      console.log(this.enableMarkerPopupOnHover)
       if (this.enableMarkerPopupOnHover) {
         evt.target.openPopup()
       }
     },
     onMarkerMouseout(evt) {
-      if (this.enableMarkerPopupOnHover) {
-        evt.target.closePopup()
-      }
+      // if (this.enableMarkerPopupOnHover) {
+      //   evt.target.closePopup()
+      // }
     },
     onAreaClick(evt) {
       const { mapObject } = this.$refs.leaflet

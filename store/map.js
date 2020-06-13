@@ -2,7 +2,7 @@ import { countries } from 'countries-list'
 import { emojis } from '~/utils/resources'
 
 export const state = () => ({
-  enableMarkupPopupOnHover: false,
+  enableMarkerPopupOnHover: false,
   showZoomControl: false,
   bounds: [],
   center: [],
@@ -36,8 +36,8 @@ export const getters = {
 }
 
 export const mutations = {
-  SET_ENABLE_MARKER_POPUP_ON_HOVER(state, enableMarkupPopupOnHover) {
-    state.enableMarkupPopupOnHover = enableMarkupPopupOnHover
+  SET_ENABLE_MARKER_POPUP_ON_HOVER(state, enableMarkerPopupOnHover) {
+    state.enableMarkerPopupOnHover = enableMarkerPopupOnHover
   },
   SET_SHOW_ZOOM_CONTROL(state, showZoomControl) {
     state.showZoomControl = showZoomControl
