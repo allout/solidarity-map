@@ -211,7 +211,7 @@ export default {
 }
 .leaflet-interactive {
   &.flag-pointer {
-    cursor: url('/images/icons/flag.png') 0 32, auto;
+    cursor: url('/images/icons/flag.png') 5 32, auto;
   }
 }
 .flag-popup {
