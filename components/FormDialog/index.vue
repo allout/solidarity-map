@@ -84,12 +84,13 @@ export default {
   },
   watch: {
     visible(newVal, oldVal) {
-      // if the flag is already placed and the dialog is going invisible, we can now enable
-      // marker popups on hover
-      this.$store.commit(
-        'map/SET_ENABLE_MARKER_POPUP_ON_HOVER',
-        !newVal && this.flagIsPlaced
-      )
+      // Activate some things if the flag is already placed and the dialog is going invisible
+      if (!newVal && this.flagIsPlaced) {
+        // Make it so hovering over flags now reveals the popup
+        this.$store.commit('map/SET_ENABLE_MARKER_POPUP_ON_HOVER', true)
+        // Display the read more snackbar
+        this.$store.commit('app/SET_SHOW_READ_MORE_SNACKBAR', true)
+      }
     }
   }
 }

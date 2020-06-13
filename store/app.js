@@ -6,13 +6,15 @@ export const state = () => ({
   flagIsPlaced: false,
   showWelcomeSnackbar: true,
   showReadMoreSnackbar: false,
+  showBackToMapSnackbar: false,
   now,
   year: now.getFullYear(),
   prideLocation: '',
   numAttendees: 5000,
   numCountries: 12,
   baseUrl: '',
-  infoPanelRef: null
+  infoPanelRef: null,
+  mapPanelRef: null
 })
 
 export const mutations = {
@@ -39,5 +41,11 @@ export const mutations = {
   },
   SET_INFO_PANEL_REF(state, infoPanelRef) {
     state.infoPanelRef = infoPanelRef
+  },
+  SET_SHOW_BACK_TO_MAP_SNACKBAR(state, showBackToMapSnackbar) {
+    state.showBackToMapSnackbar = showBackToMapSnackbar
+  },
+  SET_MAP_PANEL_REF(state, mapPanelRef) {
+    state.mapPanelRef = mapPanelRef
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div style="width: 100%">
-    <v-row class="">
+    <v-row ref="mapPanel">
       <v-col class="pa-0 map-box" :style="mapBoxStyle">
         <Map v-if="ready" />
       </v-col>
@@ -58,6 +58,7 @@ export default {
   },
   mounted() {
     this.$store.commit('app/SET_INFO_PANEL_REF', this.$refs.infoPanel)
+    this.$store.commit('app/SET_MAP_PANEL_REF', this.$refs.mapPanel)
   },
   head() {
     return {
