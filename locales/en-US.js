@@ -44,7 +44,7 @@ export default {
       copy: {
         addFlair: 'Personalise your flag with some flair!',
         extraInfoAsk:
-          'To join our list, we just need a few more pieces of information...'
+          'To join our list, we just need a few more pieces of information from you...'
       },
       buttons: {
         showSupport: {
