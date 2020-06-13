@@ -30,6 +30,7 @@
     <form-dialog />
     <welcome-snackbar />
     <read-more-snackbar />
+    <back-to-map-snackbar />
   </v-app>
 </template>
 
@@ -39,6 +40,7 @@ import LanguageSelect from '~/components/LanguageSelect'
 import FormDialog from '~/components/FormDialog'
 import WelcomeSnackbar from '~/components/WelcomeSnackbar'
 import ReadMoreSnackbar from '~/components/ReadMoreSnackbar'
+import BackToMapSnackbar from '~/components/BackToMapSnackbar'
 import MainLogoSVG from '~/assets/images/logos/main.svg?inline'
 
 export default {
@@ -47,6 +49,7 @@ export default {
     FormDialog,
     WelcomeSnackbar,
     ReadMoreSnackbar,
+    BackToMapSnackbar,
     MainLogoSVG
   },
   data: () => ({

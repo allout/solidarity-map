@@ -20,6 +20,7 @@ export default {
     onButtonClick(evt) {
       this.infoPanelRef.scrollIntoView(true)
       this.$store.commit('app/SET_SHOW_READ_MORE_SNACKBAR', false)
+      this.$store.commit('app/SET_SHOW_BACK_TO_MAP_SNACKBAR', true)
     }
   }
 }

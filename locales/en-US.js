@@ -75,6 +75,10 @@ export default {
     readMore: {
       message: 'Want more information?',
       buttonLabel: 'Find out more!'
+    },
+    backToMap: {
+      message: 'Keep exploring?',
+      buttonLabel: 'Back to map'
     }
   },
   fields: {

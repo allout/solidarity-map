@@ -157,7 +157,6 @@ export default {
       this.$store.commit('map/UPDATE_MAP_STATE', { zoom })
     },
     onMarkerMouseover(evt) {
-      console.log(this.enableMarkerPopupOnHover)
       if (this.enableMarkerPopupOnHover) {
         evt.target.openPopup()
       }
