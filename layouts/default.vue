@@ -6,6 +6,7 @@
       color="primary"
       :height="appBarHeight"
       app
+      fixed
     >
       <div ref="appBarContent" class="d-flex flex-column" style="width: 100%">
         <div class="d-flex justify-space-between align-start mb-3">

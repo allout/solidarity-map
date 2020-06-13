@@ -164,10 +164,11 @@ export default {
       this.$store.commit('formDialog/NEXT_STEP')
       // Consider calling app/SET_FLAG_IS_PLACED from inside attendees/createAttendee action
       this.$store.commit('app/SET_FLAG_IS_PLACED', true)
-      this.$store.dispatch('attendees/createAttendee', {
-        ...this.form,
-        ...this.attendee
-      })
+      // TODO: RE-enable this
+      // this.$store.dispatch('attendees/createAttendee', {
+      //   ...this.form,
+      //   ...this.attendee
+      // })
     }
   }
 }

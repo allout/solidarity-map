@@ -18,8 +18,9 @@ export default {
   },
   methods: {
     onButtonClick(evt) {
-      this.mapPanelRef.scrollIntoView(true)
+      this.mapPanelRef.scrollIntoView(false)
       this.$store.commit('app/SET_SHOW_BACK_TO_MAP_SNACKBAR', false)
+      this.$store.commit('app/SET_SHOW_READ_MORE_SNACKBAR', true)
     }
   }
 }
