@@ -20,12 +20,12 @@
       />
       <l-marker
         v-for="flag in flags"
-        :key="`flag-${flag._id}`"
-        :ref="flag.isNewAttendee && 'newAttendee'"
+        :key="`marker-${flag._id}`"
         :lat-lng="flag.center"
         :options="flagOptions"
         @mouseover="onMarkerMouseover"
         @mouseout="onMarkerMouseout"
+        :ref="`marker-${flag._id}`"
       >
         <l-popup :options="flagPopupOptions">
           <div class="d-flex flex-column align-center">
@@ -132,6 +132,11 @@ export default {
             layer._path.classList.add('flag-pointer')
           }
         })
+        if (newId) {
+          const markerRefs = this.$refs[`marker-${newId}`]
+          const marker = markerRefs[0]
+          marker.mapObject.openPopup()
+        }
       })
     },
     flags(newFlags, oldFlags) {
@@ -169,11 +174,7 @@ export default {
       // Hide welcome snackbar
       this.$store.commit('app/SET_SHOW_WELCOME_SNACKBAR', false)
 
-      // For some reason I need to assign the value of the reactive this.currentAttendeeId variable in
-      // order for the correct value to be used by this function
-      const currentAttendeeId = this.currentAttendeeId
-
-      if (currentAttendeeId) {
+      if (this.currentAttendeeId) {
         // If there is already a currentAttendeeId set, show the read more snackbar
         this.$store.commit('app/SET_SHOW_READ_MORE_SNACKBAR', true)
       } else {
