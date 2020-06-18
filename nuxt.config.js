@@ -56,10 +56,8 @@ export default {
         /* module options */
       }
     ],
-    [
-      '@nuxtjs/axios',
-      { baseURL: process.env.BASE_URL || 'http://localhost:3000' }
-    ]
+    // https://axios.nuxtjs.org/
+    '@nuxtjs/axios'
   ],
   /*
    ** Nuxt.js modules
@@ -110,10 +108,21 @@ export default {
     ]
   ],
   /*
-   ** Axios module configuration
+   ** Axios and proxy module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    proxy: true
+    // proxy: {
+    //   pathRewrite: { '^/api/': '/ap1/v1/' }
+    // }
+  },
+  proxy: {
+    '/api/v1': {
+      target: 'http://localhost:5000'
+      // pathRewrite: { '^/api/': '/ap1/v1/' }
+    }
+  },
   /*
    ** Build configuration
    */

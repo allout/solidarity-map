@@ -19,6 +19,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/proxy": "^2.0.0",
     "@nuxtjs/vuetify": "^1.11.2",
     "countries-list": "^2.5.4",
     "i18n-iso-countries": "^5.4.0",

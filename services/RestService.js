@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: `${process.env.REST_DB_ENDPOINT}`,
   withCredentials: false,
   headers: {
     Accept: 'application/json',
@@ -11,10 +10,10 @@ const apiClient = axios.create({
 
 export default {
   getAttendees() {
-    return apiClient.get('/attendees')
+    return apiClient.get('/api/attendees')
   },
   createAttendee(lat, lng, solidarityCountry, emojiIndices) {
-    return apiClient.post('/attendees', {
+    return apiClient.post('/api/attendees', {
       lat,
       lng,
       solidarityCountry,
@@ -22,6 +21,6 @@ export default {
     })
   },
   updateAttendee(id, data) {
-    return apiClient.patch(`/attendees/${id}`, data)
+    return apiClient.patch(`/api/attendees/${id}`, data)
   }
 }

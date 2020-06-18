@@ -93,15 +93,10 @@ export default {
       // Apply styles to the area overlay
       return {
         color: 'var(--v-primary-lighten1)',
-        className: this.flagIsPlaced ? '' : 'flag-pointer'
+        className: this.currentAttendeeId ? '' : 'flag-pointer'
       }
     },
-    ...mapState('app', [
-      'appBarHeight',
-      'flagIsPlaced',
-      'prideLocation',
-      'year'
-    ]),
+    ...mapState('app', ['appBarHeight', 'prideLocation', 'year']),
     ...mapState('map', [
       'enableMarkerPopupOnHover',
       'showZoomControl',
@@ -110,6 +105,7 @@ export default {
       'zoom',
       'areaGeojson'
     ]),
+    ...mapState('attendees', ['currentAttendeeId']),
     ...mapGetters('map', ['flags'])
   },
   watch: {
@@ -124,12 +120,13 @@ export default {
     isPortableWidth(newValue) {
       this.$store.commit('map/SET_SHOW_ZOOM_CONTROL', !newValue)
     },
-    flagIsPlaced(isPlaced) {
+    currentAttendeeId(newId, oldId) {
       this.$nextTick(() => {
-        // We need to force a refresh of the area style when flagIsPlaced changes
+        // We need to force a refresh of the area style when currentAttendeeId
+        // is set or unset
         const { mapObject } = this.$refs.area
         mapObject.eachLayer((layer) => {
-          if (isPlaced) {
+          if (newId) {
             layer._path.classList.remove('flag-pointer')
           } else {
             layer._path.classList.add('flag-pointer')
@@ -172,12 +169,12 @@ export default {
       // Hide welcome snackbar
       this.$store.commit('app/SET_SHOW_WELCOME_SNACKBAR', false)
 
-      // For some reason I need to assign the value of the reactive this.flagIsPlaced variable in
+      // For some reason I need to assign the value of the reactive this.currentAttendeeId variable in
       // order for the correct value to be used by this function
-      const flagIsPlaced = this.flagIsPlaced
+      const currentAttendeeId = this.currentAttendeeId
 
-      if (flagIsPlaced) {
-        // If the flag is alredy placed, show the read more snackbar
+      if (currentAttendeeId) {
+        // If there is already a currentAttendeeId set, show the read more snackbar
         this.$store.commit('app/SET_SHOW_READ_MORE_SNACKBAR', true)
       } else {
         // When flag location is clicked, zoom the map in a little unless it's already zoomed enough
@@ -186,11 +183,10 @@ export default {
         // Center map on click location
         mapObject.setView(evt.latlng, zoomTo)
 
-        // Since the flag is not already placed we enable the form
+        // Since we don't yet have a currentAttendeeId we enable the form
         this.$store.commit('formDialog/SET_VISIBLE', true)
-        this.$store.commit('attendees/UPDATE_ATTENDEE', {
-          ...evt.latlng
-        })
+        // Save the lat / lng of the map click in the store
+        this.$store.commit('map/SET_LAST_CHOSEN_LATLNG', evt.latlng)
       }
     }
   }

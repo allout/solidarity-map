@@ -8,7 +8,8 @@ export const state = () => ({
   center: [],
   zoom: 18,
   ready: false,
-  areaGeojson: null
+  areaGeojson: null,
+  lastChosenLatlng: null
 })
 
 export const getters = {
@@ -23,14 +24,16 @@ export const getters = {
             : ''
           : '',
         emojiMessage: emojiIndices
-          .map((index) => {
-            try {
-              return emojis[index]
-            } catch (e) {
-              return ''
-            }
-          })
-          .join('')
+          ? emojiIndices
+              .map((index) => {
+                try {
+                  return emojis[index]
+                } catch (e) {
+                  return ''
+                }
+              })
+              .join('')
+          : []
       })
     )
 }
@@ -49,6 +52,9 @@ export const mutations = {
   },
   SET_AREA_GEOJSON(state, geojson) {
     state.areaGeojson = geojson
+  },
+  SET_LAST_CHOSEN_LATLNG(state, latlng) {
+    state.lastChosenLatlng = latlng
   }
 }
 
