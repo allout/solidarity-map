@@ -6,7 +6,11 @@ export default {
     // The values that are referenced from process.env can be overridden in the system environment
     // or a .env file at the root of this repository.
     PRIDE_LOCATION: process.env.PRIDE_LOCATION || 'stPetersburg',
-    REST_DB_ENDPOINT: process.env.production ? '' : 'http://localhost:3001',
+    REST_DB_ENDPOINT: process.env.production
+      ? ''
+      : process.env.MOCK_DATA
+      ? 'http://localhost:3001'
+      : 'http://localhost:5000',
     // Setting SUBSCRIPTION_ENABLED=0 will disable the subscription step
     SKIP_SUBSCRIPTION:
       process.env.SUBSCRIPTION_ENABLED === undefined
