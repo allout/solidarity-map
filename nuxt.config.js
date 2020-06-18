@@ -120,7 +120,7 @@ export default {
   },
   proxy: {
     '/api/v1': {
-      target: process.env.API_HOST || 'http://localhost:5000',
+      target: process.env.API_BASE || 'http://localhost:5000',
       headers: {
         Authorization: `Basic ${apiAuthToken}`
       }
