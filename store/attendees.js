@@ -24,9 +24,13 @@ export const mutations = {
 
 export const actions = {
   async fetchAttendees({ commit, state, dispatch }) {
-    const response = await RestService.getAttendees()
-    commit('SET_ATTENDEES', response.data)
-    return state.attendees
+    try {
+      const response = await RestService.getAttendees()
+      commit('SET_ATTENDEES', response.data)
+      return state.attendees
+    } catch (e) {
+      console.error(e)
+    }
   },
   async createAttendee(
     { commit },
@@ -45,7 +49,7 @@ export const actions = {
       commit('APPEND_ATTENDEE')
     } catch (e) {
       // eslint-disable-next-line no-console
-      console.log(e)
+      console.error(e)
     }
   },
   async syncAttendee({ commit, state }) {
@@ -56,7 +60,7 @@ export const actions = {
       console.log(response.data)
     } catch (e) {
       // eslint-disable-next-line no-console
-      console.log(e)
+      console.error(e)
     }
   }
 }
