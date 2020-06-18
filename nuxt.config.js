@@ -1,5 +1,11 @@
 require('dotenv').config()
 
+const apiAuthToken = Buffer.from(
+  `${process.env.API_USER || 'api'}:${process.env.API_PASSWORD ||
+    'JY9^QUfNt}+HuDfgvJ62'}`,
+  'utf8'
+).toString('base64')
+
 export default {
   mode: 'universal',
   env: {
@@ -119,7 +125,10 @@ export default {
   },
   proxy: {
     '/api/v1': {
-      target: 'http://localhost:5000'
+      target: process.env.API_HOST || 'http://localhost:5000',
+      headers: {
+        Authorization: `Basic ${apiAuthToken}`
+      }
       // pathRewrite: { '^/api/': '/ap1/v1/' }
     }
   },
