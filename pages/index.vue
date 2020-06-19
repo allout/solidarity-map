@@ -5,11 +5,9 @@
         <Map v-if="ready" />
       </v-col>
     </v-row>
-    <v-row ref="infoPanel">
-      <v-col>
-        <InfoPanel />
-      </v-col>
-    </v-row>
+    <div ref="infoPanel">
+      <InfoPanel />
+    </div>
   </div>
 </template>
 

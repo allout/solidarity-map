@@ -1,16 +1,20 @@
 <template>
-  <div class="info-panel py-5" :style="infoStyle">
-    <h3 class="headline text-center font-weight-bold mb-5">
-      {{ $t(`infoPanel.${prideLocationEnvValue}.title`) }}
-    </h3>
-    <p
-      v-for="(paragraph, index) in paragraphs"
-      :key="`p${index}`"
-      class="headline"
-    >
-      {{ paragraph }}
-    </p>
-  </div>
+  <v-row class="info-panel">
+    <v-col>
+      <div class="py-5" :style="infoStyle">
+        <h3 class="headline text-center font-weight-bold mb-5">
+          {{ $t(`infoPanel.${prideLocationEnvValue}.title`) }}
+        </h3>
+        <p
+          v-for="(paragraph, index) in paragraphs"
+          :key="`p${index}`"
+          class="headline"
+        >
+          {{ paragraph }}
+        </p>
+      </div>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
@@ -46,4 +50,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.info-panel {
+  background-color: #333;
+  color: white;
+}
+</style>
