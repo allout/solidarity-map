@@ -1,7 +1,7 @@
 <template>
   <v-row class="info-panel">
     <v-col>
-      <div class="py-5" :style="infoStyle">
+      <div class="py-5">
         <h3 class="headline text-center font-weight-bold mb-5">
           {{ $t(`infoPanel.${prideLocationEnvValue}.title`) }}
         </h3>
@@ -23,12 +23,6 @@ import { mapState } from 'vuex'
 export default {
   name: 'InfoPanel',
   computed: {
-    infoMinHeight() {
-      return `calc(100vh - ${this.appBarHeight}px)`
-    },
-    infoStyle() {
-      return `min-height: ${this.infoMinHeight};`
-    },
     paragraphs() {
       let index = 0
       const paragraphs = []

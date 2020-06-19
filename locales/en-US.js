@@ -14,6 +14,27 @@ export default {
     // Here we provide the translated city names for every city this app currently supports
     stPetersburg: 'St. Petersburg'
   },
+  links: {
+    // Translators please only translate the label items here, not the hrefs
+    privacy: {
+      label: 'Privacy Policy',
+      href: '//allout.org/en/privacy-policy'
+    },
+    unsubscribe: {
+      href: '//allout.org/en/unsubscribe'
+    },
+    terms: {
+      label: 'Terms of Service',
+      href: '//allout.org/en/terms-service'
+    },
+    contact: {
+      label: 'Contact Us',
+      href: '//allout.org/en/contact-us'
+    },
+    allout: {
+      href: '//allout.org/en/'
+    }
+  },
   sharing: {
     // Facebook does not support share messages, but twitter and whatsapp do.
     // Here we define those messages
@@ -114,19 +135,14 @@ export default {
   },
   disclaimers: {
     // This section is only used if the subscription step is enabled.
-    // All Out only has these links currently available in EN, DE, FR, IT, ES and PT.
-    // So maybe use this english version if your language isn't supported
-    links: {
-      privacy: '//allout.org/en/privacy-policy',
-      unsubscribe: '//allout.org/en/unsubscribe',
-      smsterms: '//allout.org/en/sms-terms'
-    },
+    // Translators, please be careful to preserve the html link tags,
+    // only translating their contentes
     subscription: `
       By clicking this button, I consent to receive emails about All Out's campaign updates,
       surveys, petitions, and donation opportunities as described in All Out's
-      <a target='_blank' href='@:disclaimers.links.privacy'>privacy policy</a>.
+      <a target='_blank' href='@:links.privacy.href'>privacy policy</a>.
       I understand that I have the right to
-      <a target='_blank' href='@:disclaimers.links.unsubscribe'>unsubscribe</a>
+      <a target='_blank' href='@:links.unsubscribe.href'>unsubscribe</a>
       at any time.
       `
   },
@@ -155,6 +171,9 @@ export default {
           'Every flag stands for a voice of support and love from all over the world, telling Russian LGBT+ people that they are not alone.'
       }
     }
+  },
+  footer: {
+    byLine: 'An open source project, built with love and solidarity by'
   },
   validation: {
     ...en.messages

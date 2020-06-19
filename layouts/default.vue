@@ -10,7 +10,7 @@
     >
       <div ref="appBarContent" class="d-flex flex-column" style="width: 100%">
         <div class="d-flex justify-space-between align-start mb-3">
-          <div class="d-flex justify-center align-center logo-header">
+          <div class="d-flex justify-center align-center logo logo-header">
             <MainLogoSVG />
           </div>
           <language-select />
@@ -32,6 +32,36 @@
     <welcome-snackbar />
     <read-more-snackbar />
     <back-to-map-snackbar />
+    <v-footer color="#1d1f23" class="white--text app-footer" absolute app>
+      <v-row>
+        <v-col class="d-flex flex-column align-center footer-content">
+          <div class="d-flex flex-column align-center">
+            <span>{{ $t('footer.byLine') }}</span>
+            <div class="d-flex align-center">
+              <a
+                :href="$t('links.allout.href')"
+                alt="All Out"
+                class="d-flex logo logo-footer"
+              >
+                <MainLogoSVG />
+              </a>
+            </div>
+          </div>
+          <div>{{ year }}</div>
+          <div class="d-flex">
+            <a :href="$t('links.privacy.href')" class="mr-2 mb-2">
+              {{ $t('links.privacy.label') }}
+            </a>
+            <a :href="$t('links.terms.href')" class="mr-2 mb-2">
+              {{ $t('links.terms.label') }}
+            </a>
+            <a :href="$t('links.contact.href')" class="mr-2 mb-2">
+              {{ $t('links.contact.label') }}
+            </a>
+          </div>
+        </v-col>
+      </v-row>
+    </v-footer>
   </v-app>
 </template>
 
@@ -173,20 +203,33 @@ export default {
 <style lang="scss" scoped>
 .app-bar {
   z-index: 1001;
+}
 
-  .logo-header {
+.logo {
+  height: auto;
+
+  &.logo-header {
     width: 60px;
-    height: auto;
+  }
 
-    svg {
-      width: 100%;
-      height: auto;
-    }
+  &.logo-footer {
+    width: 40px;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
   }
 }
+
 .container:first-of-type {
   align-items: stretch !important;
   padding-top: 0;
   padding-bottom: 0;
+}
+
+.footer-content {
+  // Make room for the snackbars so they don't obscure the footer
+  margin-bottom: 70px;
 }
 </style>
