@@ -99,22 +99,22 @@
 			"href": "//allout.org/pt"
 		},
 		"contact": {
-			"href": "",
-			"label": ""
+			"href": "//allout.org/pt/fale-com-gente",
+			"label": "Fale com a gente"
 		},
 		"privacy": {
 			"href": "//allout.org/pt/politica-de-privacidade",
 			"label": "Política de privacidade"
 		},
 		"terms": {
-			"href": "https://allout.org/pt/termos-de-servico",
+			"href": "//allout.org/pt/termos-de-servico",
 			"label": "Termos de serviço"
 		},
 		"unicorns": {
-			"href": ""
+			"href": "//www.unicornsintech.com"
 		},
 		"unsubscribe": {
-			"href": ""
+			"href": "https://allout.org/pt/descadastrar"
 		}
 	},
 	"map": {
