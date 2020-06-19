@@ -21,3 +21,13 @@ export const getIdLookup = (items, idProp = '_id') =>
     acc[item[idProp]] = index
     return acc
   }, {})
+
+// Takes an object (obj) and and array (props) of strings representing object
+// properties and returns an object containing only props that were mentioned in the props array
+export const getObjFromProps = (obj, props) =>
+  props.reduce((acc, prop) => {
+    if (Object.prototype.hasOwnProperty.call(prop)) {
+      acc[prop] = obj[prop]
+    }
+    return acc
+  }, {})

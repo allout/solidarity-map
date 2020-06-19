@@ -143,6 +143,7 @@
 <script>
 import { extend } from 'vee-validate'
 import { required, email, max } from 'vee-validate/dist/rules'
+import { mapState } from 'vuex'
 import i18nCountries from 'i18n-iso-countries'
 import { countries } from 'countries-list'
 import { gdprCountries } from '~/utils/resources'
@@ -183,11 +184,17 @@ export default {
   computed: {
     gdprCountryIsSelected() {
       return gdprCountries.includes(this.form.subscriptionCountry)
-    }
+    },
+    ...mapState('attendees', ['currentAttendeeId'])
   },
   methods: {
     onSubmit(evt) {
-      this.$store.commit('attendees/UPDATE_ATTENDEE', { ...this.form })
+      const { subscriptionConsent, ...toSubmit } = this.form
+      console.log('toSubmit', toSubmit)
+      this.$store.dispatch('attendees/updateAttendee', {
+        _id: this.currentAttendeeId,
+        ...toSubmit
+      })
       this.$store.commit('formDialog/NEXT_STEP')
     },
     onSkipClicked(evt) {

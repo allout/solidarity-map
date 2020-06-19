@@ -1,4 +1,6 @@
-import { getIdLookup } from '@/utils/data'
+import { getIdLookup, getObjFromProps } from '@/utils/data'
+
+const mapOnlyProps = ['lat', 'lng', 'solidarityCountry', 'emojiIndices']
 
 export const state = () => ({
   attendees: [],
@@ -55,9 +57,10 @@ export const actions = {
         emojiIndices
       })
       console.log(response.data)
-      const { _id } = response.data
+      const { _id, _etag } = response.data
       commit('APPEND_ATTENDEE', {
         _id,
+        _etag,
         lat,
         lng,
         solidarityCountry,
@@ -69,16 +72,30 @@ export const actions = {
       console.error(e)
     }
   },
-  async updateCurrentAttendee({ commit, state }, _id, newData) {
-    // Requires createAttendee to be called first, or else the attendee will not be
-    // available in this store
+  async updateAttendee({ commit, state }, data) {
+    console.log('updateAttendee', data)
+    const { _id, ...rest } = data
+    // Requires the passed in attendee record to have an _id value and already be stored
+    // with an _etag from the REST interface for data integrity
+    const { _etag } = state.attendees[state.attendeesIdLookup[_id]]
     try {
       const response = await this.$axios.patch(
-        `/api/v1/attendees/${state.currentAttendeeId}`,
-        newData
+        `/api/v1/attendees/${_id}`,
+        rest,
+        {
+          headers: {
+            'If-Match': _etag
+            // 'Content-Type': 'application/json'
+          }
+        }
       )
       console.log(response.data)
-      commit('UPDATE_ATTENDEE', _id, response.data)
+      commit('UPDATE_ATTENDEE', _id, {
+        // save the new _etag value just in case we need to update again
+        _etag: response.data._etag,
+        // save any extra data that is valid for map display
+        ...getObjFromProps(rest, mapOnlyProps)
+      })
     } catch (e) {
       // eslint-disable-next-line no-console
       console.error(e)
