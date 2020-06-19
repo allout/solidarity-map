@@ -99,22 +99,22 @@
 			"href": "//allout.org"
 		},
 		"contact": {
-			"href": "",
+			"href": "https://translate.google.com/translate?hl=&sl=en&tl=ru&u=https%3A%2F%2Fallout.org%2Fen%2Fcontact-us&sandbox=1",
 			"label": ""
 		},
 		"privacy": {
-			"href": "",
+			"href": "https://translate.google.com/translate?sl=auto&tl=ru&u=https%3A%2F%2Fallout.org%2Fen%2Fprivacy-policy",
 			"label": ""
 		},
 		"terms": {
-			"href": "",
+			"href": "https://translate.google.com/translate?hl=&sl=en&tl=ru&u=https%3A%2F%2Fallout.org%2Fen%2Fterms-service",
 			"label": ""
 		},
 		"unicorns": {
 			"href": "//www.unicornsintech.com"
 		},
 		"unsubscribe": {
-			"href": ""
+			"href": "https://translate.google.com/translate?hl=&sl=en&tl=ru&u=https%3A%2F%2Fallout.org%2Fen%2Funsubscribe"
 		}
 	},
 	"map": {
