@@ -99,22 +99,22 @@
 			"href": "//allout.org/de"
 		},
 		"contact": {
-			"href": "",
-			"label": ""
+			"href": "//allout.org/de/schreibe-uns",
+			"label": "Schreibe uns"
 		},
 		"privacy": {
-			"href": "",
-			"label": ""
+			"href": "//allout.org/de/datenschutzerklaerung",
+			"label": "Datenschutzrichtlinie"
 		},
 		"terms": {
-			"href": "",
-			"label": ""
+			"href": "//allout.org/de/nutzungsbedingungen",
+			"label": "Nutzungsbedingungen"
 		},
 		"unicorns": {
 			"href": "//www.unicornsintech.com"
 		},
 		"unsubscribe": {
-			"href": ""
+			"href": "//allout.org/de/abmelden"
 		}
 	},
 	"map": {

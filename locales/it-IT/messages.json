@@ -99,22 +99,22 @@
 			"href": "//allout.org/it"
 		},
 		"contact": {
-			"href": "",
-			"label": ""
+			"href": "//allout.org/es/cancelar-suscripcion",
+			"label": "Contattaci"
 		},
 		"privacy": {
-			"href": "",
-			"label": ""
+			"href": "//allout.org/it/disposizioni-sulla-privacy",
+			"label": "Informativa sulla privacy"
 		},
 		"terms": {
-			"href": "",
-			"label": ""
+			"href": "//allout.org/it/termini-e-condizioni-duso",
+			"label": "Termini di servizio"
 		},
 		"unicorns": {
 			"href": "//www.unicornsintech.com"
 		},
 		"unsubscribe": {
-			"href": ""
+			"href": "//allout.org/it/annullare-liscrizione"
 		}
 	},
 	"map": {
