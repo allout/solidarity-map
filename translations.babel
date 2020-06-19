@@ -2381,7 +2381,7 @@
                                 <name>message</name>
                                 <definition_loaded>false</definition_loaded>
                                 <description></description>
-                                <comment></comment>
+                                <comment>This is the very first instruction you receive when visiting the site as a new user. I have tried to word this in such a way that the user gets all the important information as to what to do.They need to know that they can only put the flag in the area of the city, they need to know they are joining others and roughly how many people they are joining. Don't use action words like "click" because it doesn't make sense on touch screen devices</comment>
                                 <default_text></default_text>
                                 <translations>
                                     <translation>
