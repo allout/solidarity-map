@@ -123,7 +123,8 @@ export default {
       target: process.env.API_BASE || 'http://localhost:5000',
       headers: {
         Authorization: `Basic ${apiAuthToken}`
-      }
+      },
+      changeOrigin: true
       // pathRewrite: { '^/api/': '/ap1/v1/' }
     }
   },
