@@ -96,19 +96,19 @@
 	},
 	"links": {
 		"allout": {
-			"href": ""
+			"href": "//allout.org/pt"
 		},
 		"contact": {
 			"href": "",
 			"label": ""
 		},
 		"privacy": {
-			"href": "",
-			"label": ""
+			"href": "//allout.org/pt/politica-de-privacidade",
+			"label": "Política de privacidade"
 		},
 		"terms": {
-			"href": "",
-			"label": ""
+			"href": "https://allout.org/pt/termos-de-servico",
+			"label": "Termos de serviço"
 		},
 		"unicorns": {
 			"href": ""
