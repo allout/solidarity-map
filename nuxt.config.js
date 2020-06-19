@@ -87,13 +87,13 @@ export default {
             name: 'English',
             code: 'en',
             iso: 'en-US',
-            file: 'en-US.js'
+            file: 'en-US/index.js'
           },
           {
             name: 'Russian',
             code: 'ru',
             iso: 'ru-RU',
-            file: 'ru-RU.js'
+            file: 'ru-RU/index.js'
           }
         ],
         langDir: 'locales/',
