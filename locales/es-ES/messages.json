@@ -1,0 +1,149 @@
+{
+	"accessibility": {
+		"imgAlts": {
+			"flag": ""
+		}
+	},
+	"cities": {
+		"stPetersburg": ""
+	},
+	"dialogs": {
+		"form": {
+			"buttons": {
+				"map": {
+					"label": ""
+				},
+				"showSupport": {
+					"label": ""
+				},
+				"skip": {
+					"label": ""
+				},
+				"subscribe": {
+					"label": ""
+				}
+			},
+			"copy": {
+				"addFlair": "",
+				"extraInfoAsk": ""
+			}
+		},
+		"steps": {
+			"flag": {
+				"emojiLimitReachedAlert": "",
+				"text": "",
+				"title": ""
+			},
+			"share": {
+				"text": "",
+				"title": ""
+			},
+			"subscription": {
+				"disclaimer": "",
+				"text": "",
+				"title": ""
+			}
+		}
+	},
+	"disclaimers": {
+		"subscription": ""
+	},
+	"fields": {
+		"email": {
+			"label": "",
+			"placeholder": ""
+		},
+		"emojiGrid": {
+			"placeholder": ""
+		},
+		"firstName": {
+			"label": "",
+			"placeholder": ""
+		},
+		"lastName": {
+			"label": "",
+			"placeholder": ""
+		},
+		"solidarityCountry": {
+			"label": "",
+			"placeholder": ""
+		},
+		"subscriptionConsent": {
+			"accept": "",
+			"decline": "",
+			"label": ""
+		},
+		"subscriptionCountry": {
+			"label": "",
+			"placeholder": ""
+		}
+	},
+	"footer": {
+		"byLine": ""
+	},
+	"infoPanel": {
+		"stPetersburg": {
+			"paragraphs": {
+				"p0": "",
+				"p1": "",
+				"p2": "",
+				"p3": "",
+				"p4": "",
+				"p5": ""
+			},
+			"title": ""
+		}
+	},
+	"links": {
+		"allout": {
+			"href": ""
+		},
+		"contact": {
+			"href": "",
+			"label": ""
+		},
+		"privacy": {
+			"href": "",
+			"label": ""
+		},
+		"terms": {
+			"href": "",
+			"label": ""
+		},
+		"unicorns": {
+			"href": ""
+		},
+		"unsubscribe": {
+			"href": ""
+		}
+	},
+	"map": {
+		"flags": {
+			"popups": {
+				"solidarityMessage": ""
+			}
+		}
+	},
+	"sharing": {
+		"message": ""
+	},
+	"site": {
+		"author": "",
+		"purpose": "",
+		"subtitle": "",
+		"title": ""
+	},
+	"snackbars": {
+		"backToMap": {
+			"buttonLabel": "",
+			"message": ""
+		},
+		"readMore": {
+			"buttonLabel": "",
+			"message": ""
+		},
+		"welcome": {
+			"message": ""
+		}
+	}
+}

@@ -1,9 +1,9 @@
-import ru from 'vee-validate/dist/locale/ru.json'
+import it from 'vee-validate/dist/locale/it.json'
 import messages from './messages.json'
 
 export default {
   ...messages,
   validation: {
-    ...ru.messages
+    ...it.messages
   }
 }
