@@ -10,6 +10,7 @@ export const state = () => ({
   now,
   year: now.getFullYear(),
   prideLocation: '',
+  prideLocationEnvValue: '',
   numAttendees: 5000,
   numCountries: 12,
   baseUrl: '',
@@ -30,9 +31,6 @@ export const mutations = {
   SET_SHOW_READ_MORE_SNACKBAR(state, showReadMoreSnackbar) {
     state.showReadMoreSnackbar = showReadMoreSnackbar
   },
-  SET_PRIDE_LOCATION(state, prideLocation) {
-    state.prideLocation = prideLocation
-  },
   SET_BASE_URL(state, baseUrl) {
     state.baseUrl = baseUrl
   },
@@ -47,5 +45,10 @@ export const mutations = {
   },
   SET_MAP_PANEL_REF(state, mapPanelRef) {
     state.mapPanelRef = mapPanelRef
+  },
+  UPDATE_STORE(state, newState) {
+    Object.keys(newState).forEach((key) => {
+      state[key] = newState[key]
+    })
   }
 }

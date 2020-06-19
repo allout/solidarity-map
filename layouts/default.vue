@@ -89,10 +89,11 @@ export default {
     }
   },
   created() {
-    this.$store.commit(
-      'app/SET_PRIDE_LOCATION',
-      this.$t(`cities.${this.$nuxt.context.env.PRIDE_LOCATION}`)
-    )
+    const prideLocationEnvValue = this.$nuxt.context.env.PRIDE_LOCATION
+    this.$store.commit('app/UPDATE_STORE', {
+      prideLocationEnvValue,
+      prideLocation: this.$t(`cities.${prideLocationEnvValue}`)
+    })
   },
   mounted() {
     document.onreadystatechange = () => {
