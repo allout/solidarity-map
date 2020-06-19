@@ -46,7 +46,7 @@
 		}
 	},
 	"disclaimers": {
-		"subscription": ""
+		"subscription": "Durch Klicken dieses Buttons, erkläre ich mich einverstanden, E-Mails zu All Outs Kampagnenupdates, Umfragen, Petitionen und Spendenaufrufen, wie in All Outs <a target='_blank' href='@:links.privacy.href'>Datenschutzbedingungen festgelegt</a>, zu erhalten. Ich behalte mir das Recht vor, mein <a target='_blank' href='@:links.unsubscribe.href'>Abonnement jederzeit zu beenden</a>."
 	},
 	"fields": {
 		"email": {

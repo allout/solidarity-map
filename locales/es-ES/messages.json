@@ -46,7 +46,7 @@
 		}
 	},
 	"disclaimers": {
-		"subscription": ""
+		"subscription": "Al hacer clic en este botón, acepto recibir correos electrónicos con actualizaciones sobre las campañas de All Out, encuestas, peticiones y oportunidades de donación según se describe en la <a target='_blank' href='@:links.privacy.href'>Política de Privacidad</a> de All Out. Comprendo que tengo el derecho a <a target='_blank' href='@:links.unsubscribe.href'>cancelar mi suscripción</a> a estos correos electrónicos en cualquier momento."
 	},
 	"fields": {
 		"email": {
