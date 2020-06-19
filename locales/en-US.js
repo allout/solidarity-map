@@ -104,6 +104,12 @@ export default {
     },
     emojiGrid: {
       placeholder: 'Select emoji below...'
+    },
+    subscriptionConsent: {
+      label:
+        'We are required by law to request your explicit permission to send you emails. So, can we keep you in the loop?',
+      accept: 'Yes, I agree to receiving emails from All Out',
+      decline: "No, I don't wish to subscribe"
     }
   },
   disclaimers: {

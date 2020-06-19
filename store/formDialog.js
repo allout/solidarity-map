@@ -3,9 +3,9 @@ import { getKeyMirror } from '~/utils/data'
 const steps = getKeyMirror('FLAG', 'SUBSCRIPTION', 'SHARE')
 
 export const state = () => ({
-  visible: false,
+  visible: true,
   steps,
-  step: steps.FLAG
+  step: steps.SUBSCRIPTION
 })
 
 export const getters = {

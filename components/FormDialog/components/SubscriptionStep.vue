@@ -3,8 +3,8 @@
   <ValidationObserver v-slot="{ invalid, handleSubmit }" slim>
     <form class="white pa-4" @submit.prevent="handleSubmit(onSubmit)">
       <ValidationProvider
-        v-slot="{ errors, touched }"
-        rules="email|required"
+        v-slot="{ errors }"
+        rules="email|required|max:50"
         name="email"
         class="field"
         tag="div"
@@ -18,7 +18,7 @@
           name="email"
           :placeholder="$t('fields.email.placeholder')"
         />
-        <span v-show="touched && errors.length > 0" class="is-invalid">
+        <span v-show="errors.length > 0" class="is-invalid">
           {{ errors[0] }}
         </span>
       </ValidationProvider>
@@ -30,7 +30,7 @@
           <ValidationProvider
             v-slot="{ errors, touched }"
             name="firstName"
-            rules="required"
+            rules="required|max:50"
             class="field"
             tag="div"
           >
@@ -50,7 +50,7 @@
           <ValidationProvider
             v-slot="{ errors, touched }"
             name="lastName"
-            rules="required"
+            rules="required|max:50"
             class="field"
             tag="div"
           >
@@ -96,15 +96,38 @@
               {{ errors[0] }}
             </span>
           </ValidationProvider>
+          <div v-if="gdprCountryIsSelected">
+            <label
+              class="subtitle-1 font-weight-bold mb-1"
+              for="subscriptionConsent"
+            >
+              {{ $t('fields.subscriptionConsent.label') }}
+            </label>
+            <div class="d-flex align-center" style="height: 64px">
+              <v-switch
+                v-model="form.subscriptionConsent"
+                :label="
+                  form.subscriptionConsent
+                    ? $t('fields.subscriptionConsent.accept')
+                    : $t('fields.subscriptionConsent.decline')
+                "
+                :class="
+                  `switch mt-0 ${!form.subscriptionConsent && 'is-invalid'}`
+                "
+              />
+            </div>
+          </div>
         </div>
       </transition-group>
       <div class="d-flex flex-column">
         <v-btn
           type="submit"
           color="primary"
-          class="mb-1"
+          class="mb-1 mt-3"
           large
-          :disabled="invalid"
+          :disabled="
+            invalid || (gdprCountryIsSelected && !form.subscriptionConsent)
+          "
         >
           {{ $t('dialogs.form.buttons.subscribe.label') }}
         </v-btn>
@@ -119,9 +142,10 @@
 
 <script>
 import { extend } from 'vee-validate'
-import { required, email, min } from 'vee-validate/dist/rules'
+import { required, email, max } from 'vee-validate/dist/rules'
 import i18nCountries from 'i18n-iso-countries'
 import { countries } from 'countries-list'
+import { gdprCountries } from '~/utils/resources'
 
 // Install required rule and message.
 extend('required', required)
@@ -129,8 +153,8 @@ extend('required', required)
 // Install email rule and message.
 extend('email', email)
 
-// Install min rule and message.
-extend('min', min)
+// Install max rule and message.
+extend('max', max)
 
 const countryCodes = Object.keys(countries).sort()
 
@@ -140,7 +164,8 @@ export default {
       firstName: '',
       lastName: '',
       email: '',
-      subscriptionCountry: ''
+      subscriptionCountry: '',
+      subscriptionConsent: false
     },
     countries: [].concat(
       {
@@ -155,6 +180,11 @@ export default {
       }))
     )
   }),
+  computed: {
+    gdprCountryIsSelected() {
+      return gdprCountries.includes(this.form.subscriptionCountry)
+    }
+  },
   methods: {
     onSubmit(evt) {
       this.$store.commit('attendees/UPDATE_ATTENDEE', { ...this.form })
@@ -177,5 +207,16 @@ export default {
 .fade-expand-leave-to {
   opacity: 0;
   transform: scale(0);
+}
+.switch {
+  &::v-deep label {
+    color: black;
+    font-size: 14px;
+  }
+
+  &.is-invalid::v-deep label {
+    color: var(--v-error-base);
+    font-weight: 600;
+  }
 }
 </style>
