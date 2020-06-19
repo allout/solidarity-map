@@ -7,7 +7,7 @@ export default {
     title: 'Tag your Pride in {prideLocation}',
     subtitle: '#UnDistanced Online Pride {year}',
     author:
-      'https://allout.org, in conjunction with https://www.unicornsintech.com/',
+      'https:@:links.allout.href, in conjunction with https:@:links.unicorns.href',
     purpose: '{prideLocation} Pride {year}'
   },
   cities: {
@@ -33,6 +33,9 @@ export default {
     },
     allout: {
       href: '//allout.org/en/'
+    },
+    unicorns: {
+      href: '//www.unicornsintech.com'
     }
   },
   sharing: {
