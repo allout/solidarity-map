@@ -47,6 +47,7 @@
             <div class="d-flex align-center justify-center">
               <a
                 :href="$t('links.allout.href')"
+                target="_blank"
                 alt="All Out"
                 class="d-flex logo logo-footer mr-5"
               >
@@ -54,6 +55,7 @@
               </a>
               <a
                 :href="$t('links.unicorns.href')"
+                target="_blank"
                 alt="Unicorns in Tech"
                 class="d-flex logo logo-footer logo-unicorns"
               >
@@ -67,18 +69,21 @@
           <div class="d-flex flex-column align-center footer-links">
             <a
               :href="$t('links.privacy.href')"
+              target="_blank"
               class="white--text text-decoration-none body-2 mr-2 mb-1"
             >
               {{ $t('links.privacy.label') }}
             </a>
             <a
               :href="$t('links.terms.href')"
+              target="_blank"
               class="white--text text-decoration-none body-2 mr-2 mb-1"
             >
               {{ $t('links.terms.label') }}
             </a>
             <a
               :href="$t('links.contact.href')"
+              target="_blank"
               class="white--text text-decoration-none body-2 mr-2 mb-1"
             >
               {{ $t('links.contact.label') }}
