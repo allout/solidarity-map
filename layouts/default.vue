@@ -217,7 +217,32 @@ export default {
         ...i18nSEO.meta
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        {
+          rel: 'apple-touch-icon',
+          sizes: '180x180',
+          href: '/images/icons/favicon/apple-touch-icon.png?v=1abf7589'
+        },
+        {
+          rel: 'icon',
+          type: 'image/png',
+          sizes: '32x32',
+          href: '/images/icons/favicon/favicon-32x32.png?v=1abf7589'
+        },
+        {
+          rel: 'icon',
+          type: 'image/png',
+          sizes: '16x16',
+          href: '/images/icons/favicon/favicon-16x16.png?v=1abf7589'
+        },
+        {
+          rel: 'mask-icon',
+          color: '#5bbad5',
+          href: '/images/icons/favicon/safari-pinned-tab.svg?v=1abf7589'
+        },
+        {
+          rel: 'shortcut icon',
+          href: '/images/icons/favicon/favicon.ico?v=1abf7589'
+        },
         {
           rel: 'stylesheet',
           href:
