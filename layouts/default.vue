@@ -15,7 +15,7 @@
           </div>
           <language-select />
         </div>
-        <h1 class="headline white--text">
+        <h1 class="headline white--text font-weight-bold">
           {{ siteTitle }}
         </h1>
         <h2 class="headline white--text font-weight-bold">
