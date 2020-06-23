@@ -16,6 +16,7 @@
         :geojson="areaGeojson"
         :options="areaOptions"
         :options-style="areaOptionsStyle"
+        :attribution="geoJsonAttribution"
         @click="onAreaClick"
       />
       <l-marker
@@ -72,7 +73,9 @@ export default {
       iconSize: [22, 22],
       iconUrl: require('@/assets/images/icons/flag.png'),
       iconAnchor: [-4, 20]
-    }
+    },
+    geoJsonAttribution:
+      '&copy; <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors'
   }),
   computed: {
     isPortableWidth() {
