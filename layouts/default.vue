@@ -32,7 +32,7 @@
     <welcome-snackbar />
     <read-more-snackbar />
     <back-to-map-snackbar />
-    <v-footer color="#1d1f23" class="white--text app-footer" absolute app>
+    <v-footer color="primary" class="white--text app-footer" absolute app>
       <v-row>
         <v-col class="d-flex flex-column align-center footer-content">
           <div class="d-flex flex-column align-center">

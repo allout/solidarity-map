@@ -46,7 +46,7 @@ export default {
 
 <style lang="scss" scoped>
 .info-panel {
-  background-color: #333;
+  background-color: var(--v-primary-base);
   color: white;
 }
 </style>
