@@ -32,30 +32,55 @@
     <welcome-snackbar />
     <read-more-snackbar />
     <back-to-map-snackbar />
-    <v-footer color="primary" class="white--text app-footer" absolute app>
+    <v-footer
+      color="primary"
+      class="white--text app-footer font-weight-600"
+      absolute
+      app
+    >
       <v-row>
         <v-col class="d-flex flex-column align-center footer-content">
-          <div class="d-flex flex-column align-center">
-            <span>{{ $t('footer.byLine') }}</span>
+          <div class="d-flex flex-column align-center mb-3">
+            <span style="font-weight: 600;" class="mb-5">{{
+              $t('footer.byLine')
+            }}</span>
             <div class="d-flex align-center">
               <a
                 :href="$t('links.allout.href')"
                 alt="All Out"
-                class="d-flex logo logo-footer"
+                class="d-flex logo logo-footer mr-5"
               >
                 <MainLogoSVG />
               </a>
+              <a
+                :href="$t('links.unicorns.href')"
+                alt="Unicorns in Tech"
+                class="d-flex logo logo-footer logo-unicorns"
+              >
+                <img
+                  src="/images/logos/unicornsintech.png"
+                  alt="Unicorns in Tech"
+                />
+              </a>
             </div>
           </div>
-          <div>{{ year }}</div>
-          <div class="d-flex">
-            <a :href="$t('links.privacy.href')" class="mr-2 mb-2">
+          <div class="d-flex flex-column align-center footer-links">
+            <a
+              :href="$t('links.privacy.href')"
+              class="white--text text-decoration-none body-2 mr-2 mb-1"
+            >
               {{ $t('links.privacy.label') }}
             </a>
-            <a :href="$t('links.terms.href')" class="mr-2 mb-2">
+            <a
+              :href="$t('links.terms.href')"
+              class="white--text text-decoration-none body-2 mr-2 mb-1"
+            >
               {{ $t('links.terms.label') }}
             </a>
-            <a :href="$t('links.contact.href')" class="mr-2 mb-2">
+            <a
+              :href="$t('links.contact.href')"
+              class="white--text text-decoration-none body-2 mr-2 mb-1"
+            >
               {{ $t('links.contact.label') }}
             </a>
           </div>
@@ -213,7 +238,14 @@ export default {
   }
 
   &.logo-footer {
-    width: 40px;
+    width: 58px;
+  }
+
+  &.logo-unicorns {
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
 
   svg {
@@ -231,5 +263,15 @@ export default {
 .footer-content {
   // Make room for the snackbars so they don't obscure the footer
   margin-bottom: 70px;
+}
+
+.footer-links {
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 </style>

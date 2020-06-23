@@ -1,14 +1,14 @@
 <template>
-  <v-row class="info-panel">
-    <v-col>
-      <div class="py-5">
-        <h3 class="headline text-center font-weight-bold mb-5">
+  <v-row class="info-panel" align="center">
+    <v-col cols="12">
+      <div class="pt-5">
+        <h3 class="headline font-weight-bold mb-5">
           {{ $t(`infoPanel.${prideLocationEnvValue}.title`) }}
         </h3>
         <p
           v-for="(paragraph, index) in paragraphs"
           :key="`p${index}`"
-          class="headline"
+          class="body-2"
         >
           {{ paragraph }}
         </p>
