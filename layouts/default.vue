@@ -44,7 +44,7 @@
             <span style="font-weight: 600;" class="mb-5">{{
               $t('footer.byLine')
             }}</span>
-            <div class="d-flex align-center">
+            <div class="d-flex align-center justify-center">
               <a
                 :href="$t('links.allout.href')"
                 alt="All Out"

@@ -1,6 +1,6 @@
 <template>
   <v-snackbar color="white" :value="showBackToMapSnackbar" :timeout="0">
-    <span class="black--text subtitle-1 font-weight-bold">
+    <span class="black--text subtitle-1">
       {{ $t('snackbars.backToMap.message') }}
     </span>
     <v-btn color="primary" @click="onButtonClick">

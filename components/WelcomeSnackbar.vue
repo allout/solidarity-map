@@ -12,7 +12,7 @@
         width="25"
         height="25"
       />
-      <span class="black--text subtitle-1 font-weight-bold">
+      <span class="black--text subtitle-1">
         {{
           $t('snackbars.welcome.message', {
             prideLocation,
