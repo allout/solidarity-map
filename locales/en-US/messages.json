@@ -24,8 +24,8 @@
 				}
 			},
 			"copy": {
-				"addFlair": "Personalise your flag with some flair!",
-				"extraInfoAsk": "To join our list, we just need a few more pieces of information from you..."
+				"addFlair": "Add some flair to your flag!",
+				"extraInfoAsk": "To join our movement's fight for equality, we just need a few more pieces of information from you..."
 			}
 		},
 		"steps": {
@@ -35,13 +35,12 @@
 				"title": "What would you like to add to your flag?"
 			},
 			"share": {
-				"text": "Share now and invite others the party!",
-				"title": "One final thing - solidarity is better with friends."
+				"text": "Share now and invite others to join!",
+				"title": "One more thing - invite your friends to join you."
 			},
 			"subscription": {
-				"disclaimer": "By submitting my email address I am consenting to receive emails from All Out etc etc...",
 				"text": "Want to join the fight for LGBT+ rights? Sign up to our mailing list.",
-				"title": "Can we keep you up to date with future issues?"
+				"title": "Can we keep you up to date about our work for LGBT+ rights?"
 			}
 		}
 	},
@@ -79,16 +78,16 @@
 		}
 	},
 	"footer": {
-		"byLine": "An open source project, built with love and solidarity by"
+		"byLine": "An open source project, built with love and solidarity by:"
 	},
 	"infoPanel": {
 		"stPetersburg": {
 			"paragraphs": {
-				"p0": "Russia's \"gay propaganda law\" prevents LGBT+ people from coming together to advocate for their rights. In recent years, police have detained activists exercising their right to peacefully assemble and celebrate Pride.",
+				"p0": "Russia's \"gay propaganda\" law prevents LGBT+ people from coming together to advocate for their rights. In recent years, police have detained activists exercising their right to peacefully assemble and celebrate Pride.",
 				"p1": "St. Petersburg is one of the biggest cities in Russia and one that is known for its progressive culture. But LGBT+ people are still discriminated against, attacked, and even arrested when they attempt to celebrate Pride.",
 				"p2": "That's why we decided to bring Pride to St. Petersburg through our global digital movement:",
 				"p3": "This map is our way of sending a message of support and solidarity to Russian LGBT+ people.",
-				"p4": "We are thousands of people coming together virtually in St. Petersburg in a huge, colorful display of solidarity to LGBT+ people who are not allowed to celebrate Pride.",
+				"p4": "We are thousands of people coming together virtually in St. Petersburg in a huge, colorful display of solidarity with LGBT+ people who are not allowed to celebrate Pride.",
 				"p5": "Every flag stands for a voice of support and love from all over the world, telling Russian LGBT+ people that they are not alone."
 			},
 			"title": "Global solidarity action for St. Petersburg Pride 2020"
@@ -136,14 +135,14 @@
 	"snackbars": {
 		"backToMap": {
 			"buttonLabel": "Back to map",
-			"message": "Keep exploring?"
+			"message": "Keep exploring"
 		},
 		"readMore": {
 			"buttonLabel": "Find out more!",
-			"message": "Want more information?"
+			"message": "More information?"
 		},
 		"welcome": {
-			"message": "Choose a location in {prideLocation} to place your flag and show solidarity with {numAttendees} others from {numCountries} countries"
+			"message": "Choose a location in {prideLocation} to place your flag and show solidarity together with {numAttendees} others participants from {numCountries} countries"
 		}
 	}
 }
