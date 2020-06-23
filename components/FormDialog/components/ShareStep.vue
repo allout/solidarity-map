@@ -86,7 +86,8 @@ export default {
       'prideLocation',
       'numAttendees',
       'numCountries'
-    ])
+    ]),
+    ...mapState('attendees', ['numAttendees', 'numCountries'])
   },
   methods: {
     onBackToMapClick(evt) {

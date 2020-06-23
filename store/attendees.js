@@ -5,7 +5,9 @@ const mapOnlyProps = ['lat', 'lng', 'solidarityCountry', 'emojiIndices']
 export const state = () => ({
   attendees: [],
   attendeesIdLookup: {},
-  currentAttendeeId: null
+  currentAttendeeId: null,
+  numAttendees: 0,
+  numCountries: 0
 })
 
 export const mutations = {
@@ -25,6 +27,11 @@ export const mutations = {
   },
   SET_CURRENT_ATTENDEE_ID(state, _id) {
     state.currentAttendeeId = _id
+  },
+  UPDATE_STORE(state, newState) {
+    Object.keys(newState).forEach((key) => {
+      state[key] = newState[key]
+    })
   }
 }
 
@@ -34,6 +41,21 @@ export const actions = {
       const response = await this.$axios.get('/api/v1/attendees')
       commit('SET_ATTENDEES', response.data._items)
       return state.attendees
+    } catch (e) {
+      console.error(e)
+    }
+  },
+  async fetchTotals({ commit }) {
+    try {
+      const response = await this.$axios.get('/api/v1/attendees/totals')
+      const { countries, attendees } = response.data._items[0]
+      const toUpdate = {
+        numCountries: countries[0].total,
+        numAttendees: attendees[0].total
+      }
+      commit('UPDATE_STORE', toUpdate)
+      commit('app/SET_SHOW_WELCOME_SNACKBAR', true, { root: true })
+      return toUpdate
     } catch (e) {
       console.error(e)
     }

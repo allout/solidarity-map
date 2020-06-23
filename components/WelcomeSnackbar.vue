@@ -33,10 +33,9 @@ export default {
     ...mapState('app', [
       'showWelcomeSnackbar',
       'flagisPlaced',
-      'prideLocation',
-      'numAttendees',
-      'numCountries'
-    ])
+      'prideLocation'
+    ]),
+    ...mapState('attendees', ['numAttendees', 'numCountries'])
   },
   methods: {
     onButtonClick(evt) {

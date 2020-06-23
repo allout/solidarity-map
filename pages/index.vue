@@ -52,6 +52,7 @@ export default {
       this.$store.commit('app/SET_BASE_URL', host)
     }
 
+    this.$store.dispatch('attendees/fetchTotals')
     this.$store.dispatch('map/fetchAreaGeojson')
   },
   mounted() {
