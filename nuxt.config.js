@@ -16,7 +16,9 @@ export default {
     SKIP_SUBSCRIPTION:
       process.env.SUBSCRIPTION_ENABLED === undefined
         ? false
-        : !Number(process.env.SUBSCRIPTION_ENABLED)
+        : !Number(process.env.SUBSCRIPTION_ENABLED),
+    recaptchaEnabled:
+      process.env.RECAPTCHA_ENABLED && Boolean(process.env.RECAPTCHA_ENABLED)
   },
   /*
    ** Customize the progress-bar color

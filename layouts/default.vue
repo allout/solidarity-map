@@ -162,7 +162,7 @@ export default {
   },
   head() {
     const i18nSEO = this.$nuxtI18nSeo()
-    return {
+    const metaInfo = {
       title: this.$t('site.title', {
         prideLocation: this.prideLocation,
         year: this.year
@@ -251,6 +251,17 @@ export default {
         ...i18nSEO.link
       ]
     }
+    if (this.$nuxt.context.env.recaptchaEnabled) {
+      metaInfo.script = [
+        {
+          src:
+            'https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit',
+          async: true,
+          defer: true
+        }
+      ]
+    }
+    return metaInfo
   }
 }
 </script>
