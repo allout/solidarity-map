@@ -153,7 +153,7 @@
 <script>
 import { extend } from 'vee-validate'
 import { required, email, max } from 'vee-validate/dist/rules'
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 import VueRecaptcha from 'vue-recaptcha'
 
 import { gdprCountries, getSortedCountryOptions } from '~/utils/resources'
@@ -195,7 +195,16 @@ export default {
     },
     recaptchaEnabled: (vm) => vm.$nuxt.context.env.recaptchaEnabled,
     recaptchaSiteKey: (vm) => vm.$nuxt.context.env.recaptchaSiteKey,
-    ...mapState('attendees', ['currentAttendeeId'])
+    ...mapGetters('attendees', ['currentAttendee'])
+  },
+  watch: {
+    currentAttendee(newVal) {
+      // Pre-select the country choice as the one the current attendee used on the flag
+      // step, if set
+      if (newVal && newVal.solidarityCountry) {
+        this.form.subscriptionCountry = newVal.solidarityCountry
+      }
+    }
   },
   methods: {
     onSubmit(evt) {
@@ -211,7 +220,7 @@ export default {
       const { subscriptionConsent, ...toSubmit } = this.form
       console.log('toSubmit', toSubmit)
       this.$store.dispatch('attendees/updateAttendee', {
-        _id: this.currentAttendeeId,
+        _id: this.currentAttendee._id,
         ...toSubmit
       })
       this.$store.commit('formDialog/NEXT_STEP')

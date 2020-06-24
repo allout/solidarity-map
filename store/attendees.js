@@ -10,6 +10,12 @@ export const state = () => ({
   numCountries: 0
 })
 
+export const getters = {
+  currentAttendee: (state) =>
+    state.currentAttendeeId &&
+    state.attendees[state.attendeesIdLookup[state.currentAttendeeId]]
+}
+
 export const mutations = {
   SET_ATTENDEES(state, attendees) {
     state.attendees = attendees
