@@ -93,12 +93,16 @@ export const actions = {
       console.error(e)
     }
   },
-  async updateAttendee({ commit, state }, data) {
+  async updateAttendee({ commit, state, rootState }, data) {
     console.log('updateAttendee', data)
     const { _id, ...rest } = data
     // Requires the passed in attendee record to have an _id value and already be stored
     // with an _etag from the REST interface for data integrity
     const { _etag } = state.attendees[state.attendeesIdLookup[_id]]
+    const { gRecaptchaResponse } = rootState.app
+    if (gRecaptchaResponse) {
+      rest.gRecaptchaResponse = gRecaptchaResponse
+    }
     try {
       const response = await this.$axios.patch(
         `/api/v1/attendees/${_id}`,

@@ -152,10 +152,7 @@ export default {
     },
     formStyle: (vm) => (vm.formHeight ? `min-height: ${vm.formHeight}px` : ''),
     recaptchaEnabled: (vm) => vm.$nuxt.context.env.recaptchaEnabled,
-    recaptchaSiteKey: (vm) => {
-      console.log(vm.$nuxt.context.env.recaptchaSiteKey)
-      return vm.$nuxt.context.env.recaptchaSiteKey
-    },
+    recaptchaSiteKey: (vm) => vm.$nuxt.context.env.recaptchaSiteKey,
     ...mapState('map', ['lastChosenLatlng'])
   },
   mounted() {

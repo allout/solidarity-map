@@ -2,6 +2,16 @@
 <template>
   <ValidationObserver v-slot="{ invalid, handleSubmit }" slim>
     <form class="white pa-4" @submit.prevent="handleSubmit(onSubmit)">
+      <vue-recaptcha
+        v-if="recaptchaEnabled"
+        ref="recaptcha"
+        size="invisible"
+        :sitekey="recaptchaSiteKey"
+        :load-recaptcha-script="true"
+        @verify="onRecaptchaVerify"
+        @expired="onRecaptchaExpired"
+      />
+
       <ValidationProvider
         v-slot="{ errors }"
         rules="email|required|max:50"
@@ -144,8 +154,10 @@
 import { extend } from 'vee-validate'
 import { required, email, max } from 'vee-validate/dist/rules'
 import { mapState } from 'vuex'
-import i18nCountries from 'i18n-iso-countries'
 import { countries } from 'countries-list'
+import VueRecaptcha from 'vue-recaptcha'
+import i18nCountries from 'i18n-iso-countries'
+
 import { gdprCountries } from '~/utils/resources'
 
 // Install required rule and message.
@@ -160,6 +172,10 @@ extend('max', max)
 const countryCodes = Object.keys(countries).sort()
 
 export default {
+  name: 'SubscriptionStep',
+  components: {
+    VueRecaptcha
+  },
   data: (vm) => ({
     form: {
       firstName: '',
@@ -185,10 +201,21 @@ export default {
     gdprCountryIsSelected() {
       return gdprCountries.includes(this.form.subscriptionCountry)
     },
+    recaptchaEnabled: (vm) => vm.$nuxt.context.env.recaptchaEnabled,
+    recaptchaSiteKey: (vm) => vm.$nuxt.context.env.recaptchaSiteKey,
     ...mapState('attendees', ['currentAttendeeId'])
   },
   methods: {
     onSubmit(evt) {
+      if (this.recaptchaEnabled) {
+        // if recaptcha is enabled request the verification code from google
+        this.$refs.recaptcha.execute()
+      } else {
+        // No verification required, just submit to ActionKit
+        this.doSubmit()
+      }
+    },
+    doSubmit(evt) {
       const { subscriptionConsent, ...toSubmit } = this.form
       console.log('toSubmit', toSubmit)
       this.$store.dispatch('attendees/updateAttendee', {
@@ -199,6 +226,17 @@ export default {
     },
     onSkipClicked(evt) {
       this.$store.commit('formDialog/NEXT_STEP')
+    },
+    onRecaptchaVerify(gRecaptchaResponse) {
+      this.$store.commit('app/UPDATE_STORE', { gRecaptchaResponse })
+      this.doSubmit()
+    },
+    onRecaptchaExpired() {
+      // eslint-disable-next-line no-console
+      console.error('Recaptcha expired')
+    },
+    resetRecaptcha() {
+      this.$refs.recaptcha.reset() // Direct call reset method
     }
   }
 }
