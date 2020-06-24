@@ -13,7 +13,8 @@ export const state = () => ({
   prideLocationEnvValue: '',
   baseUrl: '',
   infoPanelRef: null,
-  mapPanelRef: null
+  mapPanelRef: null,
+  gRecaptchaResponse: null
 })
 
 export const mutations = {

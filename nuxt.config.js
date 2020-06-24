@@ -18,7 +18,8 @@ export default {
         ? false
         : !Number(process.env.SUBSCRIPTION_ENABLED),
     recaptchaEnabled:
-      process.env.RECAPTCHA_ENABLED && Boolean(process.env.RECAPTCHA_ENABLED)
+      process.env.RECAPTCHA_ENABLED && Boolean(process.env.RECAPTCHA_ENABLED),
+    recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY
   },
   /*
    ** Customize the progress-bar color

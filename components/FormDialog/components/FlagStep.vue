@@ -5,6 +5,16 @@
     :style="formStyle"
     @submit.prevent="onFormSubmitted"
   >
+    <vue-recaptcha
+      v-if="recaptchaEnabled"
+      ref="recaptcha"
+      size="invisible"
+      :sitekey="recaptchaSiteKey"
+      :load-recaptcha-script="true"
+      @verify="onRecaptchaVerify"
+      @expired="onRecaptchaExpired"
+    />
+
     <div class="field">
       <label class="mb-1 subtitle-1 font-weight-bold" for="email">
         {{ $t('fields.solidarityCountry.label') }}
@@ -87,6 +97,7 @@ import { required } from 'vee-validate/dist/rules'
 import i18nCountries from 'i18n-iso-countries'
 import { countries } from 'countries-list'
 import { mapState } from 'vuex'
+import VueRecaptcha from 'vue-recaptcha'
 import { getIndexLookup } from '~/utils/data'
 import { emojis } from '~/utils/resources'
 import BackspaceSVG from '@/assets/images/icons/backspace.svg?inline'
@@ -97,7 +108,8 @@ const countryCodes = Object.keys(countries).sort()
 
 export default {
   components: {
-    BackspaceSVG
+    BackspaceSVG,
+    VueRecaptcha
   },
   data: (vm) => ({
     availableEmojiChoices: emojis.map((emoji, index) => ({
@@ -139,6 +151,11 @@ export default {
       return 'selected-emojis empty'
     },
     formStyle: (vm) => (vm.formHeight ? `min-height: ${vm.formHeight}px` : ''),
+    recaptchaEnabled: (vm) => vm.$nuxt.context.env.recaptchaEnabled,
+    recaptchaSiteKey: (vm) => {
+      console.log(vm.$nuxt.context.env.recaptchaSiteKey)
+      return vm.$nuxt.context.env.recaptchaSiteKey
+    },
     ...mapState('map', ['lastChosenLatlng'])
   },
   mounted() {
@@ -160,7 +177,16 @@ export default {
       this.form.emojiIndices.pop()
       this.showEmojiLimitAlert = false
     },
-    onFormSubmitted(index) {
+    onFormSubmitted() {
+      if (this.recaptchaEnabled) {
+        // if recaptcha is enabled request the verification code from google
+        this.$refs.recaptcha.execute()
+      } else {
+        // No verification required, just submit to ActionKit
+        this.doSubmit()
+      }
+    },
+    doSubmit() {
       this.$store.commit('formDialog/NEXT_STEP')
       // Consider calling app/SET_FLAG_IS_PLACED from inside attendees/createAttendee action
       this.$store.commit('app/SET_FLAG_IS_PLACED', true)
@@ -168,6 +194,17 @@ export default {
         ...this.form,
         ...this.lastChosenLatlng
       })
+    },
+    onRecaptchaVerify(gRecaptchaResponse) {
+      this.$store.commit('app/UPDATE_STORE', { gRecaptchaResponse })
+      this.doSubmit()
+    },
+    onRecaptchaExpired() {
+      // eslint-disable-next-line no-console
+      console.error('Recaptcha expired')
+    },
+    resetRecaptcha() {
+      this.$refs.recaptcha.reset() // Direct call reset method
     }
   }
 }

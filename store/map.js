@@ -9,7 +9,8 @@ export const state = () => ({
   zoom: 18,
   ready: false,
   areaGeojson: null,
-  lastChosenLatlng: null
+  lastChosenLatlng: null,
+  gRecaptchaResponse: null
 })
 
 export const getters = {

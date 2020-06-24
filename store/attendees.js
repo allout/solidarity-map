@@ -61,23 +61,22 @@ export const actions = {
     }
   },
   async createCurrentAttendee(
-    { commit },
+    { commit, rootState },
     { lat, lng, solidarityCountry, emojiIndices }
   ) {
-    console.log(
-      'createCurrentAttendee',
-      lat,
-      lng,
-      solidarityCountry,
-      emojiIndices
-    )
     try {
-      const response = await this.$axios.post('/api/v1/attendees', {
+      let toPost = {
         lat,
         lng,
         solidarityCountry,
         emojiIndices
-      })
+      }
+      const { gRecaptchaResponse } = rootState.app
+      if (gRecaptchaResponse) {
+        toPost = { gRecaptchaResponse, ...toPost }
+      }
+      console.log('createCurrentAttendee', toPost)
+      const response = await this.$axios.post('/api/v1/attendees', toPost)
       console.log(response.data)
       const { _id, _etag } = response.data
       commit('APPEND_ATTENDEE', {
