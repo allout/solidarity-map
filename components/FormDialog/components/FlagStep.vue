@@ -92,19 +92,17 @@
 </template>
 
 <script>
+import VueRecaptcha from 'vue-recaptcha'
+
 import { extend } from 'vee-validate'
 import { required } from 'vee-validate/dist/rules'
-import i18nCountries from 'i18n-iso-countries'
-import { countries } from 'countries-list'
 import { mapState } from 'vuex'
-import VueRecaptcha from 'vue-recaptcha'
+
 import { getIndexLookup } from '~/utils/data'
-import { emojis } from '~/utils/resources'
+import { emojis, getSortedCountryOptions } from '~/utils/resources'
 import BackspaceSVG from '@/assets/images/icons/backspace.svg?inline'
 
 extend('required', required)
-
-const countryCodes = Object.keys(countries).sort()
 
 export default {
   components: {
@@ -128,11 +126,7 @@ export default {
         name: vm.$t('fields.solidarityCountry.placeholder'),
         flag: ''
       },
-      countryCodes.map((code) => ({
-        code,
-        name: i18nCountries.getName(code, vm.$i18n.locale),
-        flag: countries[code].emoji
-      }))
+      getSortedCountryOptions(vm.$i18n.locale)
     ),
     emojiLookup: getIndexLookup(emojis),
     formHeight: 0

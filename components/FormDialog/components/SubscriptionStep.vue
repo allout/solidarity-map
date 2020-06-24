@@ -154,11 +154,9 @@
 import { extend } from 'vee-validate'
 import { required, email, max } from 'vee-validate/dist/rules'
 import { mapState } from 'vuex'
-import { countries } from 'countries-list'
 import VueRecaptcha from 'vue-recaptcha'
-import i18nCountries from 'i18n-iso-countries'
 
-import { gdprCountries } from '~/utils/resources'
+import { gdprCountries, getSortedCountryOptions } from '~/utils/resources'
 
 // Install required rule and message.
 extend('required', required)
@@ -168,8 +166,6 @@ extend('email', email)
 
 // Install max rule and message.
 extend('max', max)
-
-const countryCodes = Object.keys(countries).sort()
 
 export default {
   name: 'SubscriptionStep',
@@ -190,11 +186,7 @@ export default {
         name: vm.$t('fields.subscriptionCountry.placeholder'),
         flag: ''
       },
-      countryCodes.map((code) => ({
-        code,
-        name: i18nCountries.getName(code, vm.$i18n.locale),
-        flag: countries[code].emoji
-      }))
+      getSortedCountryOptions(vm.$i18n.locale)
     )
   }),
   computed: {

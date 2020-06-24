@@ -1,3 +1,7 @@
+import i18nCountries from 'i18n-iso-countries'
+import { countries } from 'countries-list'
+import { sortBy } from 'lodash'
+
 export const emojis = [
   '❤️',
   '🧡',
@@ -98,3 +102,12 @@ export const gdprCountries = [
   'GI',
   'CH'
 ]
+
+export const getSortedCountryOptions = (locale) => {
+  const countryOptions = Object.keys(countries).map((code) => ({
+    code,
+    name: i18nCountries.getName(code, locale),
+    flag: countries[code].emoji
+  }))
+  return sortBy(countryOptions, ['name'])
+}
