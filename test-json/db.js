@@ -1,3 +1,4 @@
+// This is the test data generator for json server
 const faker = require('faker')
 const mapInitial = require('../maps/stPetersburg/initial.js')
 
