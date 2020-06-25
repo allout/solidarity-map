@@ -99,7 +99,10 @@ export default {
         className: this.currentAttendeeId ? '' : 'flag-pointer'
       }
     },
-    ...mapState('app', ['appBarHeight', 'prideLocation', 'year']),
+    prideLocation() {
+      return this.$t(`cities.${this.prideLocationEnvValue}`, this.$i18n.locale)
+    },
+    ...mapState('app', ['appBarHeight', 'prideLocationEnvValue', 'year']),
     ...mapState('map', [
       'enableMarkerPopupOnHover',
       'showZoomControl',

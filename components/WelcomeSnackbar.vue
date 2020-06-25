@@ -30,10 +30,13 @@ import { mapState } from 'vuex'
 export default {
   name: 'WelcomeSnackbar',
   computed: {
+    prideLocation() {
+      return this.$t(`cities.${this.prideLocationEnvValue}`, this.$i18n.locale)
+    },
     ...mapState('app', [
       'showWelcomeSnackbar',
       'flagisPlaced',
-      'prideLocation'
+      'prideLocationEnvValue'
     ]),
     ...mapState('attendees', ['numAttendees', 'numCountries'])
   },

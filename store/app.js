@@ -9,7 +9,6 @@ export const state = () => ({
   showBackToMapSnackbar: false,
   now,
   year: now.getFullYear(),
-  prideLocation: '',
   prideLocationEnvValue: '',
   baseUrl: '',
   infoPanelRef: null,

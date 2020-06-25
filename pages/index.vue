@@ -36,7 +36,7 @@ export default {
     canonicalUrl() {
       return `${this.baseUrl}${this.$route.path}`
     },
-    ...mapState('app', ['prideLocation', 'baseUrl', 'appBarHeight']),
+    ...mapState('app', ['baseUrl', 'appBarHeight']),
     ...mapState('map', ['ready'])
   },
   created() {

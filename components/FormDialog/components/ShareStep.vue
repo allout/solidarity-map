@@ -52,6 +52,9 @@ export default {
     WhatsAppSVG
   },
   computed: {
+    prideLocation() {
+      return this.$t(`cities.${this.prideLocationEnvValue}`, this.$i18n.locale)
+    },
     pageUrl() {
       return window.location.href
     },
@@ -83,7 +86,7 @@ export default {
     },
     ...mapState('app', [
       'year',
-      'prideLocation',
+      'prideLocationEnvValue',
       'numAttendees',
       'numCountries'
     ]),

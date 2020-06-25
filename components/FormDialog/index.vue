@@ -68,7 +68,10 @@ export default {
   },
   computed: {
     prideLocation() {
-      return this.$t(`cities.${this.$nuxt.context.env.PRIDE_LOCATION}`)
+      return this.$t(
+        `cities.${this.$nuxt.context.env.PRIDE_LOCATION}`,
+        this.$i18n.locale
+      )
     },
     invertAppBarColors() {
       return this.step === this.steps.SHARE

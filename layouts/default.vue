@@ -117,6 +117,9 @@ export default {
     appBarContentHeight: 130
   }),
   computed: {
+    prideLocation() {
+      return this.$t(`cities.${this.prideLocationEnvValue}`, this.$i18n.locale)
+    },
     siteSubtitle() {
       const { prideLocation, year } = this
       return this.$t('site.subtitle', {
@@ -132,11 +135,11 @@ export default {
       })
     },
     ...mapState('app', [
-      'prideLocation',
       'year',
       'baseUrl',
       'docReady',
-      'appBarHeight'
+      'appBarHeight',
+      'prideLocationEnvValue'
     ])
   },
   watch: {
@@ -151,8 +154,7 @@ export default {
   created() {
     const prideLocationEnvValue = this.$nuxt.context.env.PRIDE_LOCATION
     this.$store.commit('app/UPDATE_STORE', {
-      prideLocationEnvValue,
-      prideLocation: this.$t(`cities.${prideLocationEnvValue}`)
+      prideLocationEnvValue
     })
   },
   mounted() {
