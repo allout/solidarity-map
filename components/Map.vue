@@ -58,6 +58,12 @@
 <script>
 // import { LatLngBounds } from 'leaflet'
 import { mapState, mapGetters } from 'vuex'
+import { debounce } from 'lodash'
+
+const debouncedOnBoundsUpdated = debounce((vm, bounds) => {
+  vm.$store.commit('map/UPDATE_MAP_STATE', { bounds })
+  vm.$store.dispatch('attendees/fetchAttendees')
+}, 500)
 
 export default {
   name: 'Map',
@@ -198,7 +204,9 @@ export default {
         this.$store.commit('map/SET_LAST_CHOSEN_LATLNG', evt.latlng)
       }
     },
-    onBoundsUpdated(bounds) {}
+    onBoundsUpdated(bounds) {
+      debouncedOnBoundsUpdated(this, bounds)
+    }
   }
 }
 </script>

@@ -4,7 +4,7 @@ import { emojis } from '~/utils/resources'
 export const state = () => ({
   enableMarkerPopupOnHover: false,
   showZoomControl: false,
-  bounds: [],
+  bounds: {},
   maxBounds: [],
   center: [],
   zoom: 18,

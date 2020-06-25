@@ -42,9 +42,25 @@ export const mutations = {
 }
 
 export const actions = {
-  async fetchAttendees({ commit, state, dispatch }) {
+  async fetchAttendees({ commit, state, rootState }) {
+    let filter = null
+    const { bounds } = rootState.map
+    const { _northEast, _southWest } = bounds
+    if (_northEast && _southWest) {
+      filter = {
+        lat: { $gte: _southWest.lat, $lte: _northEast.lat },
+        lng: { $gte: _southWest.lng, $lte: _northEast.lng }
+      }
+    }
+    const options = filter
+      ? {
+          params: {
+            where: filter
+          }
+        }
+      : {}
     try {
-      const response = await this.$axios.get('/api/v1/attendees')
+      const response = await this.$axios.get('/api/v1/attendees', options)
       commit('SET_ATTENDEES', response.data._items)
       return state.attendees
     } catch (e) {
