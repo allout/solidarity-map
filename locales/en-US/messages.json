@@ -142,7 +142,7 @@
 			"message": "More information?"
 		},
 		"welcome": {
-			"message": "Choose a location in {prideLocation} to place your flag and show solidarity together with {numAttendees} others participants from {numCountries} countries"
+			"message": "Choose a location in {prideLocation} to place your flag and show solidarity together with {numAttendees} other participants from {numCountries} countries"
 		}
 	}
 }

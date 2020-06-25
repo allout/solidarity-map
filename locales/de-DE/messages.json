@@ -1,46 +1,46 @@
 {
 	"accessibility": {
 		"imgAlts": {
-			"flag": ""
+			"flag": "Flagge"
 		}
 	},
 	"cities": {
-		"stPetersburg": ""
+		"stPetersburg": "St. Petersburg"
 	},
 	"dialogs": {
 		"form": {
 			"buttons": {
 				"map": {
-					"label": ""
+					"label": "Zurück zur Karte"
 				},
 				"showSupport": {
-					"label": ""
+					"label": "Zeig deine Unterstützung!"
 				},
 				"skip": {
-					"label": ""
+					"label": "Diesen Schritt überspringen"
 				},
 				"subscribe": {
-					"label": ""
+					"label": "Abonnieren"
 				}
 			},
 			"copy": {
-				"addFlair": "",
-				"extraInfoAsk": ""
+				"addFlair": "Mach deine Flagge zum Unikat!",
+				"extraInfoAsk": "Damit du dich unserem Kampf für Gleichstellung anschließen kannst, brauchen wir nur noch ein paar Informationen von dir..."
 			}
 		},
 		"steps": {
 			"flag": {
-				"emojiLimitReachedAlert": "",
-				"text": "",
-				"title": ""
+				"emojiLimitReachedAlert": "Das Emoji-Limit wurde erreicht!",
+				"text": "Der LGBT*-Community in {prideLocation} Liebe zu zeigen ist nicht schwer. Wähle unten aus, welche Informationen zu deiner Flagge hinzugefügt werden sollen!",
+				"title": "Was willst du zu deiner Flagge hinzufügen?"
 			},
 			"share": {
-				"text": "",
-				"title": ""
+				"text": "Jetzt teilen und andere zum Mitmachen animieren!",
+				"title": "Hier ist noch was - lade deine Freund*innen zum Mitmachen ein."
 			},
 			"subscription": {
-				"text": "",
-				"title": ""
+				"text": "Willst du dich dem Kampf für LGBT*-Rechte anschließen? Trete unserer Mailingliste bei.",
+				"title": "Dürfen wir dich über unsere Arbeit für LGBT*-Rechte auf dem Laufenden halten?"
 			}
 		}
 	},
@@ -49,48 +49,48 @@
 	},
 	"fields": {
 		"email": {
-			"label": "",
-			"placeholder": ""
+			"label": "E-Mail",
+			"placeholder": "Gib deine E-Mail-Adresse an"
 		},
 		"emojiGrid": {
-			"placeholder": ""
+			"placeholder": "Wähle ein Emoji..."
 		},
 		"firstName": {
-			"label": "",
-			"placeholder": ""
+			"label": "Vorname",
+			"placeholder": "Gib deinen Vornamen an"
 		},
 		"lastName": {
-			"label": "",
-			"placeholder": ""
+			"label": "Nachname",
+			"placeholder": "Gib deinen Nachnamen an"
 		},
 		"solidarityCountry": {
-			"label": "",
-			"placeholder": ""
+			"label": "Ich sende Solidarität aus...",
+			"placeholder": "Wähle einen Ort (optional)"
 		},
 		"subscriptionConsent": {
-			"accept": "",
-			"decline": "",
-			"label": ""
+			"accept": "Ja, ich möchte E-Mails von All Out erhalten",
+			"decline": "Nein, ich möchte keine E-Mails von All Out erhalten",
+			"label": "Aus datenschutzrechtlichen Gründen brauchen wir deine ausdrückliche Zustimmung, damit wir dir E-Mails senden können. Dürfen wir dich auf dem Laufenden halten?"
 		},
 		"subscriptionCountry": {
-			"label": "",
-			"placeholder": ""
+			"label": "Land",
+			"placeholder": "Auswählen..."
 		}
 	},
 	"footer": {
-		"byLine": ""
+		"byLine": "Ein mit Liebe und Solidarität entwickeltes Open Source-Projekt von:"
 	},
 	"infoPanel": {
 		"stPetersburg": {
 			"paragraphs": {
-				"p0": "",
-				"p1": "",
-				"p2": "",
-				"p3": "",
-				"p4": "",
-				"p5": ""
+				"p0": "Russlands Gesetz über „homosexuelle Propaganda“ hindert LGBT*-Menschen daran, sich im Kampf für ihre Rechte zusammenzuschließen. In den letzten Jahren wurden Aktivist*innen wegen der Ausübung ihres Rechts, sich im Rahmen von Pride friedlich zu versammeln, von der Polizei festgenommen.",
+				"p1": "St. Petersburg ist eine der größten Städte in Russland. Aber trotz einer progressiven Kultur werden LGBT*-Menschen immer noch diskriminiert, angegriffen oder sogar inhaftiert, weil sie versuchen, Pride zu feiern.",
+				"p2": "Darum haben wir beschlossen, Pride mithilfe einer digitalen Bewegung nach St. Petersburg zu bringen:",
+				"p3": "Mit dieser Karte wollen wir der LGBT*-Community in Russland eine Botschaft der Liebe und Solidarität senden.",
+				"p4": "Wir sind Tausende von Menschen, die sich virtuell in St. Petersburg treffen, um mit einer riesigen, bunten Geste unsere Solidarität mit den LGBT* zu zeigen, die Pride nicht feiern dürfen.",
+				"p5": "Jede Flagge steht für eine Stimme der Unterstützung und Liebe. Aus allen Teilen dieser Welt zeigen Menschen russischen LGBT*, dass sie nicht alleine sind."
 			},
-			"title": ""
+			"title": "Weltweite Solidaritätsaktion für St. Petersburg Pride 2020"
 		}
 	},
 	"links": {
@@ -119,30 +119,30 @@
 	"map": {
 		"flags": {
 			"popups": {
-				"solidarityMessage": ""
+				"solidarityMessage": "Ich stehe in Solidarität mit"
 			}
 		}
 	},
 	"sharing": {
-		"message": ""
+		"message": "Du bist eingeladen! Schließ dich mir und {numAttendees} anderen Menschen aus {numCountries} Ländern an und zeige deine Solidarität für #UnDistanced Pride {year} in {prideLocation}!  {pageUrl}"
 	},
 	"site": {
-		"author": "",
-		"purpose": "",
-		"subtitle": "",
-		"title": ""
+		"author": "https:@:links.allout.href, in Verbindung mit https:@:links.unicorns.href",
+		"purpose": "{prideLocation} Pride {year}",
+		"subtitle": "#UnDistanced Online Pride {year}",
+		"title": "Tagge dein Pride in {prideLocation}"
 	},
 	"snackbars": {
 		"backToMap": {
-			"buttonLabel": "",
-			"message": ""
+			"buttonLabel": "Zurück zur Karte",
+			"message": "Mehr entdecken"
 		},
 		"readMore": {
-			"buttonLabel": "",
-			"message": ""
+			"buttonLabel": "Hier erfährst du mehr!",
+			"message": "Mehr Infos?"
 		},
 		"welcome": {
-			"message": ""
+			"message": "Wähle einen Ort für deine Flagge in {prideLocation} und zeige zusammen mit {numAttendees} anderen Menschen aus {numCountries} Ländern deine Solidarität"
 		}
 	}
 }

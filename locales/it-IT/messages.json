@@ -1,46 +1,46 @@
 {
 	"accessibility": {
 		"imgAlts": {
-			"flag": ""
+			"flag": "Bandiera"
 		}
 	},
 	"cities": {
-		"stPetersburg": ""
+		"stPetersburg": "San Pietroburgo"
 	},
 	"dialogs": {
 		"form": {
 			"buttons": {
 				"map": {
-					"label": ""
+					"label": "Torna alla mappa"
 				},
 				"showSupport": {
-					"label": ""
+					"label": "Mostra il tuo sostegno!"
 				},
 				"skip": {
-					"label": ""
+					"label": "Salta questo passaggio"
 				},
 				"subscribe": {
-					"label": ""
+					"label": "Iscriviti"
 				}
 			},
 			"copy": {
-				"addFlair": "",
-				"extraInfoAsk": ""
+				"addFlair": "Arricchisci la tua bandiera!",
+				"extraInfoAsk": "Se vuoi partecipare alla nostra lotta per l'uguaglianza, raccontaci qualcos'altro di te..."
 			}
 		},
 		"steps": {
 			"flag": {
-				"emojiLimitReachedAlert": "",
-				"text": "",
-				"title": ""
+				"emojiLimitReachedAlert": "Limite emoji raggiunto!",
+				"text": "Mostrare il tuo sostegno al Pride di {prideLocation} è facilissimo. Personalizza la tua bandiera!",
+				"title": "Cosa vorresti aggiungere alla tua bandiera?"
 			},
 			"share": {
-				"text": "",
-				"title": ""
+				"text": "Condividi e invita i tuoi amici!",
+				"title": "Un'ultima cosa: invita i tuoi amici!"
 			},
 			"subscription": {
-				"text": "",
-				"title": ""
+				"text": "Vuoi partecipare alla lotta per i diritti LGBT+? Iscriviti alla nostra mailing list.",
+				"title": "Vuoi rimanere al corrente del nostro lavoro per i diritti LGBT+?"
 			}
 		}
 	},
@@ -49,48 +49,48 @@
 	},
 	"fields": {
 		"email": {
-			"label": "",
-			"placeholder": ""
+			"label": "Email",
+			"placeholder": "Inserisci il tuo indirizzo email"
 		},
 		"emojiGrid": {
-			"placeholder": ""
+			"placeholder": "Seleziona un'emoji"
 		},
 		"firstName": {
-			"label": "",
-			"placeholder": ""
+			"label": "Nome",
+			"placeholder": "Inserisci il tuo nome"
 		},
 		"lastName": {
-			"label": "",
-			"placeholder": ""
+			"label": "Cognome",
+			"placeholder": "Inserisci il tuo cognome"
 		},
 		"solidarityCountry": {
-			"label": "",
-			"placeholder": ""
+			"label": "Invio il mio sostegno da...",
+			"placeholder": "Dove ti trovi? (facoltativo)"
 		},
 		"subscriptionConsent": {
-			"accept": "",
-			"decline": "",
-			"label": ""
+			"accept": "Sì, accetto di ricevere email da All Out",
+			"decline": "No, non desidero iscrivermi",
+			"label": "Per legge, siamo tenuti a chiedere il tuo permesso esplicito per inviarti email. Possiamo aggiornarti?"
 		},
 		"subscriptionCountry": {
-			"label": "",
-			"placeholder": ""
+			"label": "Paese",
+			"placeholder": "Selezionare..."
 		}
 	},
 	"footer": {
-		"byLine": ""
+		"byLine": "Un progetto open-source costruito con amore e solidarietà da..."
 	},
 	"infoPanel": {
 		"stPetersburg": {
 			"paragraphs": {
-				"p0": "",
-				"p1": "",
-				"p2": "",
-				"p3": "",
-				"p4": "",
-				"p5": ""
+				"p0": "La legge contro la \"propaganda gay\" vieta alle persone LGBT+ di manifestare per i loro diritti. Negli ultimi anni, la polizia ha arrestato diversi attivisti che esercitavano il loro diritto a riunirsi pacificamente per celebrare il Pride.",
+				"p1": "San Pietroburgo è una delle città più grandi della Russia, nota per la sua cultura progressista. Ma le persone LGBT+ continuano a subire discriminazioni, aggressioni e perfino arresti quando tentano di celebrare il Pride.",
+				"p2": "Ecco perché abbiamo deciso di manifestare la nostra solidarietà a San Pietroburgo attraverso il nostro movimento mondiale:",
+				"p3": "Questa mappa è il nostro modo per inviare un messaggio di sostegno e solidarietà alle persone LGBT+ di tutta la Russia.",
+				"p4": "Migliaia di noi si raduneranno virtualmente a San Pietroburgo, dando vita a un'enorme e variopinta manifestazione di solidarietà per le persone LGBT+ a cui è probito celebrare il Pride.",
+				"p5": "Ogni bandiera rappresenta un messaggio di solidarietà e amore da parte del mondo, per dire alle persone LGBT+ di tutta la Russia: non siete sole."
 			},
-			"title": ""
+			"title": "Iniziativa di solidarietà globale per il Pride 2020 a San Pietroburgo"
 		}
 	},
 	"links": {
@@ -119,30 +119,30 @@
 	"map": {
 		"flags": {
 			"popups": {
-				"solidarityMessage": ""
+				"solidarityMessage": "Sono solidale con"
 			}
 		}
 	},
 	"sharing": {
-		"message": ""
+		"message": "Questo è un invito! Partecipa con me e {numAttendees} persone di {numCountries} paesi a un'iniziativa di solidarietà per il {prideLocation} Pride {year}! #UnDistanced {pageUrl}"
 	},
 	"site": {
-		"author": "",
-		"purpose": "",
-		"subtitle": "",
-		"title": ""
+		"author": "https:@:links.allout.href, in conjunction with https:@:links.unicorns.href",
+		"purpose": "{prideLocation} Pride {year}",
+		"subtitle": "Pride {year} #UnDistanced",
+		"title": "Tagga il tuo orgoglio a {prideLocation}"
 	},
 	"snackbars": {
 		"backToMap": {
-			"buttonLabel": "",
-			"message": ""
+			"buttonLabel": "Torna alla mappa",
+			"message": "Continua a esplorare"
 		},
 		"readMore": {
-			"buttonLabel": "",
-			"message": ""
+			"buttonLabel": "Scopri di più!",
+			"message": "Altre informazioni?"
 		},
 		"welcome": {
-			"message": ""
+			"message": "Posiziona la tua bandiera a {prideLocation} per mostrare la tua solidarietà insieme ad altri {numAttendees} partecipanti di {numCountries} paesi"
 		}
 	}
 }

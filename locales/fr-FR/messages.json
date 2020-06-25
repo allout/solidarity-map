@@ -1,46 +1,46 @@
 {
 	"accessibility": {
 		"imgAlts": {
-			"flag": ""
+			"flag": "Drapeau"
 		}
 	},
 	"cities": {
-		"stPetersburg": ""
+		"stPetersburg": "Saint-Pétersbourg"
 	},
 	"dialogs": {
 		"form": {
 			"buttons": {
 				"map": {
-					"label": ""
+					"label": "Retour à la carte"
 				},
 				"showSupport": {
-					"label": ""
+					"label": "Montrez votre soutien !"
 				},
 				"skip": {
-					"label": ""
+					"label": "Passer cette étape"
 				},
 				"subscribe": {
-					"label": ""
+					"label": "S'inscrire"
 				}
 			},
 			"copy": {
-				"addFlair": "",
-				"extraInfoAsk": ""
+				"addFlair": "Décorez votre drapeau !",
+				"extraInfoAsk": "Pour rejoindre notre combat pour l'égalité, racontez-nous encore quelques détails sur vous..."
 			}
 		},
 		"steps": {
 			"flag": {
-				"emojiLimitReachedAlert": "",
-				"text": "",
-				"title": ""
+				"emojiLimitReachedAlert": "Plus de place pour les emojis !",
+				"text": "C'est très simple de montrer votre soutien la Marche des fiertés de {prideLocation}. Personnalisez votre drapeau !",
+				"title": "Que voulez-vous ajouter à votre drapeau ?"
 			},
 			"share": {
-				"text": "",
-				"title": ""
+				"text": "Parlez-en autour de vous et invitez vos amis !",
+				"title": "Une chose encore : invitez vos amis !"
 			},
 			"subscription": {
-				"text": "",
-				"title": ""
+				"text": "Vous voulez rejoindre la lutte pour les droits LGBT+ ? Inscrivez-vous sur notre liste de diffusion.\n",
+				"title": "Vous voulez rester au courant de notre travail autour des droits LGBT+ ?"
 			}
 		}
 	},
@@ -49,48 +49,48 @@
 	},
 	"fields": {
 		"email": {
-			"label": "",
-			"placeholder": ""
+			"label": "Courrier électronique",
+			"placeholder": "Entrez votre adresse électronique"
 		},
 		"emojiGrid": {
-			"placeholder": ""
+			"placeholder": "Sélectionnez un emoji"
 		},
 		"firstName": {
-			"label": "",
-			"placeholder": ""
+			"label": "Prénom",
+			"placeholder": "Saisissez votre prénom"
 		},
 		"lastName": {
-			"label": "",
-			"placeholder": ""
+			"label": "Nom de famille",
+			"placeholder": "Saisissez votre nom de famille"
 		},
 		"solidarityCountry": {
-			"label": "",
-			"placeholder": ""
+			"label": "J'envoie mon soutien de...",
+			"placeholder": "Où êtes-vous ? (optionnel)"
 		},
 		"subscriptionConsent": {
-			"accept": "",
-			"decline": "",
-			"label": ""
+			"accept": "Oui, j'accepte de recevoir des e-mails d'All Out",
+			"decline": "Non, je ne souhaite pas m'inscrire",
+			"label": "La loi nous oblige à vous demander votre permission explicite pour vous envoyer des e-mails. Alors, pouvons-nous vous tenir au courant ?"
 		},
 		"subscriptionCountry": {
-			"label": "",
-			"placeholder": ""
+			"label": "Pays",
+			"placeholder": "Sélectionner..."
 		}
 	},
 	"footer": {
-		"byLine": ""
+		"byLine": "Un projet open-source construit avec amour et solidarité par..."
 	},
 	"infoPanel": {
 		"stPetersburg": {
 			"paragraphs": {
-				"p0": "",
-				"p1": "",
-				"p2": "",
-				"p3": "",
-				"p4": "",
-				"p5": ""
+				"p0": "La loi contre la \"propagande gay\" interdit aux personnes LGBT+ de se réunir pour défendre leurs droits. Au cours des dernières années, la police a arrêté des activistes qui défendent leur droit à se réunir pacifiquement et à défiler à l'occasion de la Marche des fiertés.",
+				"p1": "Saint-Pétersbourg est l'une des plus grandes villes de Russie ; elle est connue pour sa culture progressiste. Mais les personnes LGBT+ sont toujours discriminées, attaquées et arrêtées lorsqu'elles tentent de célébrer la Marche des fiertés.",
+				"p2": "C'est pour cela que nous avons décidé d'apporter notre solidarité à Saint-Pétersbourg par notre mouvement mondial :",
+				"p3": "Cette carte est notre manière d'envoyer un message de soutien et de solidarité aux Russes LGBT+.",
+				"p4": "Nous sommes des milliers à nous rassembler virtuellement à Saint-Pétersbourg, dans un immense mouvement de solidarité avec les personnes LGBT+ qui n'ont pas le droit de célébrer la Marche des fiertés.",
+				"p5": "Chaque drapeau représente un message de solidarité et d'amour venu du monde entier, et vient dire aux Russes LGBT+ qu'ils ne sont pas seul·es.\n"
 			},
-			"title": ""
+			"title": "Action de solidarité mondiale pour la Marche des fiertés 2020 à Saint-Pétersbourg"
 		}
 	},
 	"links": {
@@ -119,30 +119,30 @@
 	"map": {
 		"flags": {
 			"popups": {
-				"solidarityMessage": ""
+				"solidarityMessage": "Je suis solidaire avec"
 			}
 		}
 	},
 	"sharing": {
-		"message": ""
+		"message": "Vous êtes invité·es ! Avec moi et {numAttendees} autres personnes venues de {numCountries} pays, agissons ensemble pour la Marche des fiertés {prideLocation} {year} ! #UnDistanced {pageUrl}"
 	},
 	"site": {
-		"author": "",
-		"purpose": "",
-		"subtitle": "",
-		"title": ""
+		"author": "https:@:links.allout.href, avec https:@:links.unicorns.href",
+		"purpose": "Marche des fiertés {prideLocation} {year}",
+		"subtitle": "Marche des fiertés {year} #UnDistanced",
+		"title": "Soyons fièr·es à {prideLocation}"
 	},
 	"snackbars": {
 		"backToMap": {
-			"buttonLabel": "",
-			"message": ""
+			"buttonLabel": "Retour à la carte",
+			"message": "Continuez à explorer"
 		},
 		"readMore": {
-			"buttonLabel": "",
-			"message": ""
+			"buttonLabel": "Pour en savoir plus !",
+			"message": "Plus d'infos ?"
 		},
 		"welcome": {
-			"message": ""
+			"message": "Placez votre drapeau à {prideLocation} pour montrer votre solidarité aux côtés de {numAttendees} participants de {numCountries} pays."
 		}
 	}
 }
