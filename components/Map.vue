@@ -61,7 +61,9 @@ import { mapState, mapGetters } from 'vuex'
 import { debounce } from 'lodash'
 
 const debouncedOnBoundsUpdated = debounce((vm, bounds) => {
+  // Store new map bounds to state so it can be used in query filters when fetching attendees/flags
   vm.$store.commit('map/UPDATE_MAP_STATE', { bounds })
+  // Subsequent flags fetch
   vm.$store.dispatch('attendees/fetchAttendees')
 }, 500)
 
@@ -134,20 +136,20 @@ export default {
     isPortableWidth(newValue) {
       this.$store.commit('map/SET_SHOW_ZOOM_CONTROL', !newValue)
     },
-    currentAttendeeId(newId, oldId) {
+    currentAttendee(newAttendee) {
       this.$nextTick(() => {
         // We need to force a refresh of the area style when currentAttendeeId
         // is set or unset
         const { mapObject } = this.$refs.area
         mapObject.eachLayer((layer) => {
-          if (newId) {
+          if (newAttendee) {
             layer._path.classList.remove('flag-pointer')
           } else {
             layer._path.classList.add('flag-pointer')
           }
         })
-        if (newId) {
-          const markerRefs = this.$refs[`marker-${newId}`]
+        if (newAttendee._id) {
+          const markerRefs = this.$refs[`marker-${newAttendee._id}`]
           const marker = markerRefs[0]
           marker.mapObject.openPopup()
         }
@@ -158,6 +160,7 @@ export default {
     }
   },
   created() {
+    // Initial flags fetch
     this.$store.dispatch('attendees/fetchAttendees')
   },
   methods: {
