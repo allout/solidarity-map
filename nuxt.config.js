@@ -97,6 +97,24 @@ export default {
             code: 'ru',
             iso: 'ru-RU',
             file: 'ru-RU/index.js'
+          },
+          {
+            name: 'German',
+            code: 'de',
+            iso: 'de-DE',
+            file: 'de-DE/index.js'
+          },
+          {
+            name: 'Italian',
+            code: 'it',
+            iso: 'it-IT',
+            file: 'it-IT/index.js'
+          },
+          {
+            name: 'French',
+            code: 'fr',
+            iso: 'fr-FR',
+            file: 'fr-FR/index.js'
           }
         ],
         langDir: 'locales/',
