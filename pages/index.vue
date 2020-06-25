@@ -40,10 +40,16 @@ export default {
     ...mapState('map', ['ready'])
   },
   created() {
-    const mapState = require(`~/maps/${process.env.PRIDE_LOCATION}/initial.js`)
+    const {
+      center,
+      zoom,
+      bounds: maxBounds
+    } = require(`~/maps/${process.env.PRIDE_LOCATION}/initial.js`)
     this.$store.commit('map/UPDATE_MAP_STATE', {
       ready: true,
-      ...mapState
+      center,
+      zoom,
+      maxBounds
     })
 
     const { req } = this.$nuxt.context

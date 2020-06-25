@@ -5,6 +5,7 @@ export const state = () => ({
   enableMarkerPopupOnHover: false,
   showZoomControl: false,
   bounds: [],
+  maxBounds: [],
   center: [],
   zoom: 18,
   ready: false,

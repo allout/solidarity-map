@@ -6,8 +6,10 @@
       class="flag-planted"
       :zoom="zoom"
       :center="center"
+      :maxBounds="maxBounds"
       @ready="onMapReady"
       @update:zoom="onMapZoom"
+      @update:bounds="onBoundsUpdated"
     >
       <l-tile-layer url="https://{s}.tile.osm.org/{z}/{x}/{y}.png" />
       <l-geo-json
@@ -106,7 +108,7 @@ export default {
     ...mapState('map', [
       'enableMarkerPopupOnHover',
       'showZoomControl',
-      'bounds',
+      'maxBounds',
       'center',
       'zoom',
       'areaGeojson'
@@ -195,7 +197,8 @@ export default {
         // Save the lat / lng of the map click in the store
         this.$store.commit('map/SET_LAST_CHOSEN_LATLNG', evt.latlng)
       }
-    }
+    },
+    onBoundsUpdated(bounds) {}
   }
 }
 </script>
