@@ -179,17 +179,18 @@ export default {
       email: '',
       subscriptionCountry: '',
       subscriptionConsent: false
-    },
-    countries: [].concat(
-      {
-        code: '',
-        name: vm.$t('fields.subscriptionCountry.placeholder'),
-        flag: ''
-      },
-      getSortedCountryOptions(vm.$i18n.locale)
-    )
+    }
   }),
   computed: {
+    countries: (vm) =>
+      [].concat(
+        {
+          code: '',
+          name: vm.$t('fields.solidarityCountry.placeholder', vm.$i18n.locale),
+          flag: ''
+        },
+        getSortedCountryOptions(vm.$i18n.locale)
+      ),
     gdprCountryIsSelected() {
       return gdprCountries.includes(this.form.subscriptionCountry)
     },

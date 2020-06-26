@@ -120,18 +120,19 @@ export default {
       solidarityCountry: '',
       emojiIndices: []
     },
-    countries: [].concat(
-      {
-        code: '',
-        name: vm.$t('fields.solidarityCountry.placeholder'),
-        flag: ''
-      },
-      getSortedCountryOptions(vm.$i18n.locale)
-    ),
     emojiLookup: getIndexLookup(emojis),
     formHeight: 0
   }),
   computed: {
+    countries: (vm) =>
+      [].concat(
+        {
+          code: '',
+          name: vm.$t('fields.solidarityCountry.placeholder', vm.$i18n.locale),
+          flag: ''
+        },
+        getSortedCountryOptions(vm.$i18n.locale)
+      ),
     selectedEmojis() {
       if (this.form.emojiIndices.length) {
         return this.form.emojiIndices.map((index) => emojis[index]).join('')
