@@ -199,11 +199,16 @@ export default {
     ...mapGetters('attendees', ['currentAttendee'])
   },
   watch: {
-    currentAttendee(newVal) {
-      // Pre-select the country choice as the one the current attendee used on the flag
-      // step, if set
-      if (newVal && newVal.solidarityCountry) {
-        this.form.subscriptionCountry = newVal.solidarityCountry
+    // eslint-disable-next-line object-shorthand
+    'form.email': function() {
+      // If not already selected, pre-select the country choice as the one the
+      // current attendee used on the flag step, if set
+      if (
+        !this.form.subscriptionCountry &&
+        this.currentAttendee &&
+        this.currentAttendee.solidarityCountry
+      ) {
+        this.form.subscriptionCountry = this.currentAttendee.solidarityCountry
       }
     }
   },
