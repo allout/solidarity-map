@@ -118,6 +118,7 @@ export const actions = {
         }
       } catch (e) {
         error = e
+        // eslint-disable-next-line no-console
         console.error(e)
       }
 
@@ -136,6 +137,7 @@ export const actions = {
       commit('UPDATE_STORE', toUpdate)
       return toUpdate
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.error(e)
     }
   },
@@ -154,9 +156,7 @@ export const actions = {
       if (gRecaptchaResponse) {
         toPost = { gRecaptchaResponse, ...toPost }
       }
-      console.log('createCurrentAttendee', toPost)
       const response = await this.$axios.post('/api/v1/attendees', toPost)
-      console.log(response.data)
       const { _id, _etag } = response.data
       commit('APPEND_ATTENDEE', {
         _id,
@@ -175,7 +175,6 @@ export const actions = {
     }
   },
   async updateAttendee({ commit, state, rootState }, data) {
-    console.log('updateAttendee', data)
     const { _id, ...rest } = data
     // Requires the passed in attendee record to have an _id value and already be stored
     // with an _etag from the REST interface for data integrity
@@ -195,7 +194,6 @@ export const actions = {
           }
         }
       )
-      console.log(response.data)
       commit('UPDATE_ATTENDEE', _id, {
         // save the new _etag value just in case we need to update again
         _etag: response.data._etag,

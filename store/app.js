@@ -18,11 +18,6 @@ export const state = () => ({
 
 export const getters = {
   welcomeSnackbarVisible: (state, getters, rootState) => {
-    console.log(
-      'show',
-      state.showWelcomeSnackbar,
-      rootState.attendees.totalsReady
-    )
     return state.showWelcomeSnackbar && rootState.attendees.totalsReady
   }
 }

@@ -219,7 +219,6 @@ export default {
     },
     doSubmit(evt) {
       const { subscriptionConsent, ...toSubmit } = this.form
-      console.log('toSubmit', toSubmit)
       this.$store.dispatch('attendees/updateAttendee', {
         _id: this.currentAttendee._id,
         ...toSubmit

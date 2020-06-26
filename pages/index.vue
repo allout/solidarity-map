@@ -48,6 +48,11 @@ export default {
     ...mapState('attendees', ['currentAttendeeId']),
     ...mapState('map', ['ready'])
   },
+  watch: {
+    currentAttendeeId(newId) {
+      displayCorrectSnackBar(this, newId)
+    }
+  },
   created() {
     const {
       center,
@@ -69,11 +74,6 @@ export default {
 
     this.$store.dispatch('attendees/fetchTotals')
     this.$store.dispatch('map/fetchAreaGeojson')
-  },
-  watch: {
-    currentAttendeeId(newId) {
-      displayCorrectSnackBar(this, newId)
-    }
   },
   mounted() {
     this.$store.commit('app/SET_INFO_PANEL_REF', this.$refs.infoPanel)

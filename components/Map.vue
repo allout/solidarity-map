@@ -6,7 +6,7 @@
       class="flag-planted"
       :zoom="zoom"
       :center="center"
-      :maxBounds="maxBounds"
+      :max-bounds="maxBounds"
       @ready="onMapReady"
       @update:zoom="onMapZoom"
       @update:bounds="onBoundsUpdated"
@@ -24,11 +24,11 @@
       <l-marker
         v-for="flag in flags"
         :key="`marker-${flag._id}`"
+        :ref="`marker-${flag._id}`"
         :lat-lng="flag.center"
         :options="flagOptions"
         @mouseover="onMarkerMouseover"
         @mouseout="onMarkerMouseout"
-        :ref="`marker-${flag._id}`"
       >
         <l-popup :options="flagPopupOptions">
           <div class="d-flex flex-column align-center">
@@ -77,7 +77,10 @@ export default {
       closeButton: false,
       className: 'flag-popup',
       maxWidth: 200,
-      offset: [6, -15]
+      offset: [6, -15],
+      // If autoPan is activated the map tries to pan to get the popup in view,
+      // even if it exceeds maxBounds causing havok
+      autoPan: false
     },
     flagIconOptions: {
       iconSize: [22, 22],
@@ -140,18 +143,22 @@ export default {
       this.$nextTick(() => {
         // We need to force a refresh of the area style when currentAttendeeId
         // is set or unset
-        const { mapObject } = this.$refs.area
-        mapObject.eachLayer((layer) => {
-          if (newAttendeeId) {
-            layer._path.classList.remove('flag-pointer')
-          } else {
-            layer._path.classList.add('flag-pointer')
-          }
-        })
-        if (newAttendee._id) {
+        if (this.$refs.area) {
+          const { mapObject } = this.$refs.area
+          mapObject.eachLayer((layer) => {
+            if (newAttendeeId) {
+              layer._path.classList.remove('flag-pointer')
+            } else {
+              layer._path.classList.add('flag-pointer')
+            }
+          })
+        }
+        if (newAttendeeId) {
           const markerRefs = this.$refs[`marker-${newAttendeeId}`]
-          const marker = markerRefs[0]
-          marker.mapObject.openPopup()
+          if (markerRefs) {
+            const marker = markerRefs[0]
+            marker.mapObject.openPopup()
+          }
         }
       })
     }
