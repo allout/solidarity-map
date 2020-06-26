@@ -29,6 +29,7 @@ export const mutations = {
   },
   APPEND_ATTENDEES(state, attendees) {
     // for (const attendee of attendees) {}
+    // state.attendees = state.attendees.concat(attendees)
     state.attendees.push(...attendees)
   },
   UPDATE_ATTENDEE(state, _id, attendeeData) {
@@ -106,10 +107,15 @@ export const actions = {
           fetchJobId,
           page
         )
-        const { _items } = response && response.data
-        commit('APPEND_ATTENDEES', _items)
-        const { next } = response && response.data && response.data._links
-        nextPage = next
+        if (response) {
+          const { data } = response
+          if (data) {
+            const { _items } = data
+            commit('APPEND_ATTENDEES', _items)
+            const { next } = data._links || {}
+            nextPage = next
+          }
+        }
       } catch (e) {
         error = e
         console.error(e)
