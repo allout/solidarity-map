@@ -153,7 +153,7 @@
 <script>
 import { extend } from 'vee-validate'
 import { required, email, max } from 'vee-validate/dist/rules'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import VueRecaptcha from 'vue-recaptcha'
 
 import { gdprCountries, getSortedCountryOptions } from '~/utils/resources'
@@ -196,7 +196,8 @@ export default {
     },
     recaptchaEnabled: (vm) => vm.$nuxt.context.env.recaptchaEnabled,
     recaptchaSiteKey: (vm) => vm.$nuxt.context.env.recaptchaSiteKey,
-    ...mapGetters('attendees', ['currentAttendee'])
+    ...mapGetters('attendees', ['currentAttendee']),
+    ...mapState('attendees', ['currentAttendeeId'])
   },
   watch: {
     // eslint-disable-next-line object-shorthand
@@ -224,10 +225,7 @@ export default {
     },
     doSubmit(evt) {
       const { subscriptionConsent, ...toSubmit } = this.form
-      this.$store.dispatch('attendees/updateAttendee', {
-        _id: this.currentAttendee._id,
-        ...toSubmit
-      })
+      this.$store.dispatch('attendees/updateCurrentAttendee', toSubmit)
       this.$store.commit('formDialog/NEXT_STEP')
     },
     onSkipClicked(evt) {

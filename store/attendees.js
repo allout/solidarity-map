@@ -174,6 +174,11 @@ export const actions = {
       console.error(e)
     }
   },
+  async updateCurrentAttendee({ state, dispatch }, data) {
+    const currentAttendeeData = { _id: state.currentAttendeeId, ...data }
+    console.log('updateCurrentAttendee', currentAttendeeData)
+    await dispatch('updateAttendee', currentAttendeeData)
+  },
   async updateAttendee({ commit, state, rootState }, data) {
     const { _id, ...rest } = data
     // Requires the passed in attendee record to have an _id value and already be stored
