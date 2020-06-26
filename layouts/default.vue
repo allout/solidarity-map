@@ -163,6 +163,10 @@ export default {
     }
   },
   head() {
+    // const protocol = process.env.isProduction ? 'https' : 'http'
+    const shareImgUrl = `//${
+      this.baseUrl
+    }${require('~/assets/images/sharing/share-1200x630.jpg')}`
     const i18nSEO = this.$nuxtI18nSeo()
     const metaInfo = {
       title: this.$t('site.title', {
@@ -195,9 +199,7 @@ export default {
         },
         {
           property: 'og:image',
-          content: `${
-            this.baseUrl
-          }${require('~/assets/images/sharing/share-1200x630.jpg')}`
+          content: shareImgUrl
         },
         { property: 'og:image:height', content: '1200' },
         { property: 'og:image:width', content: '1200' },
@@ -214,9 +216,7 @@ export default {
         },
         {
           name: 'twitter:image',
-          content: `${
-            this.baseUrl
-          }${require('~/assets/images/sharing/share-1200x630.jpg')}`
+          content: shareImgUrl
         },
         ...i18nSEO.meta
       ],
