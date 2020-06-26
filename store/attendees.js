@@ -1,25 +1,35 @@
+import { v4 as uuidv4 } from 'uuid'
 import { getIdLookup, getObjFromProps } from '@/utils/data'
 
 const mapOnlyProps = ['lat', 'lng', 'solidarityCountry', 'emojiIndices']
+// Performance: the maximum number of attendees to request for any given map view
+const maxAttendees = 1000
 
 export const state = () => ({
   attendees: [],
   attendeesIdLookup: {},
   currentAttendeeId: null,
   numAttendees: 0,
-  numCountries: 0
+  numCountries: 0,
+  fetchJobId: null,
+  lastPromise: null
 })
 
 export const getters = {
   currentAttendee: (state) =>
     state.currentAttendeeId &&
-    state.attendees[state.attendeesIdLookup[state.currentAttendeeId]]
+    state.attendees[state.attendeesIdLookup[state.currentAttendeeId]],
+  numFetchedAttendees: (state) => state.attendees.length
 }
 
 export const mutations = {
   SET_ATTENDEES(state, attendees) {
     state.attendees = attendees
     state.attendeesIdLookup = getIdLookup(state.attendees)
+  },
+  APPEND_ATTENDEES(state, attendees) {
+    // for (const attendee of attendees) {}
+    state.attendees.push(...attendees)
   },
   UPDATE_ATTENDEE(state, _id, attendeeData) {
     const { attendees, attendeesIdLookup } = state
@@ -38,34 +48,75 @@ export const mutations = {
     Object.keys(newState).forEach((key) => {
       state[key] = newState[key]
     })
+  },
+  SET_FETCH_JOB_ID(state, fetchJobId) {
+    state.fetchJobId = fetchJobId
   }
 }
 
+const fetchAttendeesPage = (state, rootState, $axios, fetchJobId, page) => {
+  const { bounds } = rootState.map
+  const { _northEast, _southWest } = bounds
+
+  const params = {}
+  if (_northEast && _southWest) {
+    params.where = {
+      $and: [
+        { lat: { $gt: _southWest.lat, $lt: _northEast.lat } },
+        { lng: { $gt: _southWest.lng, $lt: _northEast.lng } }
+      ]
+    }
+  }
+  if (page) {
+    params.page = page
+  }
+
+  const options = {}
+  if (Object.keys(params).length) {
+    options.params = params
+  }
+
+  const promise = $axios.get('/api/v1/attendees', options).then((response) => {
+    if (state.fetchJobId === fetchJobId) {
+      return response
+    }
+  })
+  return promise
+}
+
 export const actions = {
-  async fetchAttendees({ commit, state, rootState }) {
-    let filter = null
-    const { bounds } = rootState.map
-    const { _northEast, _southWest } = bounds
-    if (_northEast && _southWest) {
-      filter = {
-        lat: { $gte: _southWest.lat, $lte: _northEast.lat },
-        lng: { $gte: _southWest.lng, $lte: _northEast.lng }
+  async fetchAttendees({ commit, state, rootState, dispatch, getters }) {
+    const fetchJobId = uuidv4()
+
+    commit('SET_FETCH_JOB_ID', fetchJobId)
+    commit('SET_ATTENDEES', [])
+
+    let page = 1
+    let error = null
+    let nextPage
+
+    do {
+      nextPage = null
+
+      try {
+        const response = await fetchAttendeesPage(
+          state,
+          rootState,
+          this.$axios,
+          fetchJobId,
+          page
+        )
+        const { _items } = response && response.data
+        commit('APPEND_ATTENDEES', _items)
+        const { next } = response && response.data && response.data._links
+        nextPage = next
+      } catch (e) {
+        error = e
+        console.error(e)
       }
-    }
-    const options = filter
-      ? {
-          params: {
-            where: filter
-          }
-        }
-      : {}
-    try {
-      const response = await this.$axios.get('/api/v1/attendees', options)
-      commit('SET_ATTENDEES', response.data._items)
-      return state.attendees
-    } catch (e) {
-      console.error(e)
-    }
+
+      page = page + 1
+    } while (nextPage && !error && getters.numFetchedAttendees < maxAttendees)
   },
   async fetchTotals({ commit }) {
     try {
