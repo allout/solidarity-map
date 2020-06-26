@@ -136,20 +136,20 @@ export default {
     isPortableWidth(newValue) {
       this.$store.commit('map/SET_SHOW_ZOOM_CONTROL', !newValue)
     },
-    currentAttendee(newAttendee) {
+    currentAttendeeId(newAttendeeId) {
       this.$nextTick(() => {
         // We need to force a refresh of the area style when currentAttendeeId
         // is set or unset
         const { mapObject } = this.$refs.area
         mapObject.eachLayer((layer) => {
-          if (newAttendee) {
+          if (newAttendeeId) {
             layer._path.classList.remove('flag-pointer')
           } else {
             layer._path.classList.add('flag-pointer')
           }
         })
         if (newAttendee._id) {
-          const markerRefs = this.$refs[`marker-${newAttendee._id}`]
+          const markerRefs = this.$refs[`marker-${newAttendeeId}`]
           const marker = markerRefs[0]
           marker.mapObject.openPopup()
         }

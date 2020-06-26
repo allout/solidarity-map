@@ -17,6 +17,13 @@ import { mapState } from 'vuex'
 import Map from '~/components/Map'
 import InfoPanel from '~/components/InfoPanel'
 
+const displayCorrectSnackBar = (vm, currentAttendeeId) => {
+  // Display the appropriate snackbar based on whether
+  // there is a currentAttendeeId or not
+  vm.$store.commit('app/SET_SHOW_READ_MORE_SNACKBAR', !!currentAttendeeId)
+  vm.$store.commit('app/SET_SHOW_WELCOME_SNACKBAR', !currentAttendeeId)
+}
+
 export default {
   components: {
     Map,
@@ -38,6 +45,7 @@ export default {
       return `${protocol}://${this.baseUrl}${this.$route.path}`
     },
     ...mapState('app', ['baseUrl', 'appBarHeight']),
+    ...mapState('attendees', ['currentAttendeeId']),
     ...mapState('map', ['ready'])
   },
   created() {
@@ -62,9 +70,15 @@ export default {
     this.$store.dispatch('attendees/fetchTotals')
     this.$store.dispatch('map/fetchAreaGeojson')
   },
+  watch: {
+    currentAttendeeId(newId) {
+      displayCorrectSnackBar(this, newId)
+    }
+  },
   mounted() {
     this.$store.commit('app/SET_INFO_PANEL_REF', this.$refs.infoPanel)
     this.$store.commit('app/SET_MAP_PANEL_REF', this.$refs.mapPanel)
+    displayCorrectSnackBar(this, this.currentAttendeeId)
   },
   head() {
     return {

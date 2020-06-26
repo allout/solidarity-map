@@ -1,5 +1,5 @@
 <template>
-  <v-snackbar color="white" :value="showWelcomeSnackbar" :timeout="0">
+  <v-snackbar color="white" :value="welcomeSnackbarVisible" :timeout="0">
     <div class="d-flex align-center mb-2">
       <img
         class="mr-4"
@@ -26,18 +26,15 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 export default {
   name: 'WelcomeSnackbar',
   computed: {
     prideLocation() {
       return this.$t(`cities.${this.prideLocationEnvValue}`, this.$i18n.locale)
     },
-    ...mapState('app', [
-      'showWelcomeSnackbar',
-      'flagisPlaced',
-      'prideLocationEnvValue'
-    ]),
+    ...mapState('app', ['flagisPlaced', 'prideLocationEnvValue']),
+    ...mapGetters('app', ['welcomeSnackbarVisible']),
     ...mapState('attendees', ['numAttendees', 'numCountries'])
   },
   methods: {

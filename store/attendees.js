@@ -9,10 +9,10 @@ export const state = () => ({
   attendees: [],
   attendeesIdLookup: {},
   currentAttendeeId: null,
+  totalsReady: false,
   numAttendees: 0,
   numCountries: 0,
-  fetchJobId: null,
-  lastPromise: null
+  fetchJobId: null
 })
 
 export const getters = {
@@ -130,10 +130,10 @@ export const actions = {
       const { countries, attendees } = response.data._items[0]
       const toUpdate = {
         numCountries: countries[0].total,
-        numAttendees: attendees[0].total
+        numAttendees: attendees[0].total,
+        totalsReady: true
       }
       commit('UPDATE_STORE', toUpdate)
-      commit('app/SET_SHOW_WELCOME_SNACKBAR', true, { root: true })
       return toUpdate
     } catch (e) {
       console.error(e)
@@ -167,6 +167,8 @@ export const actions = {
         emojiIndices
       })
       commit('SET_CURRENT_ATTENDEE_ID', _id)
+      // Persist ID in local storage
+      this.$warehouse.set('attendee', { currentAttendeeId: _id })
     } catch (e) {
       // eslint-disable-next-line no-console
       console.error(e)

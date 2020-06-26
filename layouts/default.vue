@@ -161,6 +161,13 @@ export default {
     document.onreadystatechange = () => {
       this.$store.commit('app/SET_DOC_READY', true)
     }
+
+    // Has the user already "attended" this action of solidarity?
+    // Grab the currentAttendeeId from localstorage if set (it will be null by default)
+    const { currentAttendeeId } = this.$warehouse.get('attendee', {
+      currentAttendeeId: null
+    })
+    this.$store.commit('attendees/SET_CURRENT_ATTENDEE_ID', currentAttendeeId)
   },
   head() {
     const protocol = process.env.isProduction ? 'https' : 'http'
