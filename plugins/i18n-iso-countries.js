@@ -5,3 +5,6 @@ import i18nCountries from 'i18n-iso-countries'
 // Add required support for languages here
 i18nCountries.registerLocale(require('i18n-iso-countries/langs/en.json'))
 i18nCountries.registerLocale(require('i18n-iso-countries/langs/ru.json'))
+i18nCountries.registerLocale(require('i18n-iso-countries/langs/de.json'))
+i18nCountries.registerLocale(require('i18n-iso-countries/langs/it.json'))
+i18nCountries.registerLocale(require('i18n-iso-countries/langs/fr.json'))
