@@ -154,9 +154,6 @@ export default {
           marker.mapObject.openPopup()
         }
       })
-    },
-    flags(newFlags, oldFlags) {
-      console.log(newFlags)
     }
   },
   created() {
