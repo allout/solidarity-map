@@ -195,7 +195,9 @@ export default {
         },
         {
           property: 'og:image',
-          content: require('~/assets/images/sharing/share-1200x1200.jpg')
+          content: `${
+            this.baseUrl
+          }${require('~/assets/images/sharing/share-1200x1200.jpg')}`
         },
         { property: 'og:image:height', content: '1200' },
         { property: 'og:image:width', content: '1200' },
@@ -212,7 +214,9 @@ export default {
         },
         {
           name: 'twitter:image',
-          content: require('~/assets/images/sharing/share-1200x1200.jpg')
+          content: `${
+            this.baseUrl
+          }${require('~/assets/images/sharing/share-1200x1200.jpg')}`
         },
         ...i18nSEO.meta
       ],
