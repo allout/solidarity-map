@@ -163,8 +163,8 @@ export default {
     }
   },
   head() {
-    // const protocol = process.env.isProduction ? 'https' : 'http'
-    const shareImgUrl = `//${
+    const protocol = process.env.isProduction ? 'https' : 'http'
+    const shareImgUrl = `${protocol}://${
       this.baseUrl
     }${require('~/assets/images/sharing/share-1200x630.jpg')}`
     const i18nSEO = this.$nuxtI18nSeo()
