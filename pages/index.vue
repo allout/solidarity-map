@@ -34,7 +34,8 @@ export default {
       return `height: ${this.mapBoxHeight}`
     },
     canonicalUrl() {
-      return `${this.baseUrl}${this.$route.path}`
+      const protocol = process.env.isProduction ? 'https' : 'http'
+      return `${protocol}://${this.baseUrl}${this.$route.path}`
     },
     ...mapState('app', ['baseUrl', 'appBarHeight']),
     ...mapState('map', ['ready'])
