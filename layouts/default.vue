@@ -195,8 +195,7 @@ export default {
         },
         {
           property: 'og:image',
-          content:
-            'https://s3.amazonaws.com/all-in-live-media/__sized__/campaign_image_store/b0220a60-09df-4369-abfc-a15d914bc2c8/content_image/HPMH6RY7GVEAFBIA35MPTWXTCM-crop-c0-5__0-5-1200x1200.png'
+          content: require('~/assets/images/sharing/share-1200x1200.jpg')
         },
         { property: 'og:image:height', content: '1200' },
         { property: 'og:image:width', content: '1200' },
@@ -213,8 +212,7 @@ export default {
         },
         {
           name: 'twitter:image',
-          content:
-            'https://s3.amazonaws.com/all-in-live-media/__sized__/campaign_image_store/b0220a60-09df-4369-abfc-a15d914bc2c8/content_image/HPMH6RY7GVEAFBIA35MPTWXTCM-crop-c0-5__0-5-1200x1200.png'
+          content: require('~/assets/images/sharing/share-1200x1200.jpg')
         },
         ...i18nSEO.meta
       ],
