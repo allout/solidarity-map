@@ -31,7 +31,7 @@
 		"steps": {
 			"flag": {
 				"emojiLimitReachedAlert": "Plus de place pour les emojis !",
-				"text": "C'est très simple de montrer votre soutien la Marche des fiertés de {prideLocation}. Personnalisez votre drapeau !",
+				"text": "C'est très simple de montrer votre soutien à la Marche des fiertés de {prideLocation}. Personnalisez votre drapeau !",
 				"title": "Que voulez-vous ajouter à votre drapeau ?"
 			},
 			"share": {
@@ -119,7 +119,7 @@
 	"map": {
 		"flags": {
 			"popups": {
-				"solidarityMessage": "Je suis solidaire avec"
+				"solidarityMessage": "Je suis solidaire avec la"
 			}
 		}
 	},

@@ -31,12 +31,12 @@
 		"steps": {
 			"flag": {
 				"emojiLimitReachedAlert": "Das Emoji-Limit wurde erreicht!",
-				"text": "Der LGBT*-Community in {prideLocation} Liebe zu zeigen ist nicht schwer. Wähle unten aus, welche Informationen zu deiner Flagge hinzugefügt werden sollen!",
+				"text": "Der LGBT*-Community in {prideLocation} Liebe zu senden ist nicht schwer. Wähle unten aus, welche Dekoration zu deiner Flagge hinzugefügt werden sollen!",
 				"title": "Was willst du zu deiner Flagge hinzufügen?"
 			},
 			"share": {
 				"text": "Jetzt teilen und andere zum Mitmachen animieren!",
-				"title": "Hier ist noch was - lade deine Freund*innen zum Mitmachen ein."
+				"title": "Und noch etwas - lade deine Freund*innen zum Mitmachen ein."
 			},
 			"subscription": {
 				"text": "Willst du dich dem Kampf für LGBT*-Rechte anschließen? Trete unserer Mailingliste bei.",
@@ -130,7 +130,7 @@
 		"author": "https:@:links.allout.href, in Verbindung mit https:@:links.unicorns.href",
 		"purpose": "{prideLocation} Pride {year}",
 		"subtitle": "#UnDistanced Online Pride {year}",
-		"title": "Tagge dein Pride in {prideLocation}"
+		"title": "Tagge deine Pride in {prideLocation}"
 	},
 	"snackbars": {
 		"backToMap": {

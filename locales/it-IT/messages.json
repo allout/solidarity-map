@@ -83,12 +83,12 @@
 	"infoPanel": {
 		"stPetersburg": {
 			"paragraphs": {
-				"p0": "La legge contro la \"propaganda gay\" vieta alle persone LGBT+ di manifestare per i loro diritti. Negli ultimi anni, la polizia ha arrestato diversi attivisti che esercitavano il loro diritto a riunirsi pacificamente per celebrare il Pride.",
+				"p0": "La legge contro la cosiddetta \"propaganda omosessuale\" vieta alle persone LGBT+ di manifestare per i loro diritti. Negli ultimi anni, la polizia ha arrestato diversi attivisti che esercitavano il loro diritto a riunirsi pacificamente per celebrare il Pride.",
 				"p1": "San Pietroburgo è una delle città più grandi della Russia, nota per la sua cultura progressista. Ma le persone LGBT+ continuano a subire discriminazioni, aggressioni e perfino arresti quando tentano di celebrare il Pride.",
-				"p2": "Ecco perché abbiamo deciso di manifestare la nostra solidarietà a San Pietroburgo attraverso il nostro movimento mondiale:",
+				"p2": "Ecco perché abbiamo deciso di manifestare la nostra solidarietà a San Pietroburgo attraverso il nostro movimento mondiale.",
 				"p3": "Questa mappa è il nostro modo per inviare un messaggio di sostegno e solidarietà alle persone LGBT+ di tutta la Russia.",
-				"p4": "Migliaia di noi si raduneranno virtualmente a San Pietroburgo, dando vita a un'enorme e variopinta manifestazione di solidarietà per le persone LGBT+ a cui è probito celebrare il Pride.",
-				"p5": "Ogni bandiera rappresenta un messaggio di solidarietà e amore da parte del mondo, per dire alle persone LGBT+ di tutta la Russia: non siete sole."
+				"p4": "Siamo in migliaia a radunarci virtualmente a San Pietroburgo, dando vita a un'enorme e variopinta manifestazione di solidarietà per le persone LGBT+ a cui è probito celebrare il Pride.",
+				"p5": "Ogni bandiera rappresenta un messaggio di solidarietà e amore proveniente da ogni parte del mondo, per dire alle persone LGBT+ di tutta la Russia: non siete sole."
 			},
 			"title": "Iniziativa di solidarietà globale per il Pride 2020 a San Pietroburgo"
 		}
@@ -119,7 +119,7 @@
 	"map": {
 		"flags": {
 			"popups": {
-				"solidarityMessage": "Sono solidale con"
+				"solidarityMessage": "Sono solidale con il"
 			}
 		}
 	},
