@@ -8,10 +8,6 @@ export const state = () => ({
   step: steps.FLAG
 })
 
-export const getters = {
-  getFlagLatLng: ({ submitted }) => [submitted.lat, submitted.lng]
-}
-
 export const mutations = {
   SET_VISIBLE(state, visible) {
     state.visible = visible

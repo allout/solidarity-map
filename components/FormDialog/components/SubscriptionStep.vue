@@ -153,7 +153,7 @@
 <script>
 import { extend } from 'vee-validate'
 import { required, email, max } from 'vee-validate/dist/rules'
-import { mapGetters, mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import VueRecaptcha from 'vue-recaptcha'
 
 import { gdprCountries, getSortedCountryOptions } from '~/utils/resources'
@@ -196,15 +196,16 @@ export default {
     },
     recaptchaEnabled: (vm) => vm.$nuxt.context.env.recaptchaEnabled,
     recaptchaSiteKey: (vm) => vm.$nuxt.context.env.recaptchaSiteKey,
-    ...mapGetters('attendees', ['currentAttendee']),
-    ...mapState('attendees', ['currentAttendeeId'])
+    ...mapState('attendees', ['currentAttendeeId', 'attendees']),
+    ...mapGetters('attendees', ['currentAttendee'])
   },
   watch: {
     // eslint-disable-next-line object-shorthand
-    'form.email': function() {
+    'form.email': function(newVal) {
       // If not already selected, pre-select the country choice as the one the
       // current attendee used on the flag step, if set
       if (
+        newVal &&
         !this.form.subscriptionCountry &&
         this.currentAttendee &&
         this.currentAttendee.solidarityCountry

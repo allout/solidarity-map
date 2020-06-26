@@ -16,10 +16,13 @@ export const state = () => ({
 })
 
 export const getters = {
+  numFetchedAttendees: (state) => state.attendees.length,
+  getAttendee: (state) => (attendeeId) =>
+    state.attendees[state.attendeesIdLookup[attendeeId]],
   currentAttendee: (state) =>
-    state.currentAttendeeId &&
-    state.attendees[state.attendeesIdLookup[state.currentAttendeeId]],
-  numFetchedAttendees: (state) => state.attendees.length
+    state.currentAttendeeId
+      ? state.attendees[state.attendeesIdLookup[state.currentAttendeeId]]
+      : null
 }
 
 export const mutations = {
@@ -33,14 +36,22 @@ export const mutations = {
     state.attendees.push(...attendees)
   },
   UPDATE_ATTENDEE(state, _id, attendeeData) {
-    const { attendees, attendeesIdLookup } = state
-    const attendee = attendees[attendeesIdLookup[_id]]
-    attendees[attendeesIdLookup[_id]] = { ...attendeeData, ...attendee }
+    const attendee = state.attendees[state.attendeesIdLookup[_id]]
+    state.attendees[state.attendeesIdLookup[_id]] = {
+      ...attendeeData,
+      ...attendee
+    }
   },
   APPEND_ATTENDEE(state, attendee) {
     const prevLength = state.attendees.length
     state.attendees.push(attendee)
     state.attendeesIdLookup[attendee._id] = prevLength
+  },
+  APPEND_NEW_ATTENDEE(state, attendee) {
+    const prevLength = state.attendees.length
+    state.attendees = state.attendees.concat([attendee])
+    state.attendeesIdLookup[attendee._id] = prevLength
+    state.currentAttendeeId = attendee._id
   },
   SET_CURRENT_ATTENDEE_ID(state, _id) {
     state.currentAttendeeId = _id
@@ -68,6 +79,10 @@ const fetchAttendeesPage = (state, rootState, $axios, fetchJobId, page) => {
       ]
     }
   }
+  if (state.currentAttendeeId) {
+    params.where = { _id: { $ne: state.currentAttendeeId }, ...params.where }
+  }
+
   if (page) {
     params.page = page
   }
@@ -90,7 +105,10 @@ export const actions = {
     const fetchJobId = uuidv4()
 
     commit('SET_FETCH_JOB_ID', fetchJobId)
-    commit('SET_ATTENDEES', [])
+
+    const currentAttendee = getters.currentAttendee
+    const attendees = currentAttendee ? [currentAttendee] : []
+    commit('SET_ATTENDEES', attendees)
 
     let page = 1
     let error = null
@@ -176,7 +194,6 @@ export const actions = {
   },
   async updateCurrentAttendee({ state, dispatch }, data) {
     const currentAttendeeData = { _id: state.currentAttendeeId, ...data }
-    console.log('updateCurrentAttendee', currentAttendeeData)
     await dispatch('updateAttendee', currentAttendeeData)
   },
   async updateAttendee({ commit, state, rootState }, data) {
