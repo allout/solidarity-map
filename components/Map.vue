@@ -67,6 +67,29 @@ const debouncedOnBoundsUpdated = debounce((vm, bounds) => {
   vm.$store.dispatch('attendees/fetchAttendees')
 }, 500)
 
+const setCorrectMapBehaviour = (vm, currentAttendeeId) => {
+  // Depending on whether there is a currentAttendeeId set or not, we change the map behaviour
+  vm.$nextTick(() => {
+    if (vm.$refs.area) {
+      const { mapObject } = vm.$refs.area
+      mapObject.eachLayer((layer) => {
+        if (currentAttendeeId) {
+          layer._path.classList.remove('flag-pointer')
+        } else {
+          layer._path.classList.add('flag-pointer')
+        }
+      })
+    }
+    if (currentAttendeeId) {
+      const markerRefs = vm.$refs[`marker-${currentAttendeeId}`]
+      if (markerRefs) {
+        const marker = markerRefs[0]
+        marker.mapObject.openPopup()
+      }
+    }
+  })
+}
+
 export default {
   name: 'Map',
   data: () => ({
@@ -140,32 +163,15 @@ export default {
       this.$store.commit('map/SET_SHOW_ZOOM_CONTROL', !newValue)
     },
     currentAttendeeId(newAttendeeId) {
-      this.$nextTick(() => {
-        // We need to force a refresh of the area style when currentAttendeeId
-        // is set or unset
-        if (this.$refs.area) {
-          const { mapObject } = this.$refs.area
-          mapObject.eachLayer((layer) => {
-            if (newAttendeeId) {
-              layer._path.classList.remove('flag-pointer')
-            } else {
-              layer._path.classList.add('flag-pointer')
-            }
-          })
-        }
-        if (newAttendeeId) {
-          const markerRefs = this.$refs[`marker-${newAttendeeId}`]
-          if (markerRefs) {
-            const marker = markerRefs[0]
-            marker.mapObject.openPopup()
-          }
-        }
-      })
+      setCorrectMapBehaviour(this, newAttendeeId)
     }
   },
   created() {
     // Initial flags fetch
     this.$store.dispatch('attendees/fetchAttendees')
+  },
+  mounted() {
+    setCorrectMapBehaviour(this, this.currentAttendeeId)
   },
   methods: {
     onMapReady(mapObject) {
