@@ -8,7 +8,7 @@
     <v-app-bar
       ref="appBar"
       :color="appBarBgColor"
-      height="150"
+      height="170"
       :class="`dialog-app-bar ${appBarTextClass}`"
       flat
     >
