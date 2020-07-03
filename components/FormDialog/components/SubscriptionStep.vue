@@ -226,7 +226,11 @@ export default {
     },
     doSubmit(evt) {
       const { subscriptionConsent, ...toSubmit } = this.form
-      this.$store.dispatch('attendees/updateCurrentAttendee', toSubmit)
+      const { locale } = this.$i18n
+      this.$store.dispatch('attendees/updateCurrentAttendee', {
+        locale,
+        ...toSubmit
+      })
       this.$store.commit('formDialog/NEXT_STEP')
     },
     onSkipClicked(evt) {
