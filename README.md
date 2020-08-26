@@ -1,6 +1,12 @@
-# Pride #Undistanced
+# Solidarity Map
 
-> An #Undistanced Virtual Pride geotagging action of solidarity
+> A map based, virtual action of solidarity
+
+## Contribution
+
+Right now this project has just been build for All Out's recent St Petersburg action however with some customisation this project can be used for any city. All are welcome to use the code as is or customise it to your specific needs. Extending this project to support multiple cities is the goal so pull request submissions are welcome and encouraged.
+
+If you would like to contribute to this project there are also a number of existing issues we'd love to have solutions to. See the Issues tab of this project.
 
 ## Build Setup
 
@@ -43,7 +49,7 @@ This is the process I used for St Petersburg
 
 1. Navigate to http://overpass-turbo.eu/
 
-1. Run the following query, where <relation_id> is the id you noted in the previous step
+1. Run the following query, where `<relation_id>` is the id you noted in the previous step
 
    ```
    relation(<relation_id>);
@@ -55,4 +61,20 @@ This is the process I used for St Petersburg
 
 1. Click the "Export" button, go to the "Data" section and download as GeoJSON
 
-1. Copy this file to your maps/cityName folder in this project and name the file area.geojson
+1. Copy this file to your geojson/cityName folder in this project and name the file `area.geojson`
+
+1. In the `.env` file in the root of your project, ensure that you have the `PRIDE_LOCATION` environment variable set to the camelCased `cityName` from your previous step.
+
+## General customisation
+
+There's a number of other environment variables that can control certain behaviour around this app. Please get in contact with the authors if you require more information.
+
+Also the existing text copy in this project right now is purely St Petersburg specific and is available in 5 different languages.
+
+## Deployment
+
+This project is set up to be easily deployable to Heroku but it could be hosted anywhere a Nuxt.js project can run.
+
+## Database API backend
+
+This app also requires an API backend to talk to and store information such as map marker locations. This service is provided via the accompanying https://github.com/allout/solidarity-map-api project.
