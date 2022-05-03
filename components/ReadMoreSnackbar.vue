@@ -1,5 +1,5 @@
 <template>
-  <v-snackbar color="white" :value="showReadMoreSnackbar" :timeout="0">
+  <v-snackbar color="white" :value="showReadMoreSnackbar" :timeout="-1">
     <span class="black--text subtitle-1">
       {{ $t('snackbars.readMore.message') }}
     </span>

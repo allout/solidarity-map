@@ -1,5 +1,5 @@
 <template>
-  <v-snackbar color="white" :value="welcomeSnackbarVisible" :timeout="0">
+  <v-snackbar color="white" :value="welcomeSnackbarVisible" :timeout="-1">
     <div class="d-flex align-center mb-2">
       <img
         class="mr-4"

@@ -152,11 +152,14 @@ export default {
   },
   watch: {
     showZoomControl(newValue) {
-      const { mapObject } = this.$refs.leaflet
-      if (newValue) {
-        mapObject.addControl(mapObject.zoomControl, { position: 'topleft' })
-      } else {
-        mapObject.removeControl(mapObject.zoomControl)
+      const { mapObject } = this.$refs.leaflet || {}
+
+      if (mapObject) {
+        if (newValue) {
+          mapObject.addControl(mapObject.zoomControl, { position: 'topleft' })
+        } else {
+          mapObject.removeControl(mapObject.zoomControl)
+        }
       }
     },
     isPortableWidth(newValue) {
@@ -220,21 +223,29 @@ export default {
     onBoundsUpdated(bounds) {
       debouncedOnBoundsUpdated(this, bounds)
     }
+  },
+  head: {
+    link: [
+      {
+        rel: 'stylesheet',
+        href: '//unpkg.com/leaflet/dist/leaflet.css'
+      }
+    ]
   }
 }
 </script>
 
 <style lang="scss">
-#map {
-  height: 100%;
+// #map {
+//   // height: 100%;
 
-  & >>> .leaflet-pane {
-    z-index: 200;
-  }
-}
-.leaflet-pane {
-  z-index: 200;
-}
+//   & >>> .leaflet-pane {
+//     z-index: 200;
+//   }
+// }
+// .leaflet-pane {
+//   z-index: 200;
+// }
 .leaflet-interactive {
   &.flag-pointer {
     cursor: url('/images/icons/flag.png') 5 32, auto;

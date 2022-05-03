@@ -148,8 +148,8 @@ export const actions = {
       const response = await this.$axios.get('/api/v1/attendees/totals')
       const { countries, attendees } = response.data._items[0]
       const toUpdate = {
-        numCountries: countries[0].total,
-        numAttendees: attendees[0].total,
+        numCountries: countries.length ? countries[0].total : 0,
+        numAttendees: attendees.length ? attendees[0].total : 0,
         totalsReady: true
       }
       commit('UPDATE_STORE', toUpdate)

@@ -1,5 +1,5 @@
 <template>
-  <v-app class="app">
+  <v-app>
     <v-app-bar
       ref="appBar"
       class="app-bar"
@@ -23,11 +23,11 @@
         </h2>
       </div>
     </v-app-bar>
-    <v-content>
+    <v-main>
       <v-container fluid fill-height>
         <nuxt />
       </v-container>
-    </v-content>
+    </v-main>
     <form-dialog />
     <welcome-snackbar />
     <read-more-snackbar />

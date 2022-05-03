@@ -1,5 +1,5 @@
 <template>
-  <v-snackbar color="white" :value="showBackToMapSnackbar" :timeout="0">
+  <v-snackbar color="white" :value="showBackToMapSnackbar" :timeout="-1">
     <span class="black--text subtitle-1">
       {{ $t('snackbars.backToMap.message') }}
     </span>

@@ -7,7 +7,6 @@ const apiAuthToken = Buffer.from(
 ).toString('base64')
 
 export default {
-  mode: 'universal',
   env: {
     // The values that are referenced from process.env can be overridden in the system environment
     // or a .env file at the root of this repository.
@@ -33,7 +32,12 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['./plugins/vee-validate.js', './plugins/i18n-iso-countries.js'],
+  plugins: [
+    './plugins/vee-validate.js',
+    './plugins/i18n-iso-countries.js',
+    // https://vue2-leaflet.netlify.app/quickstart/#nuxt
+    { src: '~plugins/leaflet.js', ssr: false }
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -72,14 +76,6 @@ export default {
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    // https://github.com/schlunsen/nuxt-leaflet
-    // https://github.com/vue-leaflet/Vue2Leaflet
-    [
-      'nuxt-leaflet',
-      {
-        /* module options */
-      }
-    ],
     // https://nuxt-community.github.io/nuxt-i18n/options-reference.html
     [
       'nuxt-i18n',
